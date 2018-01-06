@@ -1,0 +1,88 @@
+@media only screen and (min-width: 720px) {
+    .modal-dialog {
+        width: 397px;
+        margin: 30px auto;
+    }
+    .center-modal {
+    position: relative;
+    top: 11%;
+}
+	
+}
+@media only screen and (max-width: 720px){
+    .get-pick-c-btn {
+        display:none;
+    }
+    .custom-height{
+    
+    }
+    body.modal-open {
+    overflow: hidden !important;
+    }
+    .booknow-btn{
+    font-size:10px;
+    }
+    .Prices-list h3{
+    font-size:10px !important;
+    }
+    .pricelist-logo {
+    margin-top: 8px;
+}
+    .modal-dialog {
+      
+        margin: 30px auto;
+    }
+    .modal-content{
+    padding:10px;
+    }
+	
+	.note-text{
+	font-size:8px;
+	}
+    .scroll{
+       /*overflow-y: scroll !important; */
+       
+  }
+    
+}
+@media only screen and (max-width: 1000px) {
+    .right-align {
+        float:none;
+		margin-left:25px;
+    }
+    .estimate-form>.form-control{
+        width:100%;
+    }
+    .estimate-bg{
+        left:0;
+
+    }
+     .display-lg{
+        display:none;
+    }
+     .slider-text h1{
+         margin-top:20px;
+         position:relative;
+         top:20px;
+     }
+    .track-crn-btn {
+        float: none;
+        text-align:center;
+       position:relative;
+         top:20px;
+         left:40px;
+    }
+    .track-crn-btn:hover {
+        float: none;
+        text-align:center;
+        position:relative;
+         top:20px;
+         left:40px;
+         
+    }
+}
+@media only screen and (min-width: 1000px) {
+    .display-sm {
+        display: none;
+    }
+}
