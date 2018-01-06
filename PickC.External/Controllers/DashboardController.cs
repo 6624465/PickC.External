@@ -9,8 +9,11 @@ namespace PickC.External.Controllers
     public class DashboardController : Controller
     {
         // GET: Dashboard
-        public ActionResult Index()
+        public ActionResult Index(bool IsTripEstimate = false)
         {
+            if(IsTripEstimate)
+                ViewData["vdIsTripEstimate"] = true;
+
             return View();
         }
         public ActionResult AboutUs()

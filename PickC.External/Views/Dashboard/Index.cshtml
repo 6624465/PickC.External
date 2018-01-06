@@ -242,8 +242,11 @@
             </div>
             <div class="modal-body">
                 <div class="form-group get-link">
-                    <input type="email" class="form-control" id="f-location" placeholder="Enter Mobile number" name="email">
-                    <button type="submit" class="btn get-link-btn">Get Pick-C App link</button>
+                    @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
+                    {
+                        <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile number" name="appmobileNumber">
+                        <button type="button" onclick="AppLink()" class="btn get-link-btn">Get Pick-C App link</button>
+                    }
                 </div>
             </div>
 
@@ -270,48 +273,45 @@
     </div>
 </div>
 <!--Prices list modal End-->
-<div class="modal fade" id="get-trip-estimate" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog center-modal modal-sm">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <input class="form-control" id="accountName" placeholder="Enter Name" name="Name" type="text" value="">
-                    </div>
-
+@using (Html.BeginForm("TripEstimate", "CustomerInquiry", FormMethod.Post, new { id = "frmTripEstimate", name = "frmTripEstimate" }))
+{
+    <div class="modal fade" id="get-trip-estimate" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog center-modal modal-sm">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <input class="form-control" id="accountNumber" placeholder="Enter Mobile Number" name="MobileNumber" type="text" value="">
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.TextBox("CustomerName", "", new { placeholder = "Enter Name", @class = "form-control" })
+                        </div>
                     </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <input class="form-control" placeholder="Enter Email" name="Email" type="text" value="">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.TextBox("MobileNo", "", new { placeholder = "Enter Mobile Number", @class = "form-control numCss" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.TextBox("EmailID", "", new { placeholder = "Enter Email", @class = "form-control" })
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-
-                <button type="button" data-toggle="modal" data-target="#prices-list" data-dismiss="modal" class="btn get-estimate-btn">
-                    Get Estimate Now
-                </button>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn">
+                        Get Estimate Now
+                    </button>
+                    <!--data-toggle="modal" data-target="#prices-list" data-dismiss="modal"-->
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 <!-- modals content-->
 @section Scripts{
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
@@ -320,7 +320,7 @@
         var source, destination;
         var directionsDisplay;
         var options = {};
-        
+
         var southWest = new google.maps.LatLng(52.318274, 4.728856);
         var northEast = new google.maps.LatLng(52.431157, 5.068373);
         var defaultBounds = new google.maps.LatLngBounds(southWest, northEast);
@@ -337,6 +337,16 @@
         });
 
         $(function () {
+            @{
+                var isTripEstimate = ViewData["vdIsTripEstimate"];
+                if(isTripEstimate != null && (bool)isTripEstimate)
+                {
+                    <text>
+                        $('#prices-list').modal('show');
+                    </text>
+                }
+            }
+
             $('#frmHelp').validate({
                 rules: {
                     mobileNumber: {
@@ -345,7 +355,36 @@
                         maxlength: 10
                     }
                 }
-            })
+            });
+
+            $('#frmAppLink').validate({
+                rules: {
+                    appmobileNumber: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    }
+                }
+            });
+
+            $('#frmTripEstimate').validate({
+                rules: {
+                    CustomerName: {
+                        required: true,
+                        maxlength: 50
+                    },
+                    MobileNo: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+                    EmailID: {
+                        email: true,
+                        required: true,
+                        maxlength: 50
+                    }
+                }
+            });
         });
 
         function help() {
@@ -353,5 +392,19 @@
                 $('#frmHelp').submit();
             }
         }
+
+        function AppLink() {
+            if ($('#frmAppLink').valid()) {
+                $('#frmAppLink').submit();
+            }
+        }
+
+        function TripEstimate() {
+            if ($('#frmTripEstimate').valid()) {
+                $('#frmTripEstimate').submit();
+            }
+        }
+
+
     </script>
 }

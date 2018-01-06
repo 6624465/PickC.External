@@ -24,5 +24,33 @@ namespace PickC.External.Controllers
             });
             return RedirectToAction("Index", "Dashboard");
         }
+
+        [HttpPost]
+        public ActionResult AppLink(string appmobileNumber)
+        {
+            var customerInquiryBO = new CustomerInquiryBO();
+            customerInquiryBO.Save(new CustomerInquiry
+            {
+                InquiryType = UTILITY.CONFIG_INQ_APP,
+                InquiryDate = DateTime.Now,
+                MobileNo = appmobileNumber,
+                EmailID = null,
+                CustomerName = null
+            });
+            return RedirectToAction("Index", "Dashboard");
+        }
+
+        [HttpPost]
+        public ActionResult TripEstimate(CustomerInquiry customerInquiry)
+        {
+            var customerInquiryBO = new CustomerInquiryBO();
+            customerInquiry.InquiryType = UTILITY.CONFIG_INQ_EST;
+            customerInquiry.InquiryDate = DateTime.Now;
+            customerInquiryBO.Save(customerInquiry);
+
+            
+
+            return RedirectToAction("Index", "Dashboard", new { IsTripEstimate = true });
+        }
     }
 }
