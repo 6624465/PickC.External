@@ -135,7 +135,6 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\default.css" />
-    <Content Include="css\example.html" />
     <Content Include="css\fontawesome.min.css" />
     <Content Include="css\fonts.css" />
     <Content Include="css\fonts.min.css" />
@@ -219,7 +218,6 @@
     <Content Include="Scripts\js\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="style.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\js\bootstrap.bundle.js.map" />
     <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
