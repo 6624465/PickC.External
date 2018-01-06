@@ -245,6 +245,47 @@
         </section>
         <!--Footer section End-->
     </div>
+    <!--Help modal start-->
+    <div class="modal fade" id="help" role="dialog">
+        <div class="modal-dialog center-modal modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
+                    {
+                        <div class="form-group get-link">
+                            <input type="text" class="form-control numCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
+                            <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Help modal end-->
+    <!--applink modal Start-->
+    <div class="modal fade" id="get-pick-c" role="dialog">
+        <div class="modal-dialog center-modal modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group get-link">
+                        @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
+                        {
+                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
+                            <button type="button" onclick="AppLink()" class="btn get-link-btn">Get Pick-C App link</button>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--applink modal end-->
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
     <script src="@Url.Content("~/Scripts/js/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/Scripts/js/jquery.frame-carousel.js")"></script>
@@ -258,6 +299,40 @@
             else
                 return false;
         });
+
+        $(function () {
+            $('#frmHelp').validate({
+                rules: {
+                    mobileNumber: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    }
+                }
+            });
+
+            $('#frmAppLink').validate({
+                rules: {
+                    appmobileNumber: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    }
+                }
+            });
+        });
+
+        function help() {
+            if ($('#frmHelp').valid()) {
+                $('#frmHelp').submit();
+            }
+        }
+
+        function AppLink() {
+            if ($('#frmAppLink').valid()) {
+                $('#frmAppLink').submit();
+            }
+        }
     </script>
     @RenderSection("Scripts", false)
 
