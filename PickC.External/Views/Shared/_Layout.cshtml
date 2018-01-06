@@ -28,6 +28,19 @@
         .custom-height {
             height: 60px;
         }
+
+        input[type=text].error, input[type=password].error, textarea.error, select.error {
+            /*border-color: #F44336;*/
+            border-bottom-color: #F44336;
+            /*border-color: #a94442;*/
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+            border-bottom-width: 1px;
+        }
+
+        label.error {
+            display: none !important;
+        }    
     </style>
     @RenderSection("Styles", false)
 </head>
@@ -237,8 +250,15 @@
     <script src="@Url.Content("~/Scripts/js/jquery.frame-carousel.js")"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    @*<script src="@Url.Content("~/Scripts/js/jquery.min.js")"></script>*@
-    @*<script src="@Url.Content("~/Scripts/js/bootstrap.min.js")"></script*@
+    <script type="text/javascript">
+        $(document).on('keypress', '.numCss', function (evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if ((charCode >= 48 && charCode <= 57) || charCode == 8)
+                return true;
+            else
+                return false;
+        });
+    </script>
     @RenderSection("Scripts", false)
 
 </body>

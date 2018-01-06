@@ -258,10 +258,13 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="form-group get-link">
-                    <input type="location" class="form-control" id="f-location" placeholder="Enter Mobile number" name="email">
-                    <button type="submit" class="btn get-link-btn">Get Help</button>
-                </div>
+                @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
+                {
+                    <div class="form-group get-link">
+                        <input type="text" class="form-control numCss" id="mobileNumber" placeholder="Enter Mobile number" name="mobileNumber">
+                        <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -311,6 +314,7 @@
 </div>
 <!-- modals content-->
 @section Scripts{
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7WVBL9AmhKs1QAr4x7mArA2mKZY-9nUo&v=3.exp&libraries=places&sensor=true"></script>
     <script type="text/javascript">
         var source, destination;
@@ -331,5 +335,23 @@
             new google.maps.places.Autocomplete(document.getElementById('toLocation'), options);
             directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
         });
+
+        $(function () {
+            $('#frmHelp').validate({
+                rules: {
+                    mobileNumber: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    }
+                }
+            })
+        });
+
+        function help() {
+            if ($('#frmHelp').valid()) {
+                $('#frmHelp').submit();
+            }
+        }
     </script>
 }

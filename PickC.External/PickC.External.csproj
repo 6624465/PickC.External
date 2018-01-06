@@ -69,6 +69,21 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>C:\dlls\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>C:\dlls\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>C:\dlls\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>C:\dlls\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>C:\dlls\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -202,6 +217,7 @@
     <Content Include="Scripts\js\highlight.pack.js" />
     <Content Include="Scripts\js\jquery.frame-carousel.js" />
     <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
@@ -212,11 +228,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessFactory\CustomerInquiryBO.cs" />
+    <Compile Include="BusinessFactory\LookUpBO.cs" />
+    <Compile Include="Contracts\CustomerInquiry.cs" />
+    <Compile Include="Contracts\IContract.cs" />
+    <Compile Include="Contracts\LookUp.cs" />
+    <Compile Include="Controllers\CustomerInquiryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="DataFactory\CustomerInquiryDAL.cs" />
+    <Compile Include="DataFactory\DBRoutine.cs" />
+    <Compile Include="DataFactory\LookUpDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UTILITY.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -249,6 +275,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\CustomerInquiry\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
