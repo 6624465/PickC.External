@@ -20,5 +20,10 @@ namespace PickC.External.BusinessFactory
         {
             return customerInquiryDAL.Save(customerInquiry);
         }
+
+        public List<FareChart> GetApproximateFareWEB(decimal distance, decimal duration)
+        {
+            return customerInquiryDAL.GetApproximateFareWEB(distance, duration);
+        }
     }
 }

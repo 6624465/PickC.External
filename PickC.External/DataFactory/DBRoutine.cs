@@ -29,6 +29,8 @@ namespace PickC.External.DataFactory
         /// 
         public const string SAVECUSTOMERINQUIRY = "[Operation].[usp_CustomerInquirySave]";
 
+        public const string GETAPPROXIMATEFAREWEB = "[Operation].[usp_GetApproximateFareWeb]";
+
 
 
     }

@@ -60,5 +60,11 @@ namespace PickC.External.DataFactory
             return (result > 0 ? true : false);
 
         }
+
+        public List<FareChart> GetApproximateFareWEB(decimal distance, decimal duration)
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.GETAPPROXIMATEFAREWEB, 
+                MapBuilder<FareChart>.BuildAllProperties(), distance, duration).ToList();
+        }
     }
 }
