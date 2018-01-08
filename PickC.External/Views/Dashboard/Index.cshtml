@@ -60,7 +60,7 @@
                     </div>
                     <div class="clear-fix"></div>
                     <div class="estimate-bg">
-                        <form action="" name="tripestimate">
+                        <form  id="tripestimate" action="" name="tripestimate">
                             <div class="form-group estimate-form">
                                 <input type="text" name="fromLocation" class="form-control" id="fromLocation" placeholder="Enter From Location" />
                                 <img src="@Url.Content("~/images/source1.png")" class="img-responsive" />
@@ -71,9 +71,10 @@
                                 <input type="text" class="form-control" id="toLocation" placeholder="Enter To Location" name="toLocation" />
                                 <img src="@Url.Content("~/images/destination1.png")" class="img-responsive" />
                             </div>
-
-                            <a class="btn btn-default" data-toggle="modal" data-target="#get-trip-estimate">Get Trip Estimate</a>
-                            <a class="btn btn-primary" href="javascript::" onclick="Clear()">Clear</a>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#get-trip-estimate" onclick="getTripEstimate()">Get Trip Estimate</button>
+                            <button type="button" onclick="Clear()" class="btn btn-primary ">Clear</button>
+                            @*<a class="btn btn-default" data-toggle="modal" data-target="#get-trip-estimate" onclick="getTripEstimate()">Get Trip Estimate</a>
+                            <a class="btn btn-primary" href="javascript::" onclick="Clear()">Clear</a>*@
                         </form>
                     </div>
                 </div>
@@ -89,8 +90,7 @@
                 <div class="col-md-3 app-icons">
                     <a href="#"><img src="@Url.Content("~/images/goo.png")" /></a>
                     <a href="#"><img src="@Url.Content("~/images/app.png")" /></a>
-                </div>
-                <div class="col-md-6">
+                </div><div class="col-md-6">
                     <div class="slider-text">
                         <h1>Pick-C India’s Best Logistics App</h1>
                     </div>
@@ -205,7 +205,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            @Html.TextBox("MobileNo", "", new { placeholder = "Enter Mobile Number", @class = "form-control numCss" })
+                            @Html.TextBox("MobileNo", "", new { placeholder = "Enter Mobile Number", @class = "form-control numCss"  })
                         </div>
                     </div>
                     <div class="row">
@@ -261,9 +261,34 @@
                     </text>
                 }
             }
+            $('#tripestimate').validate({
+                rules: {
+                    'fromLocation': {
+                        required: true
+                    },
+                    'toLocation': {
+                        required: true
+                    }
+                }
+            });
+            function getTripEstimate() {
+                debugger;
+                if ($('#tripestimate').valid()) {
+                    $('#tripestimate').submit();
+                }
+            }
+           
 
-
-
+            //$('#get-trip-estimate').validate({
+            //    rules: {
+            //        fromLocation: {
+            //            required:true
+            //        },
+            //        toLocation: {
+            //            required:true
+            //        }
+            //    }
+            //})
 
 
             $('#frmTripEstimate').validate({
@@ -275,13 +300,14 @@
                     MobileNo: {
                         required: true,
                         minlength: 10,
-                        maxlength: 10
+                        maxlength: 10,
+                        regex: "^[7-9][0-9]{9}$"
                     },
-                    EmailID: {
-                        email: true,
-                        required: true,
-                        maxlength: 50
-                    }
+                    //EmailID: {
+                    //    email: true,
+                    //    required: true,
+                    //    maxlength: 50
+                    //}
                 }
             });
         });

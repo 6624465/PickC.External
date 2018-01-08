@@ -19,13 +19,12 @@
                 <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 cs" style="display:none">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
-
-                            <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px;padding-top: 10px;">
+                           <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px;padding-top: 10px;">
                                 <div class="col-md-12">
                                     <div>
                                         <div class="col-md-8 col-md-offset-2">
                                             <div class="support"> 
-                                                <img src=@Url.Content("~/images/support.jpg") class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
+                                                <img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
                                                 <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
                                                     <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
                                                 </a>
@@ -94,9 +93,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group select contact-input">
-
                                 <select class="form-control input-align" id="Type" name="Type" onchange="changeSupport()">
-
                                     <option value="ContactUs">Contact Us</option>
                                     <option value="FeedBack">FeedBack</option>
                                     <option value="CustomerSupport" selected="selected">Customer Support</option>
@@ -106,7 +103,7 @@
                         <div class="col-md-12">
                             <div class="form-group contact-input">
                                 <label for="nme">Name</label>
-                                <input type="name" class="form-control input-align" id="nme">
+                                <input type="text" class="form-control input-align" id="nme">
                             </div>
                             <div class="form-group contact-input">
                                 <label for="eml">Email</label>
