@@ -14,5 +14,9 @@ namespace PickC.External.Contracts
         public decimal OpenCharge { get; set; }
 
         public decimal CloseCharge { get; set; }
+
+        public bool IsOpenOnline { get; set; }
+
+        public bool IsCloseOnline { get; set; }
     }
 }

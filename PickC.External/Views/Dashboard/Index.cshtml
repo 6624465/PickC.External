@@ -155,7 +155,9 @@
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
                                         <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                        <a href="#" class="booknow-btn">Book Now</a>
+                                        <a href="#" class="booknow-btn" @if(!fareChartList[i].IsOpenOnline){
+                                            <text>style="color:red;"</text>
+                                        }>Book Now</a>
                                         <!--<div class="avail-unavail-btn"></div>-->
                                     </div>
                                 </div>
@@ -163,7 +165,9 @@
                             <div class="col-md-4 col-xs-4 custom-height">
                                 <div class="Prices-list">
                                     <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                    <a href="#" class="booknow-btn">Book Now</a>
+                                    <a href="#" class="booknow-btn" @if(!fareChartList[i].IsCloseOnline){
+                                            <text>style="color:red;"</text>
+                                        }>Book Now</a>
                                     <!--<div class="avail-unavail-btn"></div>-->
                                 </div>
                             </div>
