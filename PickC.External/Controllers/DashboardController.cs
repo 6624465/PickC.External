@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using PickC.External.Contracts;
+using PickC.External.BusinessFactory;
+using PickC.External.ViewModels;
+
 namespace PickC.External.Controllers
 {
     public class DashboardController : Controller
@@ -26,6 +30,13 @@ namespace PickC.External.Controllers
         }
         public ActionResult ContactUs()
         {
+            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ContactUsSave(CustomerInquiry customer)
+        {
+            var result = new CustomerInquiryBO().SaveContactUs(customer);
             return View();
         }
         public ActionResult Faqs()

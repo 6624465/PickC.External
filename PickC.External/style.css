@@ -7,6 +7,10 @@ font-family:'Roboto', sans-serif !important;
     padding:0px !important;
     overflow:auto;
 }
+label.error{
+    font-weight:100 !important;
+    position: absolute;
+}
 
 section{
 margin-top:35px;
@@ -175,7 +179,7 @@ z-index:10000;
 
 
 	.get-pick-c-btn:hover, .track-crn-btn:hover{
-	margin:25px 5px;
+	margin:26px 5px;
 	border:2px solid #fff200;
 	padding:0 15px;
 	border-radius:20px;
@@ -184,7 +188,7 @@ z-index:10000;
 
 	}
 	.get-pick-c-btn{
-	margin:25px 5px;
+	margin:26px 5px;
 	border:2px solid #fff200;
 	padding:0 15px;
 	border-radius:20px;
@@ -293,7 +297,7 @@ color: #fff200 !important;
 color: #fff200 !important;
 }
 .form-control{
-margin-top:10px;
+margin-top:20px;
 
 }
 
@@ -435,6 +439,7 @@ display:inline;
 
 background:#eadf1d;
 font-weight:bold;
+margin-top:20px;
 }
 .heading-title h1, .heading-title p{
 text-align:center;

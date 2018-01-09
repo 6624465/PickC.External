@@ -1,4 +1,7 @@
-﻿@{
+﻿@model PickC.External.Contracts.CustomerInquiry
+
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     <div class="clear-fix"></div>
@@ -28,33 +31,24 @@
                                                 <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
                                                     <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
                                                 </a>
-
                                                 <p>
-
                                                 </p>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                         <!-- Widget end -->
-
                     </div>
                     <!-- Sidebar end -->
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12  fd" style="display:none">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
-
                             <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px; padding-top: 10px;">
                                 <div class="col-md-12">
                                     <div class="">
-
                                         <div class="col-md-12">
                                             <div class="support">
                                                 <img src="@Url.Content("~/images/feedback.png")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
@@ -64,79 +58,83 @@
                                                     <i class="fa fa-envelope-o"></i>&nbsp;
                                                     info@pickcargo.in
                                                 </a>
-
                                                 <p>
-
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                         <!-- Widget end -->
-
                     </div>
                     <!-- Sidebar end -->
                 </div>
             </div>
             <div class="col-md-6">
+@using (Html.BeginForm("ContactUsSave", "Dashboard", FormMethod.Post, new { id = "frmContactSave", name = "frmContactSave" }))
+{
                 <div class="">
-                    <form class="contact">
                         <div class="col-md-12">
                             <h3><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group select contact-input">
-                                <select class="form-control" id="Type" name="Type">
+                                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), "", new { @class = "form-control" })
+                                @*<select class="form-control" id="Type" name="Type">
                                     <option value="ContactUs" selected="selected">Contact Us</option>
                                     <option value="FeedBack">FeedBack</option>
                                     <option value="CustomerSupport">Customer Support</option>
-                                </select>
+                                </select>*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
                                 <label for="nme">Name</label>
-                                <input type="text" class="form-control input-align" id="nme">
+                                @Html.TextBoxFor(x=>x.CustomerName,new { @class= "form-control input-align",id= "nme" })
+                                @*<input type="text" class="" id="nme">*@
                             </div>
                             <div class="form-group contact-input">
                                 <label for="eml">Email</label>
-                                <input type="email" class="form-control input-align" id="eml">
+                                @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control input-align", id = "eml" })
+                                @*<input type="email" class="form-control input-align" id="eml">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
                                 <label for="mbl">Mobile</label>
-                                <input type="mobile" class="form-control input-align" id="mbl">
+                                @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control input-align", id = "mbl",  maxlength = "10" })
+                                @*<input type="mobile" class="form-control input-align number" id="mbl" maxlength="10">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
                                 <label for="sbj">Subject</label>
-                                <input type="subject" class="form-control input-align" id="sbj">
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control input-align", id = "sbj" })
+                                @*<input type="text" class="form-control input-align" id="sbj">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="msg">Message</label>
-                                <textarea type="message" class="form-control input-align" rows="4" cols="50" id="msg"></textarea>
+                                
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "4", @cols = "50" })
+                                @*<textarea type="message" class="form-control input-align" rows="4" cols="50" id="msg"></textarea>*@
                             </div>
-                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="submit" id="btnsubmit" class="btn btn-primary">Submit</button>
                         </div>
-
-                    </form>
+                    
                 </div>
+}
 
             </div>
         </div>
     </div>
     <div class="clear-fix"></div>
+@section Scripts{
 
 <script>
+
     $(function () {
         $('#Type').on('change',function () {
             var i = $('#Type').val();
@@ -158,11 +156,9 @@
                     $('.cs').hide();
                 }
         });
-
-
     });
     </script>
-
+    }
     <!--contact section End-->
     <!--Services section Start-->
     

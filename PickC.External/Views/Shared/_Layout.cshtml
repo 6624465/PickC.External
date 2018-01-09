@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="top-header-links">
-                            <a href="#help" data-toggle="modal"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
+                            <a href="#help" onclick="takeHelp()" data-toggle="modal"  data-backdrop="static" data-keyboard="false"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,8 @@
                         <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>
                         <li><a href="@Url.Content("~/Dashboard/CustomerSupport")">Customer Support</a></li>
                         <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact Us</a></li>
-                        <li><button class="get-pick-c-btn" data-toggle="modal" data-target="#get-pick-c">Get Pick-C App Link</button></li>
+
+                        <button class="get-pick-c-btn" onclick="GetApplink()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
             </div>
@@ -239,8 +240,8 @@
                         @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
                         {
 
-                            <input type="text" class="form-control numCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber"><br />
-                            <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
+                            <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
+                            <button type="button" onclick="help()" class="btn get-link-btn" >Get Help</button>
                         }
                     </div>
 
@@ -262,9 +263,9 @@
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber"><br />
+                            <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
                             
-                            <button type="button" onclick="AppLink()" class="btn get-link-btn">Get Pick-C App link</button>
+                            <button type="button" onclick="AppLink()" class="btn get-link-btn" data-toggle="modal" data-backdrop="static" data-keyboard="false">Get Pick-C App link</button>
                         }
                     </div>
                 </div>
@@ -274,9 +275,9 @@
     </div>
     <!--applink modal end-->
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="@Url.Content("~/Scripts/js/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/Scripts/js/jquery.frame-carousel.js")"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).on('keypress', '.numCss', function (evt) {
@@ -302,9 +303,24 @@
                 debugger;
                 var test = /^[789]\d{9}$/.test(value);
                 return /^[789]\d{9}$/.test(value);
-            }, 'Please enter correct mobile no');
+            }, 'Please enter correct Mobile Number');
         });
-       
+                function takeHelp() {
+        debugger
+            $('#frmHelp input[type="text"]').removeClass('error');
+            $('#frmHelp label').removeClass('error');
+            $('#frmHelp label').empty();
+}
+        $('.number').keypress(function (e) {
+            if (window.event)
+                code = e.keyCode;
+            else
+                code = e.which;
+            if (code >= 48 && code <= 57)
+                return true;
+            else
+                return false;
+        });
         $(function () {
             $('#frmAppLink').validate({
                 rules: {
@@ -316,16 +332,22 @@
                 }
             });
         });
+        function GetApplink() {
+            debugger
+            $('#frmAppLink input[type="text"]').removeClass('error');
+            $('#frmAppLink label').removeClass('error');
+            $('#frmAppLink label').empty();
+        }
 
             function help() {
                 debugger
                 var inpObj = document.getElementById("mobileNumber");
-                if (inpObj.value == '')
-                    document.getElementById("help_mesage").innerHTML = "Please Enter Mobile Number";
-                else {
-                    document.getElementById("help_mesage").innerHTML = "";
-                }
-               
+                //if (inpObj.value == '')
+                //    document.getElementById("help_mesage").innerHTML = "Please Enter Mobile Number";
+                //else {
+                //    document.getElementById("help_mesage").innerHTML = "";
+                //}
+             
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
             }
@@ -334,11 +356,11 @@
             function AppLink() {
                 debugger
                 var inpObj = document.getElementById("appmobileNumber");
-                if (inpObj.value == '')
-                    document.getElementById("appMobileNo").innerHTML = "Please Enter Mobile Number";
-                else {
-                    document.getElementById("appMobileNo").innerHTML = "";
-                }
+                //if (inpObj.value == '')
+                //    document.getElementById("appMobileNo").innerHTML = "Please Enter Mobile Number";
+                //else {
+                //    document.getElementById("appMobileNo").innerHTML = "";
+                //}
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
             }

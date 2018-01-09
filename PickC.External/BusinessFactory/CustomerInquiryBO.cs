@@ -25,5 +25,13 @@ namespace PickC.External.BusinessFactory
         {
             return customerInquiryDAL.GetApproximateFareWEB(distance, duration);
         }
+        public bool SaveContactUs(CustomerInquiry inquiry)
+        {
+            return customerInquiryDAL.SaveContactUs(inquiry);
+        }
+        public List<LookUp> GetCustomerSelectList()
+        {
+            return customerInquiryDAL.GetCustomerSelectList();
+        }
     }
 }

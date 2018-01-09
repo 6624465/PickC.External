@@ -142,7 +142,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            @Html.TextBox("CustomerName", "", new { placeholder = "Enter Name", @class = "form-control" })
+                            @Html.TextBox("CustomerName", "", new { placeholder = "Enter Name", @class = "form-control numCss" })
                         </div>
                     </div>
                     <div class="row">
@@ -152,7 +152,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            @Html.TextBox("EmailID", "", new { placeholder = "Enter Email", @class = "form-control" })
+                            @Html.TextBox("EmailID", "", new { placeholder = "Enter Email ID", @class = "form-control" })
                             @Html.Hidden("Distance")
                             @Html.Hidden("Duration")
                         </div>
@@ -238,6 +238,13 @@
             <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7WVBL9AmhKs1QAr4x7mArA2mKZY-9nUo&v=3.exp&libraries=places&sensor=true"></script>
             <script type="text/javascript">
+                $(document).on('keypress', '.numCss', function (evt) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode;
+                    if ((charCode >= 48 && charCode <= 57) || charCode == 8)
+                        return true;
+                    else
+                        return false;
+                });
         var source, destination;
         var directionsDisplay;
         var options = {};
@@ -288,10 +295,10 @@
                 },
                 messages: {
                     CustomerName: {
-                        required: 'Please enter name'
+                        required: 'Please enter Name'
                     },
                     MobileNo: {
-                        required: 'Please enter valid mobile number'
+                        required: 'Please enter valid Mobile Number'
                     }
                 }
             });

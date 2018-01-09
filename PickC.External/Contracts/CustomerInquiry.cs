@@ -13,5 +13,7 @@ namespace PickC.External.Contracts
         public string MobileNo { get; set; }
         public string EmailID { get; set; }
         public string CustomerName { get; set; }
+        public string Subject { get; set; }
+        public string Description { get; set; }
     }
 }
