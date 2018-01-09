@@ -234,8 +234,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <span id="help_mesage" style="color:red"></span>
+                <div class="modal-body">                    
                     <div class="form-group get-link">
                         @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
                         {
@@ -258,12 +257,11 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <span id="appMobileNo" style="color:red"></span>
+                <div class="modal-body">                    
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
+                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber"><br />
                             
                             <button type="button" onclick="AppLink()" class="btn get-link-btn" data-toggle="modal" data-backdrop="static" data-keyboard="false">Get Pick-C App link</button>
                         }
@@ -288,6 +286,20 @@
                 return false;
         });
 
+        //$('.alphaonly').bind('keyup blur', function () {
+        //    var node = $(this);
+        //    node.val(node.val().replace(/[^a-z]/g, ''));
+        //}
+        //);
+        $(document).on('keypress', '.alphaonly', function (evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = parseInt((evt.which) ? evt.which : evt.keyCode);
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122))
+                return true;
+            else
+                return false;
+        });
+
         $(function () {
             $('#frmHelp').validate({
                 rules: {
@@ -295,6 +307,11 @@
                         required: true,
                         minlength: 10,
                         maxlength: 10
+                    },
+                    messages: {
+                        mobileNumber: {
+                            required: 'Please enter valid mobile number'
+                        }
                     }
                 }                
             });
@@ -328,6 +345,11 @@
                         required: true,
                         minlength: 10,
                         maxlength: 10
+                    }
+                },
+                messages: {
+                    appmobileNumber: {
+                        required: 'Please enter valid mobile number'
                     }
                 }
             });
