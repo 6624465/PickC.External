@@ -272,19 +272,26 @@
                 rules: {
                     CustomerName: {
                         required: true,
-                        maxlength: 50
+                        maxlength: 50                        
                     },
                     MobileNo: {
                         required: true,
                         minlength: 10,
-                        maxlength: 10
-                        
+                        maxlength: 10                        
                         //regex: /^[789]\d{9}$/ ///^[7-9][0-9]{9}$/ //'^[789]\d{9}$'
                     },
                     EmailID: {
                         email: true,
                         required: false,
                         maxlength: 50
+                    }
+                },
+                messages: {
+                    CustomerName: {
+                        required: 'Please enter name'
+                    },
+                    MobileNo: {
+                        required: 'Please enter valid mobile number'
                     }
                 }
             });
@@ -300,11 +307,7 @@
                 }
             });
 
-            $.validator.addMethod('MobileNoCss', function (value) {
-                debugger;
-                var test = /^[789]\d{9}$/.test(value);
-                return /^[789]\d{9}$/.test(value);
-            }, 'Please enter correct mobile no');
+            
         });
 
         function FromToLocations() {
