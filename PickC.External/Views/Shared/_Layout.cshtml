@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="top-header-links">
-                            <a href="#help" onclick="takeHelp()" data-toggle="modal"  data-backdrop="static" data-keyboard="false"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
+                            <a href="#help" onclick="takeHelp()"   data-backdrop="static" data-keyboard="false"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         <li><a href="@Url.Content("~/Dashboard/CustomerSupport")">Customer Support</a></li>
                         <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact Us</a></li>
 
-                        <button class="get-pick-c-btn" onclick="GetApplink()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
+                        <button class="get-pick-c-btn"  onclick="GetApplink()"  data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
             </div>
@@ -232,7 +232,7 @@
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close"  data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">                    
                     <div class="form-group get-link">
@@ -255,15 +255,15 @@
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" onclick="Clear()" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">                    
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber"><br />
+                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
                             
-                            <button type="button" onclick="AppLink()" class="btn get-link-btn" data-toggle="modal" data-backdrop="static" data-keyboard="false">Get Pick-C App link</button>
+                            <button type="button" onclick="getApphelp()"  class="btn get-link-btn" >Get Pick-C App link</button>
                         }
                     </div>
                 </div>
@@ -327,6 +327,7 @@
             $('#frmHelp input[type="text"]').removeClass('error');
             $('#frmHelp label').removeClass('error');
             $('#frmHelp label').empty();
+            $('#help').modal('show');
 }
         $('.number').keypress(function (e) {
             if (window.event)
@@ -354,35 +355,26 @@
                 }
             });
         });
+        //function GetApplink() {
+        //    debugger
+        //    $('#get-pick-c').modal('show');
+           
+        //}
         function GetApplink() {
             debugger
             $('#frmAppLink input[type="text"]').removeClass('error');
             $('#frmAppLink label').removeClass('error');
             $('#frmAppLink label').empty();
+            $('#get-pick-c').modal('show');
+           
         }
-
             function help() {
-                debugger
-                var inpObj = document.getElementById("mobileNumber");
-                //if (inpObj.value == '')
-                //    document.getElementById("help_mesage").innerHTML = "Please Enter Mobile Number";
-                //else {
-                //    document.getElementById("help_mesage").innerHTML = "";
-                //}
-             
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
             }
         }
-
-            function AppLink() {
-                debugger
-                var inpObj = document.getElementById("appmobileNumber");
-                //if (inpObj.value == '')
-                //    document.getElementById("appMobileNo").innerHTML = "Please Enter Mobile Number";
-                //else {
-                //    document.getElementById("appMobileNo").innerHTML = "";
-                //}
+            
+            function getApphelp() {
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
             }

@@ -131,9 +131,11 @@
         </div>
     </div>
     <div class="clear-fix"></div>
-@section Scripts{
 
-<script>
+@section Scripts{
+<script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    
+<script type="text/javascript">
 
     $(function () {
         $('#Type').on('change',function () {
@@ -159,6 +161,7 @@
     });
     </script>
     }
+    
     <!--contact section End-->
     <!--Services section Start-->
     

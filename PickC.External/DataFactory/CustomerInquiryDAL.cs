@@ -79,7 +79,7 @@ namespace PickC.External.DataFactory
             {
                 var savecommand = db.GetStoredProcCommand(DBRoutine.CUSTOMERSAVE);
 
-                db.AddInParameter(savecommand, "InquiryID", System.Data.DbType.Int64, customerInquiry.InquiryID);
+                
                 db.AddInParameter(savecommand, "InquiryType", System.Data.DbType.Int16, customerInquiry.InquiryType);
                 db.AddInParameter(savecommand, "InquiryDate", System.Data.DbType.DateTime, customerInquiry.InquiryDate);
                 db.AddInParameter(savecommand, "MobileNo", System.Data.DbType.String, customerInquiry.MobileNo);

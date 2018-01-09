@@ -36,8 +36,10 @@ namespace PickC.External.Controllers
         [HttpPost]
         public ActionResult ContactUsSave(CustomerInquiry customer)
         {
+            customer.InquiryDate = DateTime.Now;
+
             var result = new CustomerInquiryBO().SaveContactUs(customer);
-            return View();
+            return View("Index");
         }
         public ActionResult Faqs()
         {
