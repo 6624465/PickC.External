@@ -235,14 +235,16 @@
                 </div>
                 <div class="modal-body">
                     <span id="help_mesage" style="color:red"></span>
-                    @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
-                    {
-                        <span></span>
-                        <div class="form-group get-link">
-                            <input type="text" class="form-control numCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
+                    <div class="form-group get-link">
+                        @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
+                        {
+
+                            <input type="text" class="form-control numCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber"><br />
                             <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
-                        </div>
-                    }
+                        }
+                    </div>
+
+                    
                 </div>
             </div>
         </div>
@@ -260,7 +262,7 @@
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
+                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber"><br />
                             
                             <button type="button" onclick="AppLink()" class="btn get-link-btn">Get Pick-C App link</button>
                         }
