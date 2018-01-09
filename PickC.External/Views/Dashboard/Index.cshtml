@@ -277,7 +277,8 @@
                     MobileNo: {
                         required: true,
                         minlength: 10,
-                        maxlength: 10,
+                        maxlength: 10
+                        
                         //regex: /^[789]\d{9}$/ ///^[7-9][0-9]{9}$/ //'^[789]\d{9}$'
                     },
                     EmailID: {
@@ -310,6 +311,9 @@
             if ($('#frmFromToLocation').valid()) {
                 $('#get-trip-estimate').modal('show');
             }
+            else {
+                alert("Please enter From and To Locations");
+}
         }
 
 
