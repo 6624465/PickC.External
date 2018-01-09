@@ -233,12 +233,10 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <span id="help_mesage" style="color:red"></span>
+                <div class="modal-body">                    
                     <div class="form-group get-link">
                         @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
                         {
-
                             <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber"><br />
                             <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
                         }
