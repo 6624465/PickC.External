@@ -39,7 +39,8 @@
         }
 
         label.error {
-            display: none !important;
+            //display: none !important;
+            color:red;
         }    
     </style>
     @RenderSection("Styles", false)
@@ -60,7 +61,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="top-header-links">
-                            <a href="#help" data-toggle="modal"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
+                            <a href="#help" onclick="takeHelp()" data-toggle="modal"  data-backdrop="static" data-keyboard="false"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +83,8 @@
                         <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>
                         <li><a href="@Url.Content("~/Dashboard/CustomerSupport")">Customer Support</a></li>
                         <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact Us</a></li>
-                        <li><button class="get-pick-c-btn" data-toggle="modal" data-target="#get-pick-c">Get Pick-C App Link</button></li>
+
+                        <button class="get-pick-c-btn" onclick="GetApplink()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
             </div>
@@ -232,14 +234,17 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
-                    {
-                        <div class="form-group get-link">
-                            <input type="text" class="form-control numCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
-                            <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
-                        </div>
-                    }
+                <div class="modal-body">                    
+                    <div class="form-group get-link">
+                        @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
+                        {
+
+                            <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
+                            <button type="button" onclick="help()" class="btn get-link-btn" >Get Help</button>
+                        }
+                    </div>
+
+                    
                 </div>
             </div>
         </div>
@@ -252,12 +257,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body">                    
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
-                            <button type="button" onclick="AppLink()" class="btn get-link-btn">Get Pick-C App link</button>
+                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber"><br />
+                            
+                            <button type="button" onclick="AppLink()" class="btn get-link-btn" data-toggle="modal" data-backdrop="static" data-keyboard="false">Get Pick-C App link</button>
                         }
                     </div>
                 </div>
@@ -267,14 +273,28 @@
     </div>
     <!--applink modal end-->
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="@Url.Content("~/Scripts/js/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/Scripts/js/jquery.frame-carousel.js")"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).on('keypress', '.numCss', function (evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode;
             if ((charCode >= 48 && charCode <= 57) || charCode == 8)
+                return true;
+            else
+                return false;
+        });
+
+        //$('.alphaonly').bind('keyup blur', function () {
+        //    var node = $(this);
+        //    node.val(node.val().replace(/[^a-z]/g, ''));
+        //}
+        //);
+        $(document).on('keypress', '.alphaonly', function (evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = parseInt((evt.which) ? evt.which : evt.keyCode);
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122))
                 return true;
             else
                 return false;
@@ -287,10 +307,38 @@
                         required: true,
                         minlength: 10,
                         maxlength: 10
+                    },
+                    messages: {
+                        mobileNumber: {
+                            required: 'Please enter valid mobile number'
+                        }
                     }
-                }
+                }                
             });
 
+            $.validator.addMethod('MobileNoCss', function (value) {
+                debugger;
+                var test = /^[789]\d{9}$/.test(value);
+                return /^[789]\d{9}$/.test(value);
+            }, 'Please enter correct Mobile Number');
+        });
+                function takeHelp() {
+        debugger
+            $('#frmHelp input[type="text"]').removeClass('error');
+            $('#frmHelp label').removeClass('error');
+            $('#frmHelp label').empty();
+}
+        $('.number').keypress(function (e) {
+            if (window.event)
+                code = e.keyCode;
+            else
+                code = e.which;
+            if (code >= 48 && code <= 57)
+                return true;
+            else
+                return false;
+        });
+        $(function () {
             $('#frmAppLink').validate({
                 rules: {
                     appmobileNumber: {
@@ -298,17 +346,43 @@
                         minlength: 10,
                         maxlength: 10
                     }
+                },
+                messages: {
+                    appmobileNumber: {
+                        required: 'Please enter valid mobile number'
+                    }
                 }
             });
         });
+        function GetApplink() {
+            debugger
+            $('#frmAppLink input[type="text"]').removeClass('error');
+            $('#frmAppLink label').removeClass('error');
+            $('#frmAppLink label').empty();
+        }
 
-        function help() {
+            function help() {
+                debugger
+                var inpObj = document.getElementById("mobileNumber");
+                //if (inpObj.value == '')
+                //    document.getElementById("help_mesage").innerHTML = "Please Enter Mobile Number";
+                //else {
+                //    document.getElementById("help_mesage").innerHTML = "";
+                //}
+             
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
             }
         }
 
-        function AppLink() {
+            function AppLink() {
+                debugger
+                var inpObj = document.getElementById("appmobileNumber");
+                //if (inpObj.value == '')
+                //    document.getElementById("appMobileNo").innerHTML = "Please Enter Mobile Number";
+                //else {
+                //    document.getElementById("appMobileNo").innerHTML = "";
+                //}
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
             }

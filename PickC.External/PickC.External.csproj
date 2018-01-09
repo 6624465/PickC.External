@@ -230,6 +230,7 @@
     <Compile Include="BusinessFactory\CustomerInquiryBO.cs" />
     <Compile Include="BusinessFactory\LookUpBO.cs" />
     <Compile Include="Contracts\CustomerInquiry.cs" />
+    <Compile Include="Contracts\FareChart.cs" />
     <Compile Include="Contracts\IContract.cs" />
     <Compile Include="Contracts\LookUp.cs" />
     <Compile Include="Controllers\CustomerInquiryController.cs" />
@@ -242,6 +243,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UTILITY.cs" />
+    <Compile Include="ViewModels\CustomerInquiryVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

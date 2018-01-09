@@ -22,12 +22,16 @@ namespace PickC.External.DataFactory
         public const string DELETELOOKUP = "[Config].[usp_LookUpDelete]";
         public const string VEHICLETYPELIST = "[Master].[usp_VehicleTypeList]";
         public const string LOADINGUNLOADINGLIST = "[Master].[usp_LoadingUnLoadingList]";
+        public const string CUSTOMERSELECTLIST= "[Master].[usp_CustomerInquiryList]";
 
         /// <summary>
         /// [Operation].[CustomerInquiry]
         /// </summary>
         /// 
         public const string SAVECUSTOMERINQUIRY = "[Operation].[usp_CustomerInquirySave]";
+
+        public const string GETAPPROXIMATEFAREWEB = "[Operation].[usp_GetApproximateFareWeb]";
+        public const string CUSTOMERSAVE="[Operation].[usp_CustomerInsertExternal]";
 
 
 
