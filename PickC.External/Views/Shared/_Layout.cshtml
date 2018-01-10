@@ -377,12 +377,13 @@
             function getApphelp() {
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
+                alert("Your Mobile App Link is sent to:" + $('#appmobileNumber').val());
             }
             }
 
-            function getApphelp() {
-                alert("Your Mobile App Link is sent to:" + mobileNumber);
-            }
+            //function getApphelp() {
+            //    
+            //}
     </script>
     @RenderSection("Scripts", false)
 
