@@ -87,7 +87,7 @@
                         <li><a href="@Url.Content("~/Dashboard/CustomerSupport")">Customer Support</a></li>
                         <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact Us</a></li>
 
-                        <button class="get-pick-c-btn"  onclick="GetApplink()"  data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
+                        <button class="get-pick-c-btn"  onclick="GetApplink()" id="mobileNumber" data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
             </div>
@@ -264,7 +264,7 @@
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
+                            <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
                             
                             <button type="button" onclick="getApphelp()"  class="btn get-link-btn" >Get Pick-C App link</button>
                         }
@@ -316,7 +316,7 @@
                             required: 'Please enter valid mobile number'
                         }
                     }
-                }                
+                }
             });
 
             $.validator.addMethod('MobileNoCss', function (value) {
@@ -359,26 +359,30 @@
         //function GetApplink() {
         //    debugger
         //    $('#get-pick-c').modal('show');
-           
+
         //}
         function GetApplink() {
             $('#frmAppLink input[type="text"]').removeClass('error');
             $('#frmAppLink label').removeClass('error');
             $('#frmAppLink label').empty();
             $('#get-pick-c').modal('show');
-           
+
         }
             function help() {
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
             }
         }
-            
+
             function getApphelp() {
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
             }
-        }
+            }
+
+            function getApphelp() {
+                alert("Your Mobile App Link is sent to:" + mobileNumber);
+            }
     </script>
     @RenderSection("Scripts", false)
 

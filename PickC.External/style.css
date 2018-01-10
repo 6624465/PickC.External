@@ -314,12 +314,19 @@ margin-top:20px;
     left: 12px;
 
 }
+.spacing{
+        margin-bottom:0px !important;
+        
+    }
+.form-group>textarea{
+           margin-top: 15px !important;
+    }
 .buttons{
 text-align:center;
 
 }
 .btn:focus{
-    color:#fff200;
+    
 }
 .btn:active:focus, .btn:focus{
     outline:none;
@@ -854,6 +861,6 @@ background-color:green;
 
     .spacing{
         margin-bottom:20px;
-        margin-top:0px;
+        /*margin-top:0px;*/
     }
    
