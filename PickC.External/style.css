@@ -7,10 +7,10 @@ font-family:'Roboto', sans-serif !important;
     padding:0px !important;
     overflow:auto;
 }
-label.error{
+/*label.error{
     font-weight:100 !important;
     position: absolute;
-}
+}*/
 
 section{
 margin-top:35px;
@@ -847,7 +847,4 @@ background-color:green;
         margin-bottom:20px;
         margin-top:0px;
     }
-     label.error{
-      margin-left: 340px;
-    margin-top: -49px;
-    }
+   

@@ -90,37 +90,37 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
-                                <label for="nme">Name</label>
-                                @Html.TextBoxFor(x=>x.CustomerName,new { @class= "form-control input-align",id= "nme" })
+                                @*<label for="nme">Name</label>*@
+                                @Html.TextBoxFor(x=>x.CustomerName,new { @class= "form-control spacing alphaonly", placeholder = "Enter Name", id = "nme" })
                                 @*<input type="text" class="" id="nme">*@
                             </div>
                             <div class="form-group contact-input">
-                                <label for="eml">Email ID</label>
-                                @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control input-align", id = "eml" })
+                                @*<label for="eml">Email ID</label>*@
+                                @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control spacing", id = "eml" , placeholder = "Enter EmailId" })
                                 @*<input type="email" class="form-control input-align" id="eml">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
-                                <label for="mbl">Mobile</label>
-                                @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control input-align", id = "mbl",  maxlength = "10" })
+                                @*<label for="mbl">Mobile</label>*@
+                                @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control spacing numCss MobileNoCss", id = "mbl",  maxlength = "10", placeholder = "Enter Mobile Number" })
                                 @*<input type="mobile" class="form-control input-align number" id="mbl" maxlength="10">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
-                                <label for="sbj">Subject</label>
-                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control input-align", id = "sbj" })
+                                @*<label for="sbj">Subject</label>*@
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control spacing ", id = "sbj", placeholder = "Enter Subject" })
                                 @*<input type="text" class="form-control input-align" id="sbj">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="msg">Message</label>                                
+                                @*<label for="msg">Message</label>*@                                
                                 @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "3", @cols = "30" })
                                 @*<textarea type="message" class="form-control input-align" rows="4" cols="50" id="msg"></textarea>*@
                             </div>
-                            <button type="submit" id="btnsubmit" class="btn btn-primary">Submit</button>
+                            <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary">Submit</button>
                         </div>
                 </div>
 }
@@ -134,31 +134,57 @@
     
 <script type="text/javascript">
 
+    //$(function () {
+    //    $('#Type').on('change',function () {
+    //        var i = $('#Type').val();
+    //        if (i == "ContactUs")
+    //            {
+    //                $('.cn').show();
+    //                $('.cs').hide();
+    //                $('.fd').hide();
+    //            }
+    //        if (i == "CustomerSupport")
+    //            {
+    //                $('.cs').show();
+    //                $('.cn').hide();
+    //                $('.fd').hide();
+    //            }
+    //            if (i == "FeedBack") {
+    //                $('.fd').show();
+    //                $('.cn').hide();
+    //                $('.cs').hide();
+    //            }
+    //    });
+    //});
     $(function () {
-        $('#Type').on('change',function () {
-            var i = $('#Type').val();
-            if (i == "ContactUs")
-                {
-                    $('.cn').show();
-                    $('.cs').hide();
-                    $('.fd').hide();
+        $('#frmContactSave').validate({
+            rules: {
+                'CustomerName': {
+                    required: true
+                },
+                'EmailID': {
+                    required: true,
+                    email: true
+                },
+                'MobileNo': {
+                    required: true
                 }
-            if (i == "CustomerSupport")
-                {
-                    $('.cs').show();
-                    $('.cn').hide();
-                    $('.fd').hide();
-                }
-                if (i == "FeedBack") {
-                    $('.fd').show();
-                    $('.cn').hide();
-                    $('.cs').hide();
-                }
+            }
         });
     });
+    function OnSubmit() {
+        if ($('#frmContactSave').valid()) {
+            $('#frmContactSave').submit();
+        }
+    }
     </script>
     }
-    
+    <style>
+    label.error {
+        margin-left: 340px;
+        margin-top: -49px;
+    }
+</style>
     <!--contact section End-->
     <!--Services section Start-->
     
