@@ -85,7 +85,7 @@
       <HintPath>C:\dlls\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\PickC\PickC\PickCApi\bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\PickC\PickC12052017\PickCApi\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
