@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group select contact-input">
-                            @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text","2"), "", new { @class = "form-control spacing" })
+                            @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text","2"), "", new { @class = "form-control spacing", @id = "CustomerSelect" })
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -126,14 +126,16 @@
 @section Scripts{
 <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
 <script type="text/javascript">
-            //$(function () {
-            //    debugger;
-            //    changeSupport();
-            //    //$('#Type').on('change', function () {
+    $(function () {
+        debugger;
+        OnChange();
+        //$('#Type').on('change', function () {
 
-            //    //});
-            //});
-
+        //});
+    });
+    function OnChange() {
+        $('#CustomerSelect').val("1504");
+    }
             //function changeSupport() {
             //    var i = $('#Type').val();
             //    debugger;
@@ -179,7 +181,7 @@
     }
 <style>
   label.error{
-      margin-left: 340px;
+      /*margin-left: 340px;*/
     margin-top: -49px;
     }
     </style>

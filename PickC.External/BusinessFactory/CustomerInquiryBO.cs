@@ -34,5 +34,22 @@ namespace PickC.External.BusinessFactory
         {
             return customerInquiryDAL.GetCustomerSelectList();
         }
+        public bool SaveBooking(Booking newItem)
+        {
+            return customerInquiryDAL.Save(newItem);
+        }
+        public Booking GetBooking(Booking item)
+        {
+            return (Booking)customerInquiryDAL.GetItem<Booking>(item);
+        }
+        public List<Driver> GetNearTrucksDeviceID(string bookingNo, short minDistance, short vehicleType, short vehicleGroup, decimal latitude, decimal longitude)
+        {
+            return customerInquiryDAL.GetNearTrucksDeviceID(bookingNo, minDistance, vehicleType, vehicleGroup, latitude, longitude);
+        }
+        public bool DeleteBooking(Booking item)
+        {
+            return customerInquiryDAL.Delete(item);
+        }
+
     }
 }

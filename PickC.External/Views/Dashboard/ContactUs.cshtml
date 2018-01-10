@@ -80,12 +80,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group select contact-input">
-                                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), "", new { @class = "form-control spacing" })
-                                @*<select class="form-control" id="Type" name="Type">
-                                    <option value="ContactUs" selected="selected">Contact Us</option>
-                                    <option value="FeedBack">FeedBack</option>
-                                    <option value="CustomerSupport">Customer Support</option>
-                                </select>*@
+                                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer,"Value", "Text"), "", new { @class = "form-control spacing",@id= "CustomerSelect" })
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -134,6 +129,16 @@
     
 <script type="text/javascript">
 
+    $(function () {
+        debugger;
+        OnChange();
+        //$('#Type').on('change', function () {
+
+        //});
+    });
+    function OnChange() {
+        $('#CustomerSelect').val("1503");
+    }
     //$(function () {
     //    $('#Type').on('change',function () {
     //        var i = $('#Type').val();
@@ -181,7 +186,7 @@
     }
     <style>
     label.error {
-        margin-left: 340px;
+        /*margin-left: 340px;*/
         margin-top: -49px;
     }
 </style>

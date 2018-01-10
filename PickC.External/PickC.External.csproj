@@ -84,6 +84,9 @@
     <Reference Include="Microsoft.Practices.Unity.Interception">
       <HintPath>C:\dlls\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\PickC\PickC\PickCApi\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -229,7 +232,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessFactory\CustomerInquiryBO.cs" />
     <Compile Include="BusinessFactory\LookUpBO.cs" />
+    <Compile Include="Contracts\Booking.cs" />
     <Compile Include="Contracts\CustomerInquiry.cs" />
+    <Compile Include="Contracts\Driver.cs" />
     <Compile Include="Contracts\FareChart.cs" />
     <Compile Include="Contracts\IContract.cs" />
     <Compile Include="Contracts\LookUp.cs" />

@@ -28,10 +28,15 @@ namespace PickC.External.DataFactory
         /// [Operation].[CustomerInquiry]
         /// </summary>
         /// 
+      
         public const string SAVECUSTOMERINQUIRY = "[Operation].[usp_CustomerInquirySave]";
 
         public const string GETAPPROXIMATEFAREWEB = "[Operation].[usp_GetApproximateFareWeb]";
         public const string CUSTOMERSAVE="[Operation].[usp_CustomerInsertExternal]";
+        public const string SAVEBOOKING = "[Operation].[usp_BookingSave]";
+        public const string SELECTBOOKING = "[Operation].[usp_BookingSelect]";
+        public const string NEARTRUCKSDEVICELIST = "[Operation].[usp_NearTrucksDeviceList]";
+        public const string DELETEBOOKING = "[Operation].[usp_BookingDelete]";
 
 
 

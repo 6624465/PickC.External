@@ -440,6 +440,7 @@ display:inline;
 background:#eadf1d;
 font-weight:bold;
 margin-top:20px;
+/*margin-bottom: -35px;*/
 }
 .heading-title h1, .heading-title p{
 text-align:center;

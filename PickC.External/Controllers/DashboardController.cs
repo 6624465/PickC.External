@@ -7,6 +7,11 @@ using System.Web.Mvc;
 using PickC.External.Contracts;
 using PickC.External.BusinessFactory;
 using PickC.External.ViewModels;
+using System.Configuration;
+using System.Net;
+using Newtonsoft.Json;
+using System.Text;
+using System.IO;
 
 namespace PickC.External.Controllers
 {
@@ -34,7 +39,8 @@ namespace PickC.External.Controllers
 
         public ActionResult ContactUs()
         {
-            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
+            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList()
+                .Select(x => new { Value = x.LookupID, Text = x.LookupCode}).ToList();
             return View();
         }
         [HttpPost]
@@ -65,6 +71,103 @@ namespace PickC.External.Controllers
         public ActionResult PrivacyPolicy()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult SaveBooking(Booking booking)
+        {
+            try
+            {
+                var result = new CustomerInquiryBO().SaveBooking(booking);
+                if (result)
+                {
+                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking
+                    {
+                        BookingNo = booking.BookingNo
+                    });
+                    var driverList = new CustomerInquiryBO().GetNearTrucksDeviceID(bookings.BookingNo,
+                        UTILITY.radius,
+                        bookings.VehicleType,
+                        bookings.VehicleGroup,
+                        bookings.Latitude,
+                        bookings.Longitude);//UTILITY.radius
+                    if (driverList.Count > 0)
+                    {
+                        PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
+                            booking.BookingNo, UTILITY.NotifyNewBooking);
+                        return View(new
+                        {
+                            BookingNo = booking.BookingNo,
+                            Status = UTILITY.BOOKINGSUCCESS
+                        });
+                    }
+                    else
+                    {
+                        var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
+                        if (CancelBooking)
+                            return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
+                        else
+                            return View(new { BookingNo = "", Status = UTILITY.FAILURESTATUS });
+                    }
+                }
+                else
+                    return View(result);
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
+        public void PushNotification(List<string> receipents, string bookingNo, string message)
+        {
+            try
+            {
+                string applicationID = ConfigurationManager.AppSettings["appApplicationKey"];
+                string senderId = ConfigurationManager.AppSettings["appSenderId"];
+
+                WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
+                tRequest.Method = "post";
+                tRequest.ContentType = "application/json";
+                var data = new
+                {
+                    registration_ids = receipents,
+                    //notification = new
+                    //{
+                    //    body = message,
+                    //    title = "Alert",
+                    //    sound = "Enabled"
+                    //},
+                    data = new
+                    {
+                        bookingNo = bookingNo,
+                        body = message
+                    }
+                };
+
+                var json = JsonConvert.SerializeObject(data);
+                Byte[] byteArray = Encoding.UTF8.GetBytes(json);
+                tRequest.Headers.Add(string.Format("Authorization: key={0}", applicationID));
+                tRequest.Headers.Add(string.Format("Sender: id={0}", senderId));
+                tRequest.ContentLength = byteArray.Length;
+                using (Stream dataStream = tRequest.GetRequestStream())
+                {
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                    using (WebResponse tResponse = tRequest.GetResponse())
+                    {
+                        using (Stream dataStreamResponse = tResponse.GetResponseStream())
+                        {
+                            using (StreamReader tReader = new StreamReader(dataStreamResponse))
+                            {
+                                String sResponseFromServer = tReader.ReadToEnd();
+                                string str = sResponseFromServer;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string str = ex.Message;
+            }
         }
     }
 }
