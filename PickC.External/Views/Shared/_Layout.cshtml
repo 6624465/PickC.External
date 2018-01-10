@@ -42,6 +42,9 @@
             //display: none !important;
             color:red;
         }    
+         .spacing{
+        margin-bottom:20px;
+    }
     </style>
     @RenderSection("Styles", false)
 </head>
@@ -61,7 +64,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="top-header-links">
-                            <a href="#help" onclick="takeHelp()"   data-backdrop="static" data-keyboard="false"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
+                            <a href="#help" onclick="takeHelp()"   data-backdrop="static" data-keyboard="false" ><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
                         </div>
                     </div>
                 </div>
@@ -317,13 +320,11 @@
             });
 
             $.validator.addMethod('MobileNoCss', function (value) {
-                debugger;
                 var test = /^[789]\d{9}$/.test(value);
                 return /^[789]\d{9}$/.test(value);
             }, 'Please enter correct Mobile Number');
         });
                 function takeHelp() {
-        debugger
             $('#frmHelp input[type="text"]').removeClass('error');
             $('#frmHelp label').removeClass('error');
             $('#frmHelp label').empty();
@@ -361,7 +362,6 @@
            
         //}
         function GetApplink() {
-            debugger
             $('#frmAppLink input[type="text"]').removeClass('error');
             $('#frmAppLink label').removeClass('error');
             $('#frmAppLink label').empty();
@@ -384,8 +384,3 @@
 
 </body>
 </html>
-<style>
-    .spacing{
-        margin-bottom:20px;
-    }
-</style>
