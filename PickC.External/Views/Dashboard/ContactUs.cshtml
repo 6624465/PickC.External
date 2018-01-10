@@ -79,7 +79,7 @@
                             <h3><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group select contact-input">
+                            <div class="form-group select contact-input" onchange="changeContactUs()">
                                 @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), "", new { @class = "form-control" })
                                 @*<select class="form-control" id="Type" name="Type">
                                     <option value="ContactUs" selected="selected">Contact Us</option>

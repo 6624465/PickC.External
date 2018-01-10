@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-12">
                           
-                            <div class="form-group select contact-input">
+                            <div class="form-group select contact-input" onchange="changeSupport()">
                                 @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), "", new { @class = "form-control" })
                                 @*<select class="form-control input-align" id="Type" name="Type" onchange="changeSupport()">
                                     <option value="ContactUs">Contact Us</option>
