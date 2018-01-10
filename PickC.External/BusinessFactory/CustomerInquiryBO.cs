@@ -29,6 +29,7 @@ namespace PickC.External.BusinessFactory
         {
             return customerInquiryDAL.SaveContactUs(inquiry);
         }
+      
         public List<LookUp> GetCustomerSelectList()
         {
             return customerInquiryDAL.GetCustomerSelectList();

@@ -116,17 +116,14 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="msg">Message</label>
-                                
-                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "4", @cols = "50" })
+                                <label for="msg">Message</label>                                
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "3", @cols = "30" })
                                 @*<textarea type="message" class="form-control input-align" rows="4" cols="50" id="msg"></textarea>*@
                             </div>
                             <button type="submit" id="btnsubmit" class="btn btn-primary">Submit</button>
                         </div>
-
                 </div>
 }
-
             </div>
         </div>
     </div>

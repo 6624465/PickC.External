@@ -842,4 +842,12 @@ background-color:green;
   h3 > img{
   width:80px;
   }
- 
+
+    .spacing{
+        margin-bottom:20px;
+        margin-top:0px;
+    }
+     label.error{
+      margin-left: 340px;
+    margin-top: -49px;
+    }

@@ -24,10 +24,14 @@ namespace PickC.External.Controllers
         {
             return View();
         }
+      
         public ActionResult CustomerSupport()
         {
+            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
             return View();
         }
+
+
         public ActionResult ContactUs()
         {
             ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
@@ -47,6 +51,7 @@ namespace PickC.External.Controllers
         }
         public ActionResult Feedback()
         {
+            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
             return View();
         }
         public ActionResult TermsAndConditions()
