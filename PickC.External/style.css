@@ -7,10 +7,10 @@ font-family:'Roboto', sans-serif !important;
     padding:0px !important;
     overflow:auto;
 }
-/*label.error{
+label.error{
     font-weight:100 !important;
     position: absolute;
-}*/
+}
 
 section{
 margin-top:35px;
@@ -318,6 +318,14 @@ margin-top:20px;
 text-align:center;
 
 }
+.btn:focus{
+    color:#fff200;
+}
+.btn:active:focus, .btn:focus{
+    outline:none;
+    
+}
+
 .btn-default{
     color: #fff200;
     background: #171819;
