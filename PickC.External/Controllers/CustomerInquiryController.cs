@@ -63,7 +63,7 @@ namespace PickC.External.Controllers
                 _IsTripEstimate = true;
             }
 
-            return RedirectToAction("Index", "Dashboard", new { IsTripEstimate = _IsTripEstimate });
+            return RedirectToAction("Index", "Dashboard", new { IsTripEstimate = _IsTripEstimate, customerInquiryVm = customerInquiryVm });
         }
     }
 }

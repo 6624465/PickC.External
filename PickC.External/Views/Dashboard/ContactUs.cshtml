@@ -1,4 +1,7 @@
-﻿@{
+﻿@model PickC.External.Contracts.CustomerInquiry
+
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     <div class="clear-fix"></div>
@@ -28,33 +31,24 @@
                                                 <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
                                                     <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
                                                 </a>
-
                                                 <p>
-
                                                 </p>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                         <!-- Widget end -->
-
                     </div>
                     <!-- Sidebar end -->
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12  fd" style="display:none">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
-
                             <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px; padding-top: 10px;">
                                 <div class="col-md-12">
                                     <div class="">
-
                                         <div class="col-md-12">
                                             <div class="support">
                                                 <img src="@Url.Content("~/images/feedback.png")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
@@ -64,105 +58,144 @@
                                                     <i class="fa fa-envelope-o"></i>&nbsp;
                                                     info@pickcargo.in
                                                 </a>
-
                                                 <p>
-
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                         <!-- Widget end -->
-
                     </div>
                     <!-- Sidebar end -->
                 </div>
             </div>
             <div class="col-md-6">
+@using (Html.BeginForm("ContactUsSave", "Dashboard", FormMethod.Post, new { id = "frmContactSave", name = "frmContactSave" }))
+{
                 <div class="">
-                    <form class="contact">
                         <div class="col-md-12">
                             <h3><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group select contact-input">
-                                <select class="form-control" id="Type" name="Type">
-                                    <option value="ContactUs" selected="selected">Contact Us</option>
-                                    <option value="FeedBack">FeedBack</option>
-                                    <option value="CustomerSupport">Customer Support</option>
-                                </select>
+                                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer,"Value", "Text"), "", new { @class = "form-control spacing",@id= "CustomerSelect" })
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
-                                <label for="nme">Name</label>
-                                <input type="text" class="form-control input-align" id="nme">
+                                @*<label for="nme">Name</label>*@
+                                @Html.TextBoxFor(x=>x.CustomerName,new { @class= "form-control spacing alphaonly", placeholder = "Enter Name", id = "nme" })
+                                @*<input type="text" class="" id="nme">*@
                             </div>
                             <div class="form-group contact-input">
-                                <label for="eml">Email</label>
-                                <input type="email" class="form-control input-align" id="eml">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group contact-input">
-                                <label for="mbl">Mobile</label>
-                                <input type="mobile" class="form-control input-align" id="mbl">
+                                @*<label for="eml">Email ID</label>*@
+                                @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control spacing", id = "eml" , placeholder = "Enter Email ID" })
+                                @*<input type="email" class="form-control input-align" id="eml">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group contact-input">
-                                <label for="sbj">Subject</label>
-                                <input type="subject" class="form-control input-align" id="sbj">
+                                @*<label for="mbl">Mobile</label>*@
+                                @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control spacing numCss MobileNoCss", id = "mbl",  maxlength = "10", placeholder = "Enter Mobile Number" })
+                                @*<input type="mobile" class="form-control input-align number" id="mbl" maxlength="10">*@
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group contact-input">
+                                @*<label for="sbj">Subject</label>*@
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control spacing ", id = "sbj", placeholder = "Enter Subject" })
+                                @*<input type="text" class="form-control input-align" id="sbj">*@
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="msg">Message</label>
-                                <textarea type="message" class="form-control input-align" rows="4" cols="50" id="msg"></textarea>
+                                @*<label for="msg">Message</label>*@                                
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "3", @cols = "30", placeholder = "Message" })
+                                @*<textarea type="message" class="form-control input-align" rows="4" cols="50" id="msg"></textarea>*@
                             </div>
-                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary">Submit</button>
                         </div>
-
-                    </form>
                 </div>
-
+}
             </div>
         </div>
     </div>
     <div class="clear-fix"></div>
 
-<script>
+@section Scripts{
+<script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    
+<script type="text/javascript">
+
     $(function () {
-        $('#Type').on('change',function () {
-            var i = $('#Type').val();
-            if (i == "ContactUs")
-                {
-                    $('.cn').show();
-                    $('.cs').hide();
-                    $('.fd').hide();
-                }
-            if (i == "CustomerSupport")
-                {
-                    $('.cs').show();
-                    $('.cn').hide();
-                    $('.fd').hide();
-                }
-                if (i == "FeedBack") {
-                    $('.fd').show();
-                    $('.cn').hide();
-                    $('.cs').hide();
-                }
-        });
+        debugger;
+        OnChange();
+        //$('#Type').on('change', function () {
 
-
+        //});
     });
+    function OnChange() {
+        $('#CustomerSelect').val("1503");
+    }
+    //$(function () {
+    //    $('#Type').on('change',function () {
+    //        var i = $('#Type').val();
+    //        if (i == "ContactUs")
+    //            {
+    //                $('.cn').show();
+    //                $('.cs').hide();
+    //                $('.fd').hide();
+    //            }
+    //        if (i == "CustomerSupport")
+    //            {
+    //                $('.cs').show();
+    //                $('.cn').hide();
+    //                $('.fd').hide();
+    //            }
+    //            if (i == "FeedBack") {
+    //                $('.fd').show();
+    //                $('.cn').hide();
+    //                $('.cs').hide();
+    //            }
+    //    });
+    //});
+    $(function () {
+        $('#frmContactSave').validate({
+            rules: {
+                'CustomerName': {
+                    required: true
+                },
+                'EmailID': {
+                    required: true,
+                    email: true
+                },
+                'MobileNo': {
+                    required: true
+                }
+            }
+        });
+    });
+    function OnSubmit() {
+        if ($('#frmContactSave').valid()) {
+            $('#frmContactSave').submit();
+        }
+    }
     </script>
-
+    }
+    <style>
+    label.error {
+        /*margin-left: 340px;*/
+      
+        
+    }
+    .spacing{
+        margin-bottom:0px !important;
+        
+    }
+    
+</style>
     <!--contact section End-->
     <!--Services section Start-->
     
