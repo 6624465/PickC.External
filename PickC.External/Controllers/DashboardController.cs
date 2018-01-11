@@ -72,6 +72,10 @@ namespace PickC.External.Controllers
         {
             return View();
         }
+        public ActionResult GetHelp()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult SaveBooking(Booking booking)
         {
