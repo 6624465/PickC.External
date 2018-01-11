@@ -18,10 +18,13 @@ namespace PickC.External.Controllers
     public class DashboardController : Controller
     {
         // GET: Dashboard
-        public ActionResult Index(bool IsTripEstimate = false)
+        public ActionResult Index(bool IsTripEstimate = false, CustomerInquiryVm customerInquiryVm = null)
         {
             if(IsTripEstimate)
                 ViewData["vdIsTripEstimate"] = true;
+
+            if (customerInquiryVm != null)
+                ViewData["vdCustomerInquiryData"] = customerInquiryVm;
 
             return View();
         }
@@ -75,8 +78,12 @@ namespace PickC.External.Controllers
         [HttpPost]
         public ActionResult SaveBooking(Booking booking)
         {
+            JsonSerializerSettings serializerSettings = new JsonSerializerSettings { Formatting = Formatting.Indented };
             try
             {
+                booking.BookingDate = DateTime.Now;
+                booking.RequiredDate = DateTime.Now;
+                booking.LoadingUnLoading = 1373;
                 var result = new CustomerInquiryBO().SaveBooking(booking);
                 if (result)
                 {
@@ -94,19 +101,23 @@ namespace PickC.External.Controllers
                     {
                         PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
                             booking.BookingNo, UTILITY.NotifyNewBooking);
-                        return View(new
-                        {
-                            BookingNo = booking.BookingNo,
-                            Status = UTILITY.BOOKINGSUCCESS
-                        });
+                        
+                        
+                        return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
+                        //return View(new
+                        //{
+                        //    BookingNo = booking.BookingNo,
+                        //    Status = UTILITY.BOOKINGSUCCESS
+                        //});
                     }
                     else
                     {
                         var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
                         if (CancelBooking)
-                            return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
+                            return Json(new { BookingNo = "", Status = UTILITY.NotifyCustomer }, JsonRequestBehavior.AllowGet);
+                        //return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
                         else
-                            return View(new { BookingNo = "", Status = UTILITY.FAILURESTATUS });
+                            return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
@@ -114,7 +125,7 @@ namespace PickC.External.Controllers
             }
             catch (Exception ex)
             {
-                return View();
+                return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
             }
         }
         public void PushNotification(List<string> receipents, string bookingNo, string message)
