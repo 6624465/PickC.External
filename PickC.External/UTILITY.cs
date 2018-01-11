@@ -11,4 +11,5 @@ namespace PickC.External
         public static Int16 CONFIG_INQ_EST = 1501;
         public static Int16 CONFIG_INQ_APP = 1502;
     }
+
 }
