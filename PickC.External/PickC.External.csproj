@@ -85,7 +85,7 @@
       <HintPath>C:\dlls\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\PickC\PickC\PickCApi\bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\PickC\PickC12052017\PickCApi\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -158,6 +158,64 @@
     <Content Include="images\favicon.png" />
     <Content Include="images\feedback.png" />
     <Content Include="images\goo.png" />
+    <Content Include="images\helpImages\agree.jpg" />
+    <Content Include="images\helpImages\available-truck.png" />
+    <Content Include="images\helpImages\book.png" />
+    <Content Include="images\helpImages\booking-history-list.png" />
+    <Content Include="images\helpImages\booking-history.png" />
+    <Content Include="images\helpImages\cancel-booking.png" />
+    <Content Include="images\helpImages\cancel.png" />
+    <Content Include="images\helpImages\cargo-type.jpg" />
+    <Content Include="images\helpImages\cash-payment.jpg" />
+    <Content Include="images\helpImages\cash-payment2.jpg" />
+    <Content Include="images\helpImages\cc-avenue.jpg" />
+    <Content Include="images\helpImages\charges.png" />
+    <Content Include="images\helpImages\confirm-booking.jpg" />
+    <Content Include="images\helpImages\confirm-booking2.jpg" />
+    <Content Include="images\helpImages\delivery-loc.jpg" />
+    <Content Include="images\helpImages\driver.jpg" />
+    <Content Include="images\helpImages\drop-location.png" />
+    <Content Include="images\helpImages\edit-icon.png" />
+    <Content Include="images\helpImages\forget.png" />
+    <Content Include="images\helpImages\hans-menu.png" />
+    <Content Include="images\helpImages\highlighted-truck.jpg" />
+    <Content Include="images\helpImages\invoice.jpg" />
+    <Content Include="images\helpImages\load-unload.png" />
+    <Content Include="images\helpImages\load.jpg" />
+    <Content Include="images\helpImages\location-icon.png" />
+    <Content Include="images\helpImages\lock-location-btn.png" />
+    <Content Include="images\helpImages\mobile-no.jpg" />
+    <Content Include="images\helpImages\name.png" />
+    <Content Include="images\helpImages\number.png" />
+    <Content Include="images\helpImages\online-payment.jpg" />
+    <Content Include="images\helpImages\otp.png" />
+    <Content Include="images\helpImages\password.png" />
+    <Content Include="images\helpImages\payment.jpg" />
+    <Content Include="images\helpImages\paynow.jpg" />
+    <Content Include="images\helpImages\pick-loc.jpg" />
+    <Content Include="images\helpImages\pickup-loc.jpg" />
+    <Content Include="images\helpImages\rate-list.png" />
+    <Content Include="images\helpImages\rate-list2.png" />
+    <Content Include="images\helpImages\rate-list3.png" />
+    <Content Include="images\helpImages\rate.png" />
+    <Content Include="images\helpImages\ratecard-list.jpg" />
+    <Content Include="images\helpImages\rating.jpg" />
+    <Content Include="images\helpImages\register.jpg" />
+    <Content Include="images\helpImages\reset.png" />
+    <Content Include="images\helpImages\screen.jpg" />
+    <Content Include="images\helpImages\select-date.png" />
+    <Content Include="images\helpImages\select-time.png" />
+    <Content Include="images\helpImages\select-time2.png" />
+    <Content Include="images\helpImages\signup.jpg" />
+    <Content Include="images\helpImages\success.jpg" />
+    <Content Include="images\helpImages\trip-completed.jpg" />
+    <Content Include="images\helpImages\trip-est-price.jpg" />
+    <Content Include="images\helpImages\trip-estimate.jpg" />
+    <Content Include="images\helpImages\trip-info.jpg" />
+    <Content Include="images\helpImages\trip-started.jpg" />
+    <Content Include="images\helpImages\truck-booked.png" />
+    <Content Include="images\helpImages\truck.jpg" />
+    <Content Include="images\helpImages\user-icon.png" />
     <Content Include="images\icon-1.png" />
     <Content Include="images\icon1.png" />
     <Content Include="images\icon2.png" />
@@ -271,6 +329,7 @@
     <Content Include="Views\Dashboard\TermsAndConditions.cshtml" />
     <Content Include="Views\Dashboard\Careers.cshtml" />
     <Content Include="Views\Dashboard\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Dashboard\GetHelp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

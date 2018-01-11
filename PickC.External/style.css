@@ -150,7 +150,7 @@ z-index:10000;
     font-size: 25px;
 	}
 .bg-gif{
-	background: url(images/map-animation2.gif);
+	background: url(~/images/map-animation2.gif);
     
 	
     background-size: cover;
@@ -166,7 +166,7 @@ z-index:10000;
 
 	}
 .mobile{
-    background:url(images/phone-bg.png) no-repeat;
+    background:url(~/images/phone-bg.png) no-repeat;
     background-size: 100% 100%;
     height: 494px;
     position: absolute;

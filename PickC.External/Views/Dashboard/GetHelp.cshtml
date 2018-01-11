@@ -1,0 +1,730 @@
+﻿@{ 
+    Layout = "";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        }
+
+        .content {
+            width: 100%;
+            margin: 0px auto;
+            border: 1px solid #ccc;
+        }
+
+        b > img {
+            margin: 0px auto;
+            display: flex;
+        }
+
+        img {
+            width: 50%;
+            height: auto;
+        }
+
+        li > img {
+            margin: 0px auto;
+            display: flex;
+        }
+
+        .list-style-none {
+            list-style: none;
+        }
+
+        ol {
+            -webkit-padding-start: 20px;
+        }
+
+        .content-div {
+            text-align: left;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="content-div">
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Dashboard")'">Back</button>
+                
+                    <ol>
+                        <h3><li>Using Pick-C app</li></h3>
+                        <b>1.1 Downloading the App</b>
+                        <p>Pick-C App is available to download using app store provided in your mobile. The Pick-C app supports the following devices and versions of the operating system:</p>
+                        <ul>
+                            <li>Android - v5.0 and above</li>
+                            <li>Apple IOS </li>
+                        </ul>
+
+                        You can also download the Pick-C app using the link below:
+                        <br />
+                        http://Link to download Pick-C
+                        <br />
+                        If you are unable to download the app, write to us at:
+                        <br />
+                        <a href="#">Email ID: support@pickcargo.in </a>
+                        <br />
+                        <br />
+
+                        <b>1.2	Signing Up with Pick-C</b>
+                        <p>
+                            To start using the Pick-C app, you must sign up by providing your details such as name, mobile number, email ID, and so on. Along with these details, you must provide a unique password in order to log into the app.<br />
+                            <strong>Follow these steps:</strong>
+                        </p>
+
+                        <ol>
+                            <li>Open Pick-C app in your mobile.<br /><br /><img src="~/images/helpImages/signup.jpg" alt="login" /></li>
+                            <br />
+                            <li>
+                                Tap on SIGN UP button as shown in the above screen.
+                                Register screen appears.<br /><br /><img src="~/images/helpImages/register.jpg" alt="login" />
+                            </li>
+                            <br />
+                            <li>In Full name field, enter your full name.</li>
+                            <li>In Mobile number field, enter a valid mobile number. The entered mobile number must be the number you have registered.</li>
+                            <li>In Email id field, enter your valid email id.</li>
+                            <li>
+                                In Enter password field, enter a unique password. Your password must contain minimum 8 characters with one upper case and one numeric character.
+                                For example: Transport@1.
+                            </li>
+                            <b>Note:</b> It is recommended that your password does not contain your first or last name, mobile number.</li>
+                            <li>In Re-enter password field, re-enter the password.</li>
+                            <li>
+                                Tap on SIGN UP button as shown in the above screen.
+                                I agree screen appears, as shown below:<br /> <br /><img src="~/images/helpImages/agree.jpg" alt="Agree" />
+                            </li>
+                            <br />
+                            <li>
+                                Check I Agree check box.<br />
+                                Upon successful signup, an OTP is generated and sent to your registered mobile number. <br /><br />
+                                <img src="~/images/helpImages/otp.png" alt="OTP Image" />
+                            </li>
+                            <li>In kindly enter OTP field, enter the OTP you have received in your registered mobile number.</li>
+                            <li>
+                                Tap on Submit button.<br />
+                                Pick-C user account is created.
+                            </li>
+
+                        </ol>
+                        <h3><li>Booking a Pick-C Trip</li></h3>
+                        <b></li>2.1 Enable Location Services<br /></li></b>
+                        <br />
+                        Prior to accessing the Pick-C mobile app, you must enable the GPS location of your mobile, which helps the app to automatically select the pickup location.
+                        <br />
+                        You can turn on the location by doing either of the following ways:
+                        </li>
+                        <br />
+                        <br />
+                        <ul>
+                            <li>Up on logging in to Pick-C app without enabling the GPS, it will notify you to enable the location services.</li>
+                            <li>
+                                In your mobile phone go to settings, tap Location and tap Location on button.<br />
+                                Once the location is turned on you can start the booking process.
+                            </li>
+                        </ul>
+                        <br />
+                        <b></li>2.2	Providing a Pickup Address<br /></li></b>
+                        <p>To provide a pickup address for Pick-C, make sure that you have entered the correct pickup address before booking the truck. Ensure that your GPS Location is turned on, so that the app automatically sets the pickup location. You can view your location in the map on your mobile screen with a flag pointing on your location. You can set a pickup location by either ways:</p>
+
+                        <ul>
+                            <li>Place the flag to you required location</li>
+                            <li>You can manually type the location in the Pickup Location field <br /><br /><img src="~/images/helpImages/book.png" alt="booking image"></li>
+                            <p>After pickup location is set, tap on the lock location <img src="~/images/helpImages/lock-location-btn.png" alt="location lock button" style="width:75px; vertical-align: middle;">  icon to lock the pickup location, so that if you accidently place the flag on some other location the pickup location will not change. If you are unable to find your current location in the map, tap on My Location <img src="~/images/helpImages/location-icon.png" alt="location lock button" style="width:30px; vertical-align: middle;"> button on the map.  </p>
+                            <p><b>Note:</b>Once the booking is confirmed, you cannot change your pickup location, so make sure you have entered correct pickup address.</p>
+
+                        </ul>
+                        <br />
+                        <b></li>2.3	Providing a Drop Address<br /></li></b>
+                        <p>Entering a drop location helps the driver to find the right navigation to your destination without any trouble.</p>
+                        <p><b>Note:</b> Once the drop location is locked, only then you can book a truck. It is mandatory to enter your drop location before you book a truck.</p>
+                        <p>You can enter a drop location by doing either of the following:</p>
+                        <ul>
+                            <li>Selecting the drop location by tapping on the drop location field, and manually entering</li>
+                            <li>Moving the flag to your drop location in the map which is provided on your screen </li>
+                            <br />
+                            <br />
+                            <li class="list-style-none"><img src="~/images/helpImages/drop-location.png" alt="drop location image" /></li>
+                            <br />
+
+                            <p>Once you lock the drop location you can’t move the flag to other location. To change the drop location you must tap on the lock location <img src="~/images/helpImages/lock-location-btn.png" alt="location lock button" style="width:75px; vertical-align: middle;"> icon to unlock the drop location, which is available above the flag, and move the flag to your desired location.</p>
+                        </ul>
+
+                        <h3><b><li class="book-now-section">Book a Truck Using the Pick-C</li></b></h3>
+                        <b></li>3.1	Book Now <br /></li></b>
+                        <p>
+                            You can book a truck using the book now option from the Pick-C mobile app. Prior to login you must register with Pick-C, refer Signing up with Pick-C to create a user account for Pick-C. <br />
+                            Follow these steps:
+                        </p>
+                        <ol>
+                            <li>
+                                Login to the Pick-C mobile app.<br />
+                                Book Pick-C Truck screen appears as shown below:<br /><br />
+                                <img src="~/images/helpImages/book.png" alt="booking image">
+                            </li>
+                            <br />
+                            <li>In the <b>pickup location</b> field, select pickup location.</li>
+                            <li>
+                                In the <b>drop location</b> field, select drop location as shown below:<br /><br />
+                                <img src="~/images/helpImages/drop-location.png" alt="drop location image" /><br />
+                            </li>
+                            <li>
+                                Tap on loading/unloading icon as shown in below screen. And select any of the following:<br /><br />
+                                <ul>
+                                    <li>Loading: Select this option, if you want to load your cargo in the truck with driver assistance.</li>
+                                    <li>Unloading: Select this option, if you want to unload your cargo from the truck with driver assistance.</li>
+                                </ul><br />
+                                <img src="~/images/helpImages/load-unload.png" alt="load and unload image">
+                            </li>
+                            <br />
+                            </li>
+                            <p><b>Note:</b> You can also opt for trip without loading and unloading services.</p>
+                            <b><img src="~/images/helpImages/available-truck.png" alt="available truck"></b>
+                            <br />
+
+                            <li>
+                                5In the bottom end of the main screen of Pick-C, tap the following truck options:<br /><br />
+                                <ul>
+                                    <li><b>Mini Truck:</b> Select Mini truck, if your cargo weight is less 700 Kg.</li>
+                                    <li><b>Small Truck:</b> Select Small truck, if your cargo weight is between 701 Kg and 1030 Kg.</li>
+                                    <li><b>Medium Truck:</b> Select Medium truck, if you cargo weight is between 1031 Kg and 1250 Kg.</li>
+                                    <li><b>Large Truck:</b> Select large truck, if your cargo weight is between 1251 Kg and 2700 Kg.</li>
+                                </ul>
+                            </li>
+
+                            <p><b>Note:</b> Make sure that the measure of the cargo is calculated in “Kg” and does not exceed 2700 Kg.</p>
+                            <li>
+                                Tap to select any of the available trucks and select one of the following options:<br /><br />
+                                <ul>
+                                    <li><b>Open:</b> Select open option, if you want to book a truck with open top. </li>
+                                    <li><strong>Closed:</strong> Select closed option, if you want to book a truck with closed top.</li>
+                                </ul><br />
+                                <img src="~/images/helpImages/highlighted-truck.jpg" alt="highlighted truck"><br />
+                            </li>
+                            <li>
+                                Tap <b>BOOK NOW</b> button.<br />
+                                Select Cargo type and Select Cargo Weight screen appears.<br /><br />
+                                <img src="~/images/helpImages/cargo-type.jpg" alt="Cargo type"><br />
+                            </li>
+                            <li>
+                                Select any of the following cargo type:<br /><br />
+                                <ul>
+                                    <li>Industrial Goods</li>
+                                    <li>Vegetables & Fruits</li>
+                                    <li>Household Items</li>
+                                    <li>Fragile Goods</li>
+                                    <li>Construction Material</li>
+                                    <li>FMCG (Supply Chain)</li>
+                                    <li>Grocery Items</li>
+                                    <li>Electronics/Home Appliances</li>
+                                    <li>Hotels & Hospitals Goods</li>
+                                    <li>Pharmacy </li>
+                                    <li>Liquid Goods</li>
+                                    <li>Others</li>
+                                </ul>
+
+                            </li>
+                            <br />
+                            <li>In <b>Enter your cargo</b> field, enter the approximate weight of your cargo in kilograms.</li>
+                            <li>
+                                Tap on <b>NEXT</b> as shown in the above screen.<br />
+                                A dialogue box appears.<br /><br /><img src="~/images/helpImages/mobile-no.jpg" alt="mobile number"><br />
+                            </li>
+                            <li>Tap on check box if you want to use other registered mobile number. </li>
+                            <li>In <b>Please enter mobile no</b> field, enter mobile number of the person or party who is responsible to receive the delivery of goods. </li>
+                            <li>
+                                Tap on <b>OK</b> button.<br />
+                                Confirm booking screen appears. <br /><br /><img src="~/images/helpImages/confirm-booking.jpg" alt="mobile number"><br />
+                            </li>
+                            <p><b>Note:</b> You can check the rate card and trip estimation.</p>
+                            <ul>
+                                <li>Tap on Rate card to view the rates of the trucks available.</li>
+                                <li>Tap on Trip Estimation if you want to know the approximate trip cost and approximate time estimate.</li>
+                            </ul>
+                            <br />
+                            <b></li>3.1.1	Fares and Charges<br /></li></b>
+                            <br />
+                            <b></li>3.1.1.1	Rate card <br /></li></b>
+                            <p>
+                                Rate card helps you to check fares and charges of your cargo bookings which are available on Pick-C. Rate card will give you the detailed pricing of different trucks which are available, based on the weight (tonnage) of the cargo and type of the trucks.<br />
+                                To view the rate card, follow these steps:
+                            </p>
+                            <ul>
+                                <ol>
+                                    <li>Login to the app with user account.</li>
+                                    <li>On the<img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;"> menu, tap on Rate card. <br /><br /><img src="~/images/rate.png " alt="Rate card"></li>
+                                    <p>Rate card screen appears as shown below:</p>
+                                    <b><img src="~/images/helpImages/rate-list.png " alt="Rate List"></b>
+                                    <br />
+                                    <p>Above screen gives us the information about:</p>
+                                    <ul>
+                                        <li>Type of Truck as per the weight.</li>
+                                        <li>Base fare of the required Truck for First 3 Km</li>
+                                        <li>Distance fare for the required Truck per Km</li>
+                                        <li>Trip time charges for the required Truck per min.</li>
+                                    </ul>
+                                    <br />
+                                    <br />
+                                    <b><img src="~/images/helpImages/rate-list2.png " alt="Rate List image"></b>
+                                    <br />
+                                    <p>Above screen gives us the information about:</p>
+                                    <ul>
+                                        <li>Outstation Base Fare of the required Truck for First 150 Km</li>
+                                        <li>Outstation Distance Fare of the required Truck per Km</li>
+                                        <li>Trip time charges for the required Truck per min.</li>
+                                        <br />
+                                        <b><img src="~/images/helpImages/rate-list3.png " alt="Rate List3 image"></b>
+                                        <br />
+
+
+                                        <p>Above screen gives us the information about:</p>
+                                        <ul>
+                                            <li>Waiting Charges for the required Truck</li>
+                                            <li>Loading/ Unloading Charges for the required Truck</li>
+                                            <li>Overnight Waiting Charges per hour for the required Truck</li>
+                                        </ul>
+                                        <br />
+                                        <b><img src="~/images/helpImages/charges.png " alt="Charges"></b>
+                                        <br />
+                                        <p>Above screen gives us the information about:</p>
+                                        <ul>
+                                            <li>Overnight Waiting Charges for the required Truck</li>
+                                            <li>Cancellation Charges for the required Truck</li>
+                                            <li>Toll/Parking/Other charges</li>
+                                        </ul>
+
+                                </ol>
+                                <h4>Note:</h4>
+                                <ul>
+                                    <li>Toll, parking, and other charges are not included in the rate card. Such charges should be paid by the customer, <br />once the driver provides hard copy of the bills to the customer.</li>
+                                    <li>Fares and Charges are subject to change without any prior notice.</li>
+                                </ul>
+                                <br />
+
+                                <b></li>3.1.1.2	Rate Card <br /></li></b>
+                                <p>You can also select a rate card for a particular vehicle type before booking, follow these steps:</p>
+                                <ol>
+                                    <li>Login to app with user account.</li>
+                                    <li>Select pickup and drop locations.</li>
+                                    <li>Select loading or unloading or both.</li>
+                                    <li>Select a truck.</li>
+                                    <li>
+                                        Tap on Book Now button.<br /><br /><img src="~/images/helpImages/confirm-booking.jpg " alt="confirm Booking">
+                                        <ul>
+                                            <p>Confirm booking screen appears with the following options appears:</p>
+                                            <li>Rate Card</li>
+                                            <li>Trip Estimate</li>
+                                        </ul>
+                                    </li>
+                                    <br />
+                                    <li>
+                                        Tap on <b>Rate Card.</b><br /><br />
+                                        <img src="~/images/helpImages/ratecard-list.jpg " alt="Rate card List"><br />
+                                        <p>
+                                            Rate card is displayed as shown above.<br />
+                                            To enlarge the truck image, tap on the zoom icon in above image.
+                                        </p>
+                                        <img src="~/images/helpImages/truck.jpg " alt="Truck"><br />
+                                    </li>
+                                </ol>
+                        </ol>
+                        <b></li>3.1.2	Knowing your Fare<br /></li></b>
+                        <p>
+                            Knowing your fare is to make you understand on detailed breakup as mentioned below:
+                            The following are the breakup fares of your trip with Pick-C:
+                            <ul>
+                                <li><b>Base Fare:</b> The minimum amount of money is charged for your booking, to a particular distance or for first few kilometres.</li>
+                                <li><b>Distance Fare:</b> The fare charged for every kilometre after the minimum distance is completed.  </li>
+                                <li><b>Trip Time Fares:</b> The total amount charged on the time of the trip including the drivers waiting time at the pickup location.</li>
+                                <b>Note:</b> The trip starts only when the driver starts the trip after the truck reaches the pickup location.
+                                <li>
+                                    <b>Night time Fares:</b> Night time fares (1.5X charges) are applicable only at night time from 10pm to 6am.<br />
+                                    <b>Note:</b> Toll, Parking fee, and any other charges which are not mentioned in the rate card, should be borne by the customer,<br /> once the driver produces relevant hard copy bills to the customer.
+                                </li>
+                            </ul>
+                        </p>
+
+                        <b></li>3.1.3	Trip Estimate<br /></li></b>
+                        <p>
+                            Trip Estimate will calculate the trip time, trip fares, trip distance, and lets you check the price of your trip, based on the weight of the cargo and the type of truck you have selected for the trip.
+                            Follow below steps:
+
+                            <ol>
+                                <li>Login to app with user account</li>
+                                <li>Select pickup and drop locations.</li>
+                                <li>Select loading or unloading or both.</li>
+                                <li>Select a truck.</li>
+                                <li>
+                                    Tap on <b>Book Now</b> button.<br />
+                                    Confirm booking screen appears with the following options appears:
+                                    <ul>
+                                        <li>Rate Card</li>
+                                        <li>Trip Estimate</li>
+                                    </ul>
+                                </li>
+                                <br />
+                                <b><img src="~/images/helpImages/trip-estimate.jpg " alt="Trip Estimate"><br /></b>
+                                <li>
+                                    Tap on <b>Trip Estimate.</b><br />
+                                    Trip Estimate screen appears.
+                                </li>
+                                <br />
+                                <b><img src="~/images/helpImages/trip-est-price.jpg " alt="Trip Estimate Price"><br /></b>
+                                <br />
+                            </ol>
+                        <p>
+                            Once you have selected Trip Estimate, you can view the approximate travel time, approximate distance, trip cost, cargo pick up and drop locations provided on your screen.<br />
+                            <b>Note:</b> This is an approximate trip estimate, actual cost and travel time may differ.
+                        </p>
+                        <b><img src="~/images/helpImages/confirm-booking2.jpg " alt="Booking image"><br /></b>
+                        <br />
+
+                        </p>
+                        <ol>
+                            <li>
+                                Tap on <b>Confirm booking</b> as shown in the above screen.
+                                Yellow ripples shows that the application is searching for nearest TRUCK available for booking as below screen.
+                            </li>
+                            <br />
+                            <b><img src="~/images/helpImages/load.jpg " alt="Loading"><br /></b>
+                            <br />
+                            <p>Truck booked successfully. Waiting for driver confirmation, message appears as shown below.</p>
+                            <b><img src="~/images/helpImages/success.jpg " alt="Success"><br /></b>
+                            <br />
+                            <li>Once the driver accepts your booking.</li>
+                            <br />
+                            <b><img src="~/images/helpImages/driver.jpg " alt="Driver Details"><br /></b>
+                            <br />
+                            <p>A screen appears with the following options:</p>
+                            <ul>
+                                <li><b>Call Driver:</b> Select this option, if you want to call the driver.</li>
+                                <li><b>Support:</b> Select this option, if you want to have any support information.</li>
+                                <li><b>Cancel:</b>Select this option, if you want to cancel you booking.</li>
+
+                            </ul>
+                            <br />
+                            <li>Once the driver starts for your pickup location, a pop screen appears with “Driver is about to reach Pick up location” message.</li>
+                            <br />
+                            <b><img src="~/images/helpImages/pickup-loc.jpg " alt="Pickup Location"><br /></b>
+                            <br />
+                            <li>Once the driver reaches the pickup location, Pickup popup appears </li>
+                            <br />
+                            <b><img src="~/images/helpImages/pick-loc.jpg " alt="Pickup Location2"><br /></b>
+                            <br />
+                            <span>Tap on <b>OK</b> button.</span>
+                            <li>Once the driver taps on Start Trip, Trip Started popup appears as shown below.</li>
+                            <br />
+                            <b><img src="~/images/helpImages/trip-started.jpg " alt="Trip Start"><br /></b>
+                            <br />
+                            <span>Tap on <b>OK</b> button.</span>
+                            <li>Once driver reaches the delivery location, Delivery Location popup appears.</li>
+                            <br />
+                            <b><img src="~/images/helpImages/delivery-loc.jpg " alt="Delivery Location"><br /></b>
+                            <br />
+                            <span>Tap on <b>OK</b> button.</span>
+                            <li>Once the driver taps on Trip End, Trip Completed popup appears as shown below:</li>
+                            <br />
+                            <b><img src="~/images/helpImages/trip-completed.jpg " alt="Trip Completed"><br /></b>
+                            <br />
+                            <span>Tap on <b>OK</b> button.</span>
+                            <li>Once the Trip is completed.</li>
+                            <br />
+                            <b><img src="~/images/helpImages/cash-payment.jpg " alt="Cash Payment"><br /></b>
+                            <br />
+                            <p>Following Payment option will appear:</p>
+                            <ul>
+                                <a href="#" id="cash"><li>Cash Payment</li></a>
+                                <a href="#"><li>Online Payment</li></a>
+
+                            </ul>
+                            <br />
+                            <li>Upon completion of payment, an invoice screen appears </li>
+                            <br />
+                            <b><img src="~/images/helpImages/invoice.jpg " alt="Invoice"><br /></b>
+                            <br />
+                            <b><img src="~/images/helpImages/trip-info.jpg " alt="Invoice"><br /></b>
+                            <br />
+                            <p>You can tap on EMAIL INVOICE button, to receive a soft copy of invoice to your registered email id. </p>
+                            <li>
+                                You can also choose to rate the driver, by tapping on the RATE THE DRIVER button.
+                                Driver rating screen appears as shown below:
+                            </li>
+                            <br />
+                            <b><img src="~/images/helpImages/payment.jpg " alt="Payment"><br /></b>
+                            <br />
+                            <li>
+                                Select the number or stars you want to, in order to rate the driver
+                                <p><b>Note:</b> Pick-C provides ratings from 1 to 5 stars, in order of least to highly satisfied trip. If you select less than 4 stars, Please tell us what went wrong? Screen appears. Your feedback is highly appreciated which helps us to improve to server your better.</p>
+                                <br />
+                                <b><img src="~/images/helpImages/rating.jpg " alt="Rating"><br /></b><br />
+                            </li>
+                            <li>
+                                Select any of the following options
+                                <ul>
+                                    <li>Driver is late</li>
+                                    <li>Driver attitude was not good</li>
+                                    <li>Driver was drunk</li>
+                                    <li>Driver behaviour was not good</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Tap on <b>Submit</b> button.<br />
+                                The rating is completed
+                            </li>
+                        </ol>
+                        <br />
+                        <b></li>3.1	Book Later <br /></li></b>
+                        <p>You can also book a truck by selecting book later option from the Pick-C app, book later lets you book a truck up to 3 days in advance, and once you have logged in successfully you can start the booking process for book later, to book later follow these steps:
+                        <p>
+                            <ol>
+                                <li>Follow <a href="#" id="book">Book Now</a> steps from step1 to step7.</li>
+                                <li>
+                                    Tap <b>BOOK LATER</b> button.<br />
+                                    SELECT DATE screen appears.
+                                </li>
+                                <br />
+                                <b><img src="~/images/helpImages/select-date.png " alt="Select Date"><br /></b>
+                                <br />
+                                <li>
+                                    From <b>SELECT DATE</b> screen, select a date.<br />
+                                    <b>For Example:</b> If the current date is 21st then you can book the truck up to 23rd
+                                    SELECT TIME screen appears.
+                                </li>
+                                <br />
+                                <b><img src="~/images/helpImages/select-time.png " alt="Select Time"><br /></b>
+                                <br />
+                                <li>From <b>SELECT TIME</b> screen, select an hour from the clock shown above.</li>
+                                <li>Tap on minutes as shown above.</li>
+                        <p>SELECT TIME screen appears as shown below:</p>
+                        <b><img src="~/images/helpImages/select-time2.png " alt="Select Time2"><br /></b>
+                        <br />
+                        <li>From SELECT TIME screen, select a minutes from the clock as shown above.</li>
+                        <li>Tap on <b>AM</b> or <b>PM.</b></li>
+                        <li>
+                            Tap on <b>OK</b> button.<br />
+                            Select Cargo type and Select Cargo Weight screen appears.
+                        </li>
+                        <li>
+                            Select a cargo type and enter the weight in kilograms, and tap on <b>NEXT</b> button.
+                            Delivery receiver’s number screen appears
+                        </li>
+                        <li>Tap on <b>OK </b>button. </li>
+                        <li>Tap on <b>Confirm Booking</b> button.</li>
+                        <p>Truck Booked popup appears as shown below:</p>
+                        <b><img src="~/images/helpImages/truck-booked.png " alt="Truck Booked"><br /></b>
+                        <br />
+                        <p>	Truck booked successfully.</p>
+                    </ol>
+                    <b></li>3.3	Tracking Your Cargo Truck<br /></li></b>
+                    <p>Tracking your Truck lets you to view the position of the Truck you have booked, and the time it will take to reach your pickup location. Once your booking is confirmed, you can track your cargo truck and you can view the truck location live on the map, which is provided in the Pick-C app in your mobile phone. </p>
+                    <b></li>3.4	Paying For Your Trip<br /></li></b>
+                    <p>
+                        After the pickup and drop of your cargo is completed, you can check the total bill amount of your trip in the invoice that you will receive on your Pick-C mobile app after the trip is successfully completed, you will also receive an email of the total bill invoice on your registered email id and you will receive a message of total bill amount to be paid on your registered mobile number.
+                        To make the payment, you can choose any one of the following payment options:
+                    </p>
+                    <ul>
+
+                        <li><b>Cash:</b> Select payment through cash, if you want to do the payment by cash after the trip is completed.</li>
+                        <li><b>Credit Card:</b> Select payment through credit card, if you want to pay for your trip by credit card.</li>
+                        <li><b>Debit Card:</b> Select payment through debit card, if you want to pay for your trip by debit card.</li>
+
+                    </ul>
+                    <p>To know more about the payment option, tap on <a href="#">Payment Options.</a></p>
+                    <b></li>3.5	Rating a Trip<br /></li></b>
+                    <p>
+                        Rating a trip is to ensure you that all the Pick-C truck drivers are convenient, safe, comfortable, and also takes good care of your cargo and deliver’s in time. Once the trip is completed, you can rate a driver, the rating is visible on the Pick-C app screen in your mobile along with the driver’s details. Pick-C provides ratings from 1 to 5 stars, in order of least to highly satisfied trip. You can also give the feedback by writing to us:</br>
+                        Email id:<br />
+                        Your rating and feedback helps us to understand your experience with Pick-C, and also helps us to improve our service and quality.
+                    </p>
+                    <h3><li>Booking History</li></h3>
+                    <p>Booking History is used to see the Past bookings made by the user. Booking History lets you to check the amount you have paid for the Past Bookings. It also helps you to take a copy of Invoice of any booking if needed</p>
+                    <ol>
+                        <li>Login to the app with user account.</li>
+                        <li>On the <img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;"> menu, tap on <b>Booking History.</b></li>
+                        <br />
+                    </ol>
+                    <b><img src="~/images/helpImages/booking-history.png " alt="Booking History"><br /></b><br />
+                    <span>Booking History screen appears as shown below.</span><br /><br />
+                    <b><img src="~/images/helpImages/booking-history-list.png " alt="Booking History List"><br /></b><br />
+                    <b></li>4.1	Cancel Booking<br /></li></b>
+                    <p>
+                        Cancel Booking lets you to cancel the truck you have booked until the truck reaches your pickup location.<br />
+                        <b>Note:</b>  Previous cancellation charges will be included in the current booking. You cannot cancel the booking once the cargo is loaded into the truck.  <br />
+                        Cancelling the booking is done by following these steps:
+                    </p>
+                    <ol>
+                        <li><a href="#">Book a Truck using the Pick-C </a> app.  <br /> A screen appears as shown below:</li>
+                        <br />
+                        <b><img src="~/images/helpImages/cancel.png " alt="Booking Cancel"><br /></b>
+                        <br />
+                        <li>
+                            Tap on <b>Cancel</b> button. </br>
+                            Cancel booking Popup appears.
+                        </li></br>
+                        <b><img src="~/images/helpImages/cancel-booking.png " alt="Booking Cancel image"><br /></b>
+                        <br />
+                        <li>
+                            Select any of the following options:
+                            <ul>
+                                <li><b>Driver is late:</b> Select this option, if the driver is late.</li>
+                                <li><b>Changed my mind:</b> Select this option, if you have changed your mind.</li>
+                                <li><b>Booked another truck:</b> Select this option, if you have booked another truck.</li>
+                                <li><b>Driver denied duty:</b> Select this option, if the driver doesn’t want to accept your trip.</li>
+                            </ul>
+                        </li>
+                        <br />
+                        <li>
+                            Tap on <b>Cancel Booking</b> button.
+                            Booking is cancelled.
+                        </li>
+                    </ol>
+                    <h3><li>Payment Options</li></h3>
+                    <b></li>5.1	Cash Payment<br /></li></b>
+                    <p>
+                        By choosing cash payment option, you can pay the total bill of your trip by cash directly to the truck driver after completion of the trip. You are advised to pay the money, only after you receive the total bill invoice on your app screen. You are also advised to check the approximate rate before taping  confirm booking, to check the approximate rate of your trip, tap on <a href="#">Trip Estimate.</a><br />
+                        Follow these steps:
+                    </p>
+                    <ol>
+                        <li>
+                            Once the trip is completed, Payment screen appears with the following options as shown below:
+                            <ul>
+                                <li>Cash Payment</li>
+                                <li>Online Payment</li>
+                            </ul>
+                            <img src="~/images/helpImages/cash-payment2.jpg " alt="Cash Payment"><br />
+                        </li>
+                        <li>Tap on <b>CASH PAYMENT</b> button.</li>
+                        <br />
+                        <b><img src="~/images/helpImages/paynow.jpg " alt="Paynow"></b>
+                        <br />
+                        <li>Upon clicking on Cash Payment option a payment confirmation screen appears on the drivers mobile. Once the driver taps on confirm button, the transaction is completed.</li>
+                    </ol><br />
+                    <b></li>5.1	Cash Payment<br /></li></b>
+                    <p>By choosing online payment option, you can pay the bill of your trip online through the Pick-C app. </p>
+                    <ol>
+                        <li>Once the trip is completed, Payment screen appears, Tap on Online payment.</li>
+                        <br />
+                        <b><img src="~/images/helpImages/online-payment.jpg " alt="Online Payment"></b>
+                        <br />
+                        <p>Online payment screen appears with the following options:</p>
+                        <ul>
+                            <li>Debit Cards</li>
+                            <li>Net Banking</li>
+                            <li>Cash Card</li>
+                            <li>Mobile Payments</li>
+                            <li>Paytm</li>
+                            <li>Wallet</li>
+                            <li>UPI</li>
+
+                        </ul>
+                        <br />
+                        <b><img src="~/images/helpImages/cc-avenue.jpg " alt="CC Avenue"></b>
+                        <br />
+                        <p>You can pay the amount using any of the above option.</p>
+                    </ol>
+                    <h3><li>Changing Password</li></h3>
+                    <p>
+                        You may consider changing your password if you have forgotten your password or if your password has been compromised. You can change your password on regular basis to maintain the security of your account.<br />
+                        Follow these steps:
+                        <ol>
+                            <li>Open Pick-C app and Login with your user account.</li>
+                            <li>On the <img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;">menu, tap on profile <img src="~/images/helpImages/user-icon.png" alt="User Icon" style=" display:initial; width:30px; vertical-align middle;"> icon, as shown in the screenshot below:</li>
+                            <br />
+                            <b><img src="~/images/helpImages/name.png " alt="Name"></b>
+                    <p>Update profile screen appears as shown below:</p>
+                    <b><img src="~/images/helpImages/number.png " alt="Number"></b><br />
+                    <li>
+                        In <b>password</b> field, tap on edit <img src="~/images/helpImages/edit-icon.png" alt="User Icon" style=" display:initial; width:30px; vertical-align middle;"> icon.<br />
+                        Change your password screen appears as shown below:
+                    </li><br />
+                    <b><img src="~/images/helpImages/password.png " alt="Password"></b><br />
+                    <li>In <b>Old password</b> field, enter your current password.</li>
+                    <li>In <b>New password field,</b> enter new password.</li>
+                    <li>In <b>Re-enter new password</b> field, re-enter new password.</li>
+                    <li>Tap on <b>Continue</b> button.</li>
+                    <li>Tap on <b>Update profile</b> button.</li>
+
+                    </ol>
+                    <p>
+                        <b>Note:</b> You must always follow the standard password pattern to enforce the password standards.
+                        Refer to the Password Section.
+                    </p>
+                    <b></li>6.1	Forgot Password<br /></li></b>
+                    <p>
+                        If you have forgotten your Pick-C account password, you can re-set your password by receiving an OTP to your registered mobile number.<br />
+                        Follow these steps:
+                        <ol>
+                            <li>On the Pick-C app main screen, tap on <b>LOGIN</b> button.</li>
+                            <li>Tap <b>FORGOT PASSWORD?</b> Link.</li>
+                            <br />
+                            <b><img src="~/images/helpImages/forget.png " alt="Forget password"></b>
+                            <br />
+                    <p>Reset your password screen appears as shown below:</p><br />
+                    <b><img src="~/images/helpImages/reset.png " alt="Reset image"></b><br />
+                    <li>In <b>Enter registered mobile number</b> field, enter your registered mobile number.</li>
+                    <li>Tap on <b>Continue</b> button.</li>
+                    </ol><br />
+                    <b></li>6.1	Forgot Password<br /></li></b>
+
+                    <p>We make sure that the Pick-C app is updated from time to time, so that you receive the best experiences from new and updated features that have been implemented in the upgraded versions. Whenever the updates are available for Pick-C, you will receive a notification when you open the Pick-C app on your mobile phone.</p>
+                    <p>
+                        You can also update Pick-C app using the below links:<br />
+                        <a href="#">Tap on here for android.</a><br />
+                        <a href="#">Tap on here for apple IOS.</a><br />
+                        Prior to updating the Pick-C app, make sure that you are connected to internet with strong Wi-Fi connection, and also make sure that you have enough storage space in your mobile phone.
+                    </p>
+                    <h3><li>Safety </li></h3>
+                    <b></li>7.1	Safety Standards<br /></li></b>
+                    <p>Your cargo’s safety is extremely important to us. We have a strong safety measure which includes the following:</p>
+                    <ul>
+                        <li>We check if the driver has under gone a proper training to drive all the trucks we provide.
+                        <li>	We make sure that we have good quality trucks by doing regular check-ups and repairs to insure the safety of your goods. </li>
+                        <li>Our drivers are professionally trained and well behaved </li>
+                    </ul><br />
+                    <b></li>7.2	Banned Items for Land Transport<br /></li></b>
+                    <ul>
+                        <li>Deadly Poison of all kinds.</li>
+                        <li>Arms, imitation arms, ammunition and explosives of all kinds.</li>
+                        <li>Opium, morphine, heroine, marihuana and other addictive drugs and psychotropic substances.</li>
+                        <li>Live animals (endangered and protected).</li>
+                        <li>Radioactive products and hazardous material such as detonators, detonation cords gunpowder, explosive material, nuclear products etc.</li>
+                        <li>Money and negotiable items.</li>
+
+
+                    </ul><br />
+
+                    <b></li>7.3	Help<br /></li></b><br />
+                    <a href="#">Need Help?</a><br />
+                    WRITE TO US: <a href="#">Support@pickcargo.in</a>
+
+
+                    </ol>
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Dashboard")'">Back</button>
+</div>
+        </div>
+    </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script>
+    $("#book").click(function() {
+    $('html,body').animate({
+        scrollTop: $(".book-now-section").offset().top},
+        'slow');
+});
+
+    </script>
+
+</body>
+</html>
