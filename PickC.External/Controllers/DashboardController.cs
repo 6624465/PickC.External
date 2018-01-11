@@ -89,46 +89,43 @@ namespace PickC.External.Controllers
                 var result = new CustomerInquiryBO().SaveBooking(booking);
                 if (result)
                 {
-                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking
+                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking{BookingNo = booking.BookingNo});
+                    //var driverList = new CustomerInquiryBO().GetNearTrucksDeviceID(bookings.BookingNo,
+                    //    UTILITY.radius,
+                    //    bookings.VehicleType,
+                    //    bookings.VehicleGroup,
+                    //    bookings.Latitude,
+                    //    bookings.Longitude);//UTILITY.radius
+                    //if (driverList.Count > 0)
+                    //{
+                    //    PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
+                    //        booking.BookingNo, UTILITY.NotifyNewBooking);
+
+
+                    //return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
+                    //return View(new
+                    //{
+                    //    BookingNo = booking.BookingNo,
+                    //    Status = UTILITY.BOOKINGSUCCESS
+                    //});
+
+                    TempData["TD:BookingInfo"] = new BookingStatusVm
                     {
-                        BookingNo = booking.BookingNo
-                    });
-                    var driverList = new CustomerInquiryBO().GetNearTrucksDeviceID(bookings.BookingNo,
-                        UTILITY.radius,
-                        bookings.VehicleType,
-                        bookings.VehicleGroup,
-                        bookings.Latitude,
-                        bookings.Longitude);//UTILITY.radius
-                    if (driverList.Count > 0)
-                    {
-                        PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
-                            booking.BookingNo, UTILITY.NotifyNewBooking);
-
-
-                        //return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
-                        //return View(new
-                        //{
-                        //    BookingNo = booking.BookingNo,
-                        //    Status = UTILITY.BOOKINGSUCCESS
-                        //});
-
-                        TempData["TD:BookingInfo"] = new BookingStatusVm
-                        {
-                            BookingNo = booking.BookingNo,
-                            Status = UTILITY.BOOKINGSUCCESS
-                        };
-                        return RedirectToAction("Index");
+                        BookingNo = booking.BookingNo,
+                        Status = UTILITY.BOOKINGSUCCESS
+                    };
+                    return RedirectToAction("Index");
                     }
                     else
                     {
                         var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
 
-                        TempData["TD:BookingInfo"] = new BookingStatusVm
-                        {
-                            BookingNo = "",
-                            Status = UTILITY.FAILURESTATUS
-                        };
-                        return RedirectToAction("Index");
+                    TempData["TD:BookingInfo"] = new BookingStatusVm
+                    {
+                        BookingNo = "",
+                        Status = UTILITY.FAILURESTATUS
+                    };
+                    return RedirectToAction("Index");
                         //if (CancelBooking)
                         //    //TempData["TD:BookingInfo"] = new BookingStatusVm
                         //    //{
@@ -140,9 +137,9 @@ namespace PickC.External.Controllers
                         //else
                         //    return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
                     }
-                }
-                else
-                    return View(result);
+                
+                //else
+                //    return View(result);
             }
             catch (Exception ex)
             {

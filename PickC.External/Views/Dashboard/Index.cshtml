@@ -183,7 +183,26 @@
 
 @if (bookingStatus != null)
 {
-    <div class="modal fade" role="dialog" id="modalBookingStatus">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <b>Booking Status: </b><span>@bookingStatus.Status</span>
+                    </div>
+                    <div>
+                        <b>Booking ID: </b><span>@bookingStatus.BookingNo</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @*<div class="modal fade" role="dialog" id="modalBookingStatus">
         <div class="modal-dialog scroll center-modal">
             <div class="modal-content">
                 <div class="modal-header custom-header">
@@ -196,13 +215,13 @@
                             <h4>Booking Stauts</h4>:@bookingStatus.Status
                         </div>
                         <div class="col-md-12">
-                            <h4>BookingNo</h4>:@bookingStatus.BookingNo
+                            <h4>BookingNo</h4>:
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 }
 <div class="modal fade" id="prices-list" role="dialog">
     <div class="modal-dialog scroll center-modal">
@@ -322,9 +341,10 @@
             debugger
           
                 @{
-                var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
-                if (customerInquiryVm != null)
-                {
+                    var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
+                  
+                    if (customerInquiryVm != null)
+                    {
                 <text>
                 $('#CustomerId').val('@customerInquiryVm.MobileNo');
                 $('#CustomerName').val('@customerInquiryVm.CustomerName');
@@ -337,12 +357,11 @@
                 $('#VehicleType').val(vehicleType);
                 $('#VehicleGroup').val(vehicleGroup);
                 $('#frmBooking').submit();
+              
                 </text>
                 }
             }
-           
         }
-
         $(function () {
             @{
                 var isTripEstimate = ViewData["vdIsTripEstimate"];
@@ -353,14 +372,14 @@
                     </text>
                 }
             }
-
             @if(bookingStatus != null)
             {
+               
                 <text>
-                        $('#modalBookingStatus').modal('show');
+            $('#myModal').modal('show');
                 </text>
             }
-
+           
             @*$('.cls').on('click', function () {
                 debugger;
                 var vanGroup = $(this).attr('data-vgroup');
