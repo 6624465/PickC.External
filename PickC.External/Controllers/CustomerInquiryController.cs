@@ -55,6 +55,8 @@ namespace PickC.External.Controllers
 
             customerInquiryBO.Save(customerInquiry);
 
+            TempData["TD:CustomerInquiry"] = customerInquiryVm;
+
             bool _IsTripEstimate = false;
             if (customerInquiryVm.Distance.HasValue)
             {
@@ -63,7 +65,7 @@ namespace PickC.External.Controllers
                 _IsTripEstimate = true;
             }
 
-            return RedirectToAction("Index", "Dashboard", new { IsTripEstimate = _IsTripEstimate, customerInquiryVm = customerInquiryVm });
+            return RedirectToAction("Index", "Dashboard", new { IsTripEstimate = _IsTripEstimate });
         }
     }
 }

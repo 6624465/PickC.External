@@ -9,23 +9,20 @@ using PickC.External.BusinessFactory;
 using PickC.External.ViewModels;
 using System.Configuration;
 using System.Net;
-using Newtonsoft.Json;
 using System.Text;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace PickC.External.Controllers
 {
     public class DashboardController : Controller
     {
         // GET: Dashboard
-        public ActionResult Index(bool IsTripEstimate = false, CustomerInquiryVm customerInquiryVm = null)
+        public ActionResult Index(bool IsTripEstimate = false)
         {
             if(IsTripEstimate)
                 ViewData["vdIsTripEstimate"] = true;
-
-            if (customerInquiryVm != null)
-                ViewData["vdCustomerInquiryData"] = customerInquiryVm;
-
+            
             return View();
         }
         public ActionResult AboutUs()
@@ -80,9 +77,10 @@ namespace PickC.External.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SaveBooking(Booking booking)
         {
-            JsonSerializerSettings serializerSettings = new JsonSerializerSettings { Formatting = Formatting.Indented };
+            //JsonSerializerSettings serializerSettings = new JsonSerializerSettings { Formatting = Formatting.Indented };
             try
             {
                 booking.BookingDate = DateTime.Now;
@@ -105,14 +103,21 @@ namespace PickC.External.Controllers
                     {
                         PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
                             booking.BookingNo, UTILITY.NotifyNewBooking);
-                        
-                        
-                        return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
+
+
+                        //return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
                         //return View(new
                         //{
                         //    BookingNo = booking.BookingNo,
                         //    Status = UTILITY.BOOKINGSUCCESS
                         //});
+
+                        TempData["TD:BookingInfo"] = new BookingStatusVm
+                        {
+                            BookingNo = booking.BookingNo,
+                            Status = UTILITY.BOOKINGSUCCESS
+                        };
+                        return RedirectToAction("Index");
                     }
                     else
                     {

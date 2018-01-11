@@ -160,6 +160,8 @@
                             @Html.Hidden("toLatLog")
                             @Html.Hidden("fromLocation")
                             @Html.Hidden("toLocation")
+                            @Html.Hidden("fLoc")
+                            @Html.Hidden("tLoc")
                         </div>
                     </div>
                 </div>
@@ -169,6 +171,33 @@
                         Get Estimate Now
                     </button>
                     <!--data-toggle="modal" data-target="#prices-list" data-dismiss="modal"-->
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@{
+    var bookingStatus = (PickC.External.ViewModels.BookingStatusVm)TempData["TD:BookingInfo"];
+}
+
+@if (bookingStatus != null)
+{
+    <div class="modal fade" role="dialog" id="modalBookingStatus">
+        <div class="modal-dialog scroll center-modal">
+            <div class="modal-content">
+                <div class="modal-header custom-header">
+                    <h4 class="modal-title">Booking Status</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Booking Stauts</h4>:@bookingStatus.Status
+                        </div>
+                        <div class="col-md-12">
+                            <h4>BookingNo</h4>:@bookingStatus.BookingNo
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -218,14 +247,14 @@
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
                                         <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="cls booknow-btn" </text>   } else { <text> class="cls booknow-btn-red" </text>  }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
+                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknow-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4 custom-height">
                                 <div class="Prices-list">
                                     <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="cls booknow-btn" </text>   } else { <text> class="cls booknow-btn-red" </text>  }>Book Now</a>
+                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknow-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -246,19 +275,12 @@
     @Html.Hidden("CustomerName")
     @Html.Hidden("LocationFrom")
     @Html.Hidden("LocationTo")
-
     @Html.Hidden("Latitude")
     @Html.Hidden("Longitude")
     @Html.Hidden("ToLatitude")
     @Html.Hidden("ToLongitude")
     @Html.Hidden("VehicleType")
     @Html.Hidden("VehicleGroup")
-
-    @Html.Hidden("frmLatLog")
-    @Html.Hidden("toLatLog")
-
-    @Html.Hidden("frmLoc")
-    @Html.Hidden("toLoc")
 
 }
 
@@ -296,14 +318,24 @@
         });
 
         function bookingSave(vehicleGroup, vehicleType) {
-            @{ var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)ViewData["vdCustomerInquiryData"];  }
-            @if(customerInquiryVm != null)
-            {
+            @{
+                var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
+                if (customerInquiryVm != null)
+                {
                 <text>
                     $('#CustomerId').val('@customerInquiryVm.MobileNo');
                     $('#CustomerName').val('@customerInquiryVm.CustomerName');
-                    
+                    $('#LocationFrom').val('@customerInquiryVm.fLoc');
+                    $('#LocationTo').val('@customerInquiryVm.tLoc');
+                    $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
+                    $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
+                    $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
+                    $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
+                    $('#VehicleType').val(vehicleType);
+                    $('#VehicleGroup').val(vehicleGroup);
+                    $('#frmBooking').submit();
                 </text>
+                }
             }
         }
 
@@ -313,11 +345,18 @@
                 if (isTripEstimate != null && (bool)isTripEstimate && fareChartList != null)
                 {
                     <text>
-            $('#prices-list').modal('show');
-            </text>
+                        $('#prices-list').modal('show');
+                    </text>
                 }
             }
-            debugger
+
+            @if(bookingStatus != null)
+            {
+                <text>
+                        $('#modalBookingStatus').modal('show');
+                </text>
+            }
+
             $('.cls').on('click', function () {
                 debugger;
                 var vanGroup = $(this).attr('data-vgroup');
@@ -432,7 +471,7 @@
                         fromLatlong.LocationFrom = $("#fromLocation").val();
                         localStorage.setItem("latlong", JSON.stringify(fromLatlong));
 
-                        $('#frmLatLog').val(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());                        
+                        $('#frmLatLog').val(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
                     }
                 });
                 geocoder.geocode({ 'address': $("#toLocation").val() }, function (results, status) {
@@ -460,19 +499,19 @@
         var tLoc = '';
         function TripEstimate() {
             if ($('#frmTripEstimate').valid()) {
-                
+
                 var Obj = {};
                 Obj.CustomerName = $("#CustomerName").val();
                 Obj.CustomerId = $("#MobileNo").val();
                 localStorage.setItem("CustomerObj", JSON.stringify(Obj));
                 fLoc = $('#fromLocation').val();
                 tLoc = $('#toLocation').val();
-                
-                
+
+
                 DrawMapNew($('#fromLocation').val(), $('#toLocation').val());
 
-                
-                
+
+
             }
         }
 
@@ -510,14 +549,14 @@
 
                     var frmLoc = $('#fromLocation').val();
                     debugger;
-                    $('#frmLoc').val(fLoc);
-                    $('#toLoc').val(tLoc);
+                    $('#fLoc').val(fLoc);
+                    $('#tLoc').val(tLoc);
                     debugger;
                     $('#Distance').val(response.routes[0].legs[0].distance.value / 1000);
                     $('#Duration').val(response.routes[0].legs[0].duration.value / 60);
 
-                    
-                    
+
+
 
                     $('#frmTripEstimate').submit();
                     //$('#booking_Latitude').val(response.routes[0].legs[0].start_location.lat());
@@ -569,4 +608,5 @@
             $('#fromLocation, #toLocation').val('');
         }
     </script>
+   
 }

@@ -19,8 +19,8 @@ namespace PickC.External.ViewModels
         public string frmLatLog { get; set; }
         public string toLatLog { get; set; }
 
-        public string frmLoc { get; set; }
+        public string fLoc { get; set; }
 
-        public string toLoc { get; set; }
+        public string tLoc { get; set; }
     }
 }

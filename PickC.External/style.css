@@ -149,33 +149,7 @@ z-index:10000;
         text-transform:capitalize;
     font-size: 25px;
 	}
-.bg-gif{
-	background: url(~/images/map-animation2.gif);
-    
-	
-    background-size: cover;
-    display: block;
-    color: floralwhite;
-    max-width: 100%;
-     background-repeat: no-repeat;        
-    position: relative;        
-    width: 100%;            
-    min-height: 571px;      
-    margin-left: auto;      
-    margin-right: auto;
 
-	}
-.mobile{
-    background:url(~/images/phone-bg.png) no-repeat;
-    background-size: 100% 100%;
-    height: 494px;
-    position: absolute;
-    top: 34px;
-    width: 90%;
-    max-width: 247px;
-    z-index: 1;
-    
-}
 
 
 	.get-pick-c-btn:hover, .track-crn-btn:hover{
