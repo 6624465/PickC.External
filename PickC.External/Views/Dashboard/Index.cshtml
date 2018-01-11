@@ -187,6 +187,7 @@
         <div class="modal-dialog scroll center-modal">
             <div class="modal-content">
                 <div class="modal-header custom-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
                     <h4 class="modal-title">Booking Status</h4>
                 </div>
                 <div class="modal-body">
@@ -247,14 +248,14 @@
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
                                         <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknow-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
+                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if(fareChartList[i].IsOpenOnline) { <text>onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text> } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4 custom-height">
                                 <div class="Prices-list">
                                     <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknow-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a>
+                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text>onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')"</text>} data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn"</text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -318,25 +319,28 @@
         });
 
         function bookingSave(vehicleGroup, vehicleType) {
-            @{
+            debugger
+          
+                @{
                 var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
                 if (customerInquiryVm != null)
                 {
                 <text>
-                    $('#CustomerId').val('@customerInquiryVm.MobileNo');
-                    $('#CustomerName').val('@customerInquiryVm.CustomerName');
-                    $('#LocationFrom').val('@customerInquiryVm.fLoc');
-                    $('#LocationTo').val('@customerInquiryVm.tLoc');
-                    $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
-                    $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
-                    $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
-                    $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
-                    $('#VehicleType').val(vehicleType);
-                    $('#VehicleGroup').val(vehicleGroup);
-                    $('#frmBooking').submit();
+                $('#CustomerId').val('@customerInquiryVm.MobileNo');
+                $('#CustomerName').val('@customerInquiryVm.CustomerName');
+                $('#LocationFrom').val('@customerInquiryVm.fLoc');
+                $('#LocationTo').val('@customerInquiryVm.tLoc');
+                $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
+                $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
+                $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
+                $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
+                $('#VehicleType').val(vehicleType);
+                $('#VehicleGroup').val(vehicleGroup);
+                $('#frmBooking').submit();
                 </text>
                 }
             }
+           
         }
 
         $(function () {
@@ -357,7 +361,7 @@
                 </text>
             }
 
-            $('.cls').on('click', function () {
+            @*$('.cls').on('click', function () {
                 debugger;
                 var vanGroup = $(this).attr('data-vgroup');
                 var openPrice = $(this).attr('data-open');
@@ -409,7 +413,7 @@
                         if (data.Status != "")
                             alert(" Booking Confirmed.Your CRN number is:" + data.BookingNo);
                             @*$("#OpenCharge_@i").*@
-                        else {
+                        @*else {
                             alert("Booking Failed");
                         }
                     },
@@ -417,7 +421,7 @@
                     }
                 })
                 debugger;
-            });
+            });*@
 
             $('#frmTripEstimate').validate({
                 rules: {
@@ -460,16 +464,16 @@
         function FromToLocations() {
             debugger
             if ($('#frmFromToLocation').valid()) {
-                var fromLatlong = {};
-                var toLatLong = {};
+                //var fromLatlong = {};
+                //var toLatLong = {};
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'address': $("#fromLocation").val() }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         debugger
-                        fromLatlong.lat = results[0].geometry.location.lat();
-                        fromLatlong.long = results[0].geometry.location.lng();
-                        fromLatlong.LocationFrom = $("#fromLocation").val();
-                        localStorage.setItem("latlong", JSON.stringify(fromLatlong));
+                        //fromLatlong.lat = results[0].geometry.location.lat();
+                        //fromLatlong.long = results[0].geometry.location.lng();
+                        //fromLatlong.LocationFrom = $("#fromLocation").val();
+                        //localStorage.setItem("latlong", JSON.stringify(fromLatlong));
 
                         $('#frmLatLog').val(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
                     }
@@ -477,10 +481,10 @@
                 geocoder.geocode({ 'address': $("#toLocation").val() }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         debugger
-                        toLatLong.lat = results[0].geometry.location.lat();
-                        toLatLong.long = results[0].geometry.location.lng();
-                        toLatLong.LocationTo = $("#toLocation").val();
-                        localStorage.setItem("tolatlong", JSON.stringify(toLatLong));
+                        //toLatLong.lat = results[0].geometry.location.lat();
+                        //toLatLong.long = results[0].geometry.location.lng();
+                        //toLatLong.LocationTo = $("#toLocation").val();
+                        //localStorage.setItem("tolatlong", JSON.stringify(toLatLong));
 
                         $('#toLatLog').val(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
                     }

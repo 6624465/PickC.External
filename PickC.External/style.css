@@ -837,4 +837,17 @@ background-color:green;
         margin-bottom:20px;
         /*margin-top:0px;*/
     }
-   
+   .booknowactive-btn{
+  background: #2b8e1f;
+    color: #fff;
+    position: relative;
+    padding: 5px 15px;
+    border: 1px solid #000;
+    bottom: 8px;
+  }
+   .booknowactive-btn:hover
+   {
+      background: green;
+    color: #fff;
+    border: 1px solid #000;
+  }

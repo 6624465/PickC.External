@@ -122,11 +122,23 @@ namespace PickC.External.Controllers
                     else
                     {
                         var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
-                        if (CancelBooking)
-                            return Json(new { BookingNo = "", Status = UTILITY.NotifyCustomer }, JsonRequestBehavior.AllowGet);
-                        //return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
-                        else
-                            return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
+
+                        TempData["TD:BookingInfo"] = new BookingStatusVm
+                        {
+                            BookingNo = "",
+                            Status = UTILITY.FAILURESTATUS
+                        };
+                        return RedirectToAction("Index");
+                        //if (CancelBooking)
+                        //    //TempData["TD:BookingInfo"] = new BookingStatusVm
+                        //    //{
+                        //    //    BookingNo = booking.BookingNo,
+                        //    //    Status = UTILITY.BOOKINGSUCCESS
+                        //    //};
+                        //return Json(new { BookingNo = "", Status = UTILITY.NotifyCustomer }, JsonRequestBehavior.AllowGet);
+                        ////return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
+                        //else
+                        //    return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
