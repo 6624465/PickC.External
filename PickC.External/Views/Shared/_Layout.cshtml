@@ -47,7 +47,7 @@
     }
         .bg-gif {
             background: url(@Url.Content("~/images/map-animation2.gif"));
-            background -size: cover;
+            background-size: cover;
                     display: block;
                     color: floralwhite;
                     max-width: 100%;
@@ -326,6 +326,14 @@
             else
                 return false;
         });
+       
+        $('#help').on('hidden.bs.modal', function () {
+            $(this).find('form').trigger('reset');
+        });
+
+        $('#get-pick-c').on('hidden.bs.modal', function () {
+            $(this).find('form').trigger('reset');
+        });
 
         
         $(function () {
@@ -411,12 +419,12 @@
             }
             }
 
-        function Clear() {
-            debugger
-            $('#frmAppLink input[type="text"]').empty();
-            $('#get-pick-c').modal('Hide');
-           // $('#appmobileNumber').val('');
-        }
+        //function Clear() {
+        //    debugger
+        //    $('#frmAppLink input[type="text"]').empty();
+        //    $('#get-pick-c').modal('Hide');
+        //   // $('#appmobileNumber').val('');
+        //}
 
         //function LoadingAnimation() {
         //    $.loader({
