@@ -80,6 +80,11 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group select contact-input">
+                                @*<select class="form-control input-align" id="Type" name="Type" onchange="changeSupport()">
+                                    <option value="ContactUs">Contact Us</option>
+                                    <option value="FeedBack">FeedBack</option>
+                                    <option value="CustomerSupport" selected="selected">Customer Support</option>
+                                </select>*@
                                 @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer,"Value", "Text"), "", new { @class = "form-control spacing",@id= "CustomerSelect" })
                             </div>
                         </div>
@@ -139,28 +144,29 @@
     function OnChange() {
         $('#CustomerSelect').val("1503");
     }
-    //$(function () {
-    //    $('#Type').on('change',function () {
-    //        var i = $('#Type').val();
-    //        if (i == "ContactUs")
-    //            {
-    //                $('.cn').show();
-    //                $('.cs').hide();
-    //                $('.fd').hide();
-    //            }
-    //        if (i == "CustomerSupport")
-    //            {
-    //                $('.cs').show();
-    //                $('.cn').hide();
-    //                $('.fd').hide();
-    //            }
-    //            if (i == "FeedBack") {
-    //                $('.fd').show();
-    //                $('.cn').hide();
-    //                $('.cs').hide();
-    //            }
-    //    });
-    //});
+    $(function () {
+        $('#CustomerSelect').on('change', function () {
+            var i = $('#Type').val();
+            debugger
+            if (i == "ContactUs")
+                {
+                    $('.cn').show();
+                    $('.cs').hide();
+                    $('.fd').hide();
+                }
+            if (i == "CustomerSupport")
+                {
+                    $('.cs').show();
+                    $('.cn').hide();
+                    $('.fd').hide();
+                }
+                if (i == "FeedBack") {
+                    $('.fd').show();
+                    $('.cn').hide();
+                    $('.cs').hide();
+                }
+        });
+    });
     $(function () {
         $('#frmContactSave').validate({
             rules: {

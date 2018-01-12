@@ -21,6 +21,7 @@ a:focus, button:focus{
  color:#fff;
 }
 
+
 hr{
 	margin-top: 26px;
     margin-bottom: -14px;
@@ -161,6 +162,13 @@ z-index:10000;
 	color:#000;
 
 	}
+    
+    .get-pick-c-btn:active{
+        color:#000;
+    }
+    .get-pick-c-btn:focus{
+        color:#fff200;
+    }
 	.get-pick-c-btn{
 	margin:26px 5px;
 	border:2px solid #fff200;

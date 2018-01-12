@@ -12,7 +12,7 @@
                     <div id="imageHolder" class="sidebar sidebar-right">
                         <h3 class="widget-title">Feedback</h3>
                         <div class="support">
-                            <img src="@Url.Content("~/images/feedback.png")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
+                            <img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
                             <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
                                 <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
                             </a>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group select contact-input">
-                            @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text","2"), "", new { @class = "form-control spacing", @id = "CustomerSelect" })
+                            @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text","2"), "", new { @class = "form-control spacing", @id = "CustomerSelect" ,onchange= "changeSupport()"})
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -136,25 +136,25 @@
     function OnChange() {
         $('#CustomerSelect').val("1504");
     }
-            //function changeSupport() {
-            //    var i = $('#Type').val();
-            //    debugger;
-            //    if (i == "ContactUs") {
-            //        $('.cn').show();
-            //        $('.cs').hide();
-            //        $('.fd').hide();
-            //    }
-            //    if (i == "CustomerSupport") {
-            //        $('.cs').show();
-            //        $('.cn').hide();
-            //        $('.fd').hide();
-            //    }
-            //    if (i == "FeedBack") {
-            //        $('.fd').show();
-            //        $('.cn').hide();
-            //        $('.cs').hide();
-            //    }
-            //}
+            function changeSupport() {
+                var i = $('#CustomerSelect').val();
+                debugger;
+                if (i == "ContactUs") {
+                    $('.cn').show();
+                    $('.cs').hide();
+                    $('.fd').hide();
+                }
+                if (i == "CustomerSupport") {
+                    $('.cs').show();
+                    $('.cn').hide();
+                    $('.fd').hide();
+                }
+                if (i == "FeedBack") {
+                    $('.fd').show();
+                    $('.cn').hide();
+                    $('.cs').hide();
+                }
+            }
             $(function () {
                 $('#frmContactSave').validate({
                     rules: {

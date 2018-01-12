@@ -30,21 +30,21 @@ namespace PickC.External.Controllers
             return View();
         }
       
-        public ActionResult CustomerSupport()
+        public ActionResult HelpDesk()
         {
             ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
             return View();
         }
 
 
-        public ActionResult ContactUs()
-        {
-            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList()
-                .Select(x => new { Value = x.LookupID, Text = x.LookupCode}).ToList();
-            return View();
-        }
+        //public ActionResult ContactUs()
+        //{
+        //    ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList()
+        //        .Select(x => new { Value = x.LookupID, Text = x.LookupCode}).ToList();
+        //    return View();
+        //}
         [HttpPost]
-        public ActionResult ContactUsSave(CustomerInquiry customer)
+        public ActionResult HelpDeskSave(CustomerInquiry customer)
         {
             customer.InquiryDate = DateTime.Now;
 
@@ -55,11 +55,11 @@ namespace PickC.External.Controllers
         {
             return View();
         }
-        public ActionResult Feedback()
-        {
-            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
-            return View();
-        }
+        //public ActionResult Feedback()
+        //{
+        //    ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
+        //    return View();
+        //}
         public ActionResult TermsAndConditions()
         {
             return View();

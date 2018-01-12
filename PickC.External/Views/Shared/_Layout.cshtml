@@ -81,8 +81,8 @@
                         <div class="header-social-links">
                             <a href="https://www.facebook.com/pick.cargo"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             <a href="https://twitter.com/PickCargo"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="https://plus.google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                            <a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://plus.google.com/102110542589146295297"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/pickcargo"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 
                         </div>
                     </div>
@@ -106,10 +106,12 @@
                     <a class="navbar-brand" href="@Url.Content("~/Dashboard/Index")"><img src="@Url.Content("~/images/logo.png")" class="img-responsive" alt="pickcargo logo"><span>pick-C</span></a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">                        
-                        <button class="get-pick-c-btn"><a href="@Url.Content("~/Dashboard/CustomerSupport")">Help Desk</a></button>
-                        @*<li><a href="@Url.Content("~/Dashboard/CustomerSupport")">Customer Support</a></li>
-                        <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact Us</a></li>*@
+                    <ul class="nav navbar-nav navbar-right"> 
+                        <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>                       
+                        @*<button class="get-pick-c-btn" onclick="helpChange()">@*<a href="@Url.Content("~/Dashboard/CustomerSupport")">Help Desk</a>*@
+                        @*Help Desk</button>*@
+                        @*<li><a href="@Url.Content("~/Dashboard/HelpDesk")">Customer Support</a></li>*@
+                        <li><a href="@Url.Content("~/Dashboard/HelpDesk")">Help Desk</a></li>
                         <button class="get-pick-c-btn"  onclick="GetApplink()" id="mobileNumber" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
@@ -193,8 +195,8 @@
                                 <ul>
                                     <li><a href="https://www.facebook.com/pick.cargo"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="https://twitter.com/PickCargo"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://plus.google.com/102110542589146295297"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/pickcargo"><i class="fa fa-linkedin"></i></a></li>
                                     <!-- <li><a href="#"><i class="fa fa-youtube"></i></a></li> -->
                                 </ul>
                             </div>
@@ -206,12 +208,12 @@
                             <div class="">
                                 <ul class="list-arrow">
                                     <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>
-                                    <li><a href="@Url.Content("~/Dashboard/Feedback")">Feedback</a></li>
+                                    @*<li><a href="@Url.Content("~/Dashboard/HelpDesk")">Feedback</a></li>*@
                                     <li><a href="@Url.Content("~/Dashboard/Faqs")">FAQs</a></li>
                                     <li><a href="@Url.Content("~/Dashboard/TermsAndConditions")">Terms & Conditions</a></li>
                                     <li><a href="@Url.Content("~/Dashboard/Careers")">Careers</a></li>
                                     <li><a href="@Url.Content("~/Dashboard/PrivacyPolicy")">Privacy Policy</a></li>
-                                    <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact us</a></li>
+                                    @*<li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact us</a></li>*@
                                 </ul>
                             </div>
                         </div>
@@ -325,6 +327,9 @@
             else
                 return false;
         });
+        function helpChange() {
+            window.location.href = "@Url.Content("~/Dashboard/CustomerSupport")";
+        }
        
         $('#help').on('hidden.bs.modal', function () {
             $(this).find('form').trigger('reset');

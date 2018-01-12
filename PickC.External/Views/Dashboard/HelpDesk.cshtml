@@ -8,20 +8,21 @@
             <div class="heading-title">
             </div>
             <div class="services-main">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                @*<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cn ">
                     <div id="imageHolder" class="sidebar sidebar-right">
-                        <h3 class="widget-title">Customer Support</h3>
+                        <h3 class="widget-title">Contact Us</h3>
                         <div class="support">
-                            <img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
-                            <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2230611056398!2d78.38301667706737!3d17.449034627920007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91617997918b%3A0xda6e2f6d0255a051!2sPick-C!5e0!3m2!1sen!2sin!4v1513771950190" width="550" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            @*<img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />*@
+                            @*<a href="tel:+914065454222" class="btn-feedback center-block solid blank">
                                 <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
-                            </a>
-                            <p>
+                            </a>*@
+                            @*<p>
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 cs" style="display:none">
+                </div>*@
+                @*<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 cs" style="display:none">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
                            <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px;padding-top: 10px;">
@@ -29,11 +30,11 @@
                                     <div>
                                         <div class="col-md-8 col-md-offset-2">
                                             <div class="support"> 
-                                                <img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
-                                                <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
+                                                <img src="@Url.Content("~/images/feedback.png")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
+                                                @*<a href="tel:+914065454222" class="btn-feedback center-block solid blank">
                                                     <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
                                                 </a>
-                                                <p>
+                                                @*<p>
                                                 </p>
                                             </div>
                                         </div>
@@ -41,11 +42,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Widget end -->
+                       
                     </div>
-                    <!-- Sidebar end -->
-                </div>
-                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12  fd" style="display:none">
+                  
+                </div>*@
+                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 " >
                     <div class="sidebar sidebar-right">
                         <div class="widget">
                             <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px; padding-top: 10px;">
@@ -56,10 +57,13 @@
                                                 <img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
                                             </div>
                                             <div class="support">
-                                                <a class="btn-feedback center-block solid blank" style="text-transform:lowercase;" type="submit">
+                                                <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
+                                          <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
+                                                </a>
+                                                @*<a class="btn-feedback center-block solid blank" style="text-transform:lowercase;" type="submit">
                                                     <i class="fa fa-envelope-o"></i>&nbsp;
                                                     info@pickcargo.in
-                                                </a>
+                                                </a>*@
                                                 <p>
                                                 </p>
                                             </div>
@@ -74,7 +78,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-@using (Html.BeginForm("ContactUsSave", "Dashboard", FormMethod.Post, new { id = "frmContactSave", name = "frmContactSave" }))
+@using (Html.BeginForm("HelpDeskSave", "Dashboard", FormMethod.Post, new { id = "frmContactSave", name = "frmContactSave" }))
 {
     <div class="">
         <div class="col-md-12">
@@ -82,7 +86,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group select contact-input">
-                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), "", new { @class = "form-control spacing",@id="CustomerSelect" })
+                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing",@id="CustomerSelect",onchange= "changesupport(this)" })
             </div>
         </div>
         <div class="col-md-12">
@@ -124,33 +128,35 @@
 <script type="text/javascript">
             $(function () {
                 debugger;
-                OnChange();
+               // OnChange();
                 //$('#Type').on('change', function () {
 
                 //});
             });
-            function OnChange() {
-                $('#CustomerSelect').val("1505");
-            }
-            //function changeSupport() {
-            //    var i = $('#Type').val();
-            //    debugger;
-            //    if (i == "ContactUs") {
-            //        $('.cn').show();
-            //        $('.cs').hide();
-            //        $('.fd').hide();
-            //    }
-            //    if (i == "CustomerSupport") {
-            //        $('.cs').show();
-            //        $('.cn').hide();
-            //        $('.fd').hide();
-            //    }
-            //    if (i == "FeedBack") {
-            //        $('.fd').show();
-            //        $('.cn').hide();
-            //        $('.cs').hide();
-            //    }
+            //function OnChange() {
+            //    $('#CustomerSelect').val("1505");
             //}
+            function changesupport(i) {
+                debugger;
+                //var i = $('#CustomerSelect').text();
+                var val = $('#CustomerSelect :selected').text();
+               
+                //if (val == "ContactUs") {
+                //    $('.cn').show();
+                //    $('.cs').hide();
+                //    $('.fd').hide();
+                //}
+                //if (val == "FeedBack") {
+                //    $('.cs').show();
+                //    $('.cn').hide();
+                //    $('.fd').hide();
+                //}
+                //if (val == "CustomerSupport") {
+                //    $('.fd').show();
+                //    $('.cn').hide();
+                //    $('.cs').hide();
+                //}
+            }
             $(function () {
                 $('#frmContactSave').validate({
                     rules: {
@@ -167,26 +173,18 @@
                     }
                 });
             });
+            
             function OnSubmit() {
+                debugger
                 if ($('#frmContactSave').valid()) {
                     $('#frmContactSave').submit();
-                }
-            }
-            function OnSubmit() {
-                if ($('#frmContactSave').valid()) {
-                    $('#frmContactSave').submit();
-                    window.location.href="@Url.Content("~/Dashboard/Index")"
-                    alert("Your request has been submitted successfully...")
+                    @*window.location.href = "@Url.Content("~/Dashboard/Index")";*@
+                    //alert("Your request has been submitted successfully...");
                 }
             }
 </script>
         }
-<style>
-    label.error {
-        /*margin-left: 340px;*/
-        
-    }
-</style>
+
     <!--contact section End-->
     <!--Services section Start-->
     
