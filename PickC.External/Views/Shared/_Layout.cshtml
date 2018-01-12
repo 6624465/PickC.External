@@ -325,6 +325,14 @@
             else
                 return false;
         });
+       
+        $('#help').on('hidden.bs.modal', function () {
+            $(this).find('form').trigger('reset');
+        });
+
+        $('#get-pick-c').on('hidden.bs.modal', function () {
+            $(this).find('form').trigger('reset');
+        });
 
         
         $(function () {
@@ -410,12 +418,12 @@
             }
             }
 
-        function Clear() {
-            debugger
-            $('#frmAppLink input[type="text"]').empty();
-            $('#get-pick-c').modal('Hide');
-           // $('#appmobileNumber').val('');
-        }
+        //function Clear() {
+        //    debugger
+        //    $('#frmAppLink input[type="text"]').empty();
+        //    $('#get-pick-c').modal('Hide');
+        //   // $('#appmobileNumber').val('');
+        //}
 
         //function LoadingAnimation() {
         //    $.loader({

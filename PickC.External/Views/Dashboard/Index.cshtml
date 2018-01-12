@@ -132,7 +132,7 @@
 @using (Html.BeginForm("TripEstimate", "CustomerInquiry", FormMethod.Post, new { id = "frmTripEstimate", name = "frmTripEstimate" }))
 {
     <div class="modal fade" id="get-trip-estimate" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
+         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -167,7 +167,7 @@
                 </div>
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn" data-backdrop="static" data-keyboard="false">
+                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn" >
                         Get Estimate Now
                     </button>
                     <!--data-toggle="modal" data-target="#prices-list" data-dismiss="modal"-->
@@ -195,7 +195,7 @@
                         <b>Booking Status: </b><span>@bookingStatus.Status</span>
                     </div>
                     <div>
-                        <b>Booking ID: </b><span>@bookingStatus.BookingNo</span>
+                        <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
                     </div>
                 </div>
 
@@ -223,7 +223,7 @@
         </div>
     </div>*@
 }
-<div class="modal fade" id="prices-list" role="dialog">
+<div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog scroll center-modal">
         <div class="modal-content">
             <div class="modal-header custom-header">
@@ -336,13 +336,15 @@
             new google.maps.places.Autocomplete(document.getElementById('toLocation'), options);
             directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
         });
+        //$('#prices-list').modal({
+        //    backdrop: 'static',
+        //    keyboard: false
+        //});
 
         function bookingSave(vehicleGroup, vehicleType) {
-            debugger
-          
                 @{
                     var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
-                  
+
                     if (customerInquiryVm != null)
                     {
                 <text>
@@ -357,7 +359,6 @@
                 $('#VehicleType').val(vehicleType);
                 $('#VehicleGroup').val(vehicleGroup);
                 $('#frmBooking').submit();
-              
                 </text>
                 }
             }
@@ -374,12 +375,12 @@
             }
             @if(bookingStatus != null)
             {
-               
+
                 <text>
             $('#myModal').modal('show');
                 </text>
             }
-           
+
             @*$('.cls').on('click', function () {
                 debugger;
                 var vanGroup = $(this).attr('data-vgroup');
@@ -441,6 +442,17 @@
                 })
                 debugger;
             });*@
+            debugger;
+            function ClearTrpEstimate() {
+                
+            }
+            //$('#get-trip-estimate').on('hidden', function () {
+            //    $.clear(this);
+            //});
+            $('#get-trip-estimate').on('hidden.bs.modal', function () {
+                $('#frmTripEstimate')[0].reset();
+                $(this).find('form').trigger('reset');
+            });
 
             $('#frmTripEstimate').validate({
                 rules: {
@@ -462,7 +474,7 @@
                 },
                 messages: {
                     CustomerName: {
-                        required: 'Please enter Name'
+                        required: 'Please Enter Name'
                     },
                     MobileNo: {
                         required: 'Please enter valid Mobile Number'
@@ -482,9 +494,14 @@
         });
         function FromToLocations() {
             debugger
+
             if ($('#frmFromToLocation').valid()) {
                 //var fromLatlong = {};
                 //var toLatLong = {};
+                $('#frmTripEstimate input[type="text"]').removeClass('error');
+                $('#frmTripEstimate label').removeClass('error');
+                $('#frmTripEstimate label').empty();
+
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'address': $("#fromLocation").val() }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
