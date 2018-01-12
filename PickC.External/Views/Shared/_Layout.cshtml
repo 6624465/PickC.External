@@ -79,7 +79,7 @@
                 <div class="header-top">
                     <div class="col-md-6">
                         <div class="header-social-links">
-                            <a href="https://www.facebook.com/Pick-Cargo-631497713713686/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/pick.cargo"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             <a href="https://twitter.com/PickCargo"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a href="https://plus.google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             <a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="top-header-links">
-                            <a href="#help" onclick="takeHelp()" data-backdrop="static" data-keyboard="false"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
+                            <a href="#help" onclick="takeHelp()" ><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         <li><a href="@Url.Content("~/Dashboard/CustomerSupport")">Customer Support</a></li>
                         <li><a href="@Url.Content("~/Dashboard/ContactUs")">Contact Us</a></li>
 
-                        <button class="get-pick-c-btn"  onclick="GetApplink()" id="mobileNumber" data-backdrop="static" data-keyboard="false" data-target="#get-pick-c">Get Pick-C App Link</button>
+                        <button class="get-pick-c-btn"  onclick="GetApplink()" id="mobileNumber" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
             </div>
@@ -255,7 +255,7 @@
         <!--Footer section End-->
     </div>
     <!--Help modal start-->
-    <div class="modal fade" id="help" role="dialog">
+    <div class="modal fade" id="help" role="dialog" data-backdrop="static">
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -278,11 +278,11 @@
     </div>
     <!--Help modal end-->
     <!--applink modal Start-->
-    <div class="modal fade" id="get-pick-c" role="dialog">
+    <div class="modal fade" id="get-pick-c" role="dialog" data-backdrop="static">
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="Clear()" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" onclick="Clear()" data-dismiss="modal" >&times;</button>
                 </div>
                 <div class="modal-body">                    
                     <div class="form-group get-link">
@@ -327,6 +327,7 @@
                 return false;
         });
 
+        
         $(function () {
             $('#frmHelp').validate({
                 rules: {
@@ -392,24 +393,42 @@
             $('#get-pick-c').modal('show');
 
         }
-            function help() {
+        function help() {
+            debugger
+
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
                 window.location.href="@Url.Content("~/Dashboard/GetHelp")"
             }
         }
 
-            function getApphelp() {
+        function getApphelp() {
+            debugger
+        
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
-                alert("Your PickC App Link is sent to :  " + $('#appmobileNumber').val());
+                alert("Your Pick-C App Link is sent to :  " + $('#appmobileNumber').val());
             }
             }
 
-            //function getApphelp() {
-            //    
-            //}
+        function Clear() {
+            debugger
+            $('#frmAppLink input[type="text"]').empty();
+            $('#get-pick-c').modal('Hide');
+           // $('#appmobileNumber').val('');
+        }
+
+        //function LoadingAnimation() {
+        //    $.loader({
+        //        className: "blue-with-image-2",
+        //        content: '',
+        //    });
+        //}
+        //$('.ajaxCss').click(function () {
+        //    LoadingAnimation();
+        //});
     </script>
+    
     @RenderSection("Scripts", false)
 
 </body>

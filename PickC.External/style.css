@@ -353,9 +353,7 @@ text-align:center;
 .color-bg{
 background:#ccc;
 }
-body.modal-open {
-    overflow: auto !important;
-    }
+
  .modal-open .modal{
  padding:10px 10px 10px 10px !important;
  }
@@ -365,7 +363,6 @@ body.modal-open {
 
 
 .modal{
-position:relatve;
 z-index:100000000;
 padding:5px;
 
