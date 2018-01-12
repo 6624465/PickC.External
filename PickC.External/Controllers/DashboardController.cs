@@ -9,9 +9,9 @@ using PickC.External.BusinessFactory;
 using PickC.External.ViewModels;
 using System.Configuration;
 using System.Net;
-using Newtonsoft.Json;
 using System.Text;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace PickC.External.Controllers
 {
@@ -22,7 +22,7 @@ namespace PickC.External.Controllers
         {
             if(IsTripEstimate)
                 ViewData["vdIsTripEstimate"] = true;
-
+            
             return View();
         }
         public ActionResult AboutUs()
@@ -77,48 +77,73 @@ namespace PickC.External.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SaveBooking(Booking booking)
         {
+            //JsonSerializerSettings serializerSettings = new JsonSerializerSettings { Formatting = Formatting.Indented };
             try
             {
+                booking.BookingDate = DateTime.Now;
+                booking.RequiredDate = DateTime.Now;
+                booking.LoadingUnLoading = 1373;
                 var result = new CustomerInquiryBO().SaveBooking(booking);
                 if (result)
                 {
-                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking
+                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking{BookingNo = booking.BookingNo});
+                    //var driverList = new CustomerInquiryBO().GetNearTrucksDeviceID(bookings.BookingNo,
+                    //    UTILITY.radius,
+                    //    bookings.VehicleType,
+                    //    bookings.VehicleGroup,
+                    //    bookings.Latitude,
+                    //    bookings.Longitude);//UTILITY.radius
+                    //if (driverList.Count > 0)
+                    //{
+                    //    PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
+                    //        booking.BookingNo, UTILITY.NotifyNewBooking);
+
+
+                    //return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
+                    //return View(new
+                    //{
+                    //    BookingNo = booking.BookingNo,
+                    //    Status = UTILITY.BOOKINGSUCCESS
+                    //});
+
+                    TempData["TD:BookingInfo"] = new BookingStatusVm
                     {
-                        BookingNo = booking.BookingNo
-                    });
-                    var driverList = new CustomerInquiryBO().GetNearTrucksDeviceID(bookings.BookingNo,
-                        UTILITY.radius,
-                        bookings.VehicleType,
-                        bookings.VehicleGroup,
-                        bookings.Latitude,
-                        bookings.Longitude);//UTILITY.radius
-                    if (driverList.Count > 0)
-                    {
-                        PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
-                            booking.BookingNo, UTILITY.NotifyNewBooking);
-                        return View(new
-                        {
-                            BookingNo = booking.BookingNo,
-                            Status = UTILITY.BOOKINGSUCCESS
-                        });
+                        BookingNo = booking.BookingNo,
+                        Status = UTILITY.BOOKINGSUCCESS
+                    };
+                    return RedirectToAction("Index");
                     }
                     else
                     {
                         var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
-                        if (CancelBooking)
-                            return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
-                        else
-                            return View(new { BookingNo = "", Status = UTILITY.FAILURESTATUS });
+
+                    TempData["TD:BookingInfo"] = new BookingStatusVm
+                    {
+                        BookingNo = "",
+                        Status = UTILITY.FAILURESTATUS
+                    };
+                    return RedirectToAction("Index");
+                        //if (CancelBooking)
+                        //    //TempData["TD:BookingInfo"] = new BookingStatusVm
+                        //    //{
+                        //    //    BookingNo = booking.BookingNo,
+                        //    //    Status = UTILITY.BOOKINGSUCCESS
+                        //    //};
+                        //return Json(new { BookingNo = "", Status = UTILITY.NotifyCustomer }, JsonRequestBehavior.AllowGet);
+                        ////return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
+                        //else
+                        //    return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
                     }
-                }
-                else
-                    return View(result);
+                
+                //else
+                //    return View(result);
             }
             catch (Exception ex)
             {
-                return View();
+                return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
             }
         }
         public void PushNotification(List<string> receipents, string bookingNo, string message)

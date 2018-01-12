@@ -55,6 +55,8 @@ namespace PickC.External.Controllers
 
             customerInquiryBO.Save(customerInquiry);
 
+            TempData["TD:CustomerInquiry"] = customerInquiryVm;
+
             bool _IsTripEstimate = false;
             if (customerInquiryVm.Distance.HasValue)
             {

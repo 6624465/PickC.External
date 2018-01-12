@@ -15,5 +15,12 @@ namespace PickC.External.ViewModels
         public string CustomerName { get; set; }
         public decimal? Distance { get; set; }
         public decimal? Duration { get; set; }
+
+        public string frmLatLog { get; set; }
+        public string toLatLog { get; set; }
+
+        public string fLoc { get; set; }
+
+        public string tLoc { get; set; }
     }
 }
