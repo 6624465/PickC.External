@@ -176,7 +176,13 @@
                     $('#frmContactSave').submit();
                 }
             }
-           
+            function OnSubmit() {
+                if ($('#frmContactSave').valid()) {
+                    $('#frmContactSave').submit();
+                    window.location.href="@Url.Content("~/Dashboard/Index")"
+                    alert("Your request has been submitted successfully...")
+                }
+            }
 </script>
     }
 <style>
