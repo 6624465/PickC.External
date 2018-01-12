@@ -819,6 +819,10 @@ background-color:green;
     color: #000;
     border: 1px solid #000;
   }
+  .btn-primary:focus{
+      background:#000 !important;
+      border:1px solid #fff200 !important;
+  }
   .note-text{
   float:left;
   line-height:3;
