@@ -22,7 +22,8 @@ namespace PickC.External.Controllers
         {
             if(IsTripEstimate)
                 ViewData["vdIsTripEstimate"] = true;
-            
+
+            //CustomerInquiry data = TempData["DisplayMessage"] as CustomerInquiry;
             return View();
         }
         public ActionResult AboutUs()
@@ -49,7 +50,18 @@ namespace PickC.External.Controllers
             customer.InquiryDate = DateTime.Now;
 
             var result = new CustomerInquiryBO().SaveContactUs(customer);
-            return View("Index");
+            if (result) {
+                if(customer.InquiryType== 1503)
+                TempData["DisplayMessage"] = "Your request is submitted successfully";
+                else if (customer.InquiryType == 1504)
+                    TempData["DisplayMessage"] = "Thanks for your feedback";
+                else
+                    TempData["DisplayMessage"] = "Our customer support team will revert  shortly";
+            }
+            //customersupport:our customer support team will revert  shortly;
+            //contactus:your request is submitted succesfully;
+            //feedback:Thanks for your feedback;
+            return RedirectToAction("Index", "Dashboard");
         }
         public ActionResult Faqs()
         {

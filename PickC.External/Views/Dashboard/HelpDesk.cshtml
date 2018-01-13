@@ -86,7 +86,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group select contact-input">
-                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing",@id="CustomerSelect",onchange= "changesupport(this)" })
+                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing", @id = "CustomerSelect", onchange = "changesupport(this)" })
             </div>
         </div>
         <div class="col-md-12">
@@ -109,7 +109,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "3", @cols = "30", placeholder="Message" })
+                @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "3", @cols = "30", placeholder = "Message" })
             </div>
             <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary">Submit</button>
         </div>
@@ -119,6 +119,7 @@
             </div>
         </div>
     </div>
+
     <div class="clear-fix"></div>
 
 
@@ -140,7 +141,7 @@
                 debugger;
                 //var i = $('#CustomerSelect').text();
                 var val = $('#CustomerSelect :selected').text();
-               
+
                 //if (val == "ContactUs") {
                 //    $('.cn').show();
                 //    $('.cs').hide();
@@ -173,15 +174,34 @@
                     }
                 });
             });
-            
-            function OnSubmit() {
-                debugger
-                if ($('#frmContactSave').valid()) {
-                    $('#frmContactSave').submit();
-                    @*window.location.href = "@Url.Content("~/Dashboard/Index")";*@
-                    //alert("Your request has been submitted successfully...");
+        
+          
+                function OnSubmit() {
+
+                    if ($('#frmContactSave').valid()) {
+                        $('#frmContactSave').submit();
+                        @*debugger
+                    @if (TempData["DisplayMessage"] != null)
+                    {<text>
+                        alert("@TempData["DisplayMessage"]");
+                   </text>
+                    }*@
+                    }
                 }
-            }
+                @*setTimeout(function () {
+                    alert("Your request has been submitted successfully");
+                    window.location.href = "@Url.Content("~/Dashboard/Index")";
+                }, 5000);*@
+            
+                //debugger
+                //          var queryStatus = TempData["DisplayMessage"];
+                //          if (queryStatus != null)
+                //           {
+
+                //              alert(queryStatus);
+
+                //           }
+
 </script>
         }
 

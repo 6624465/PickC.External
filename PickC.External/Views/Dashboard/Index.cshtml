@@ -176,6 +176,30 @@
         </div>
     </div>
 }
+@*@{ 
+    var queryStatus=(string)TempData["DisplayMessage"];
+}
+if (queryStatus != null)
+{
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <b>Booking Status: </b><span>@queryStatus</span>
+                </div>
+                @*<div>
+                    <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                </div>*@
+            @*</div>
+
+        </div>
+    </div>
+</div>*@
 
 @{
     var bookingStatus = (PickC.External.ViewModels.BookingStatusVm)TempData["TD:BookingInfo"];
@@ -222,6 +246,32 @@
             </div>
         </div>
     </div>*@
+}
+@{
+    var queryStatus = TempData["DisplayMessage"];
+}
+@if (queryStatus != null)
+{
+
+    <div class="modal fade" id="queryModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span><b>@queryStatus</b></span>
+                    </div>
+                    @*<div>
+                            <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                        </div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
 }
 <div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog scroll center-modal">
@@ -342,24 +392,24 @@
         //});
 
         function bookingSave(vehicleGroup, vehicleType) {
-                @{
+            @{
                     var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
 
                     if (customerInquiryVm != null)
                     {
                 <text>
-                $('#CustomerId').val('@customerInquiryVm.MobileNo');
-                $('#CustomerName').val('@customerInquiryVm.CustomerName');
-                $('#LocationFrom').val('@customerInquiryVm.fLoc');
-                $('#LocationTo').val('@customerInquiryVm.tLoc');
-                $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
-                $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
-                $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
-                $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
-                $('#VehicleType').val(vehicleType);
-                $('#VehicleGroup').val(vehicleGroup);
-                $('#frmBooking').submit();
-                </text>
+            $('#CustomerId').val('@customerInquiryVm.MobileNo');
+            $('#CustomerName').val('@customerInquiryVm.CustomerName');
+            $('#LocationFrom').val('@customerInquiryVm.fLoc');
+            $('#LocationTo').val('@customerInquiryVm.tLoc');
+            $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
+            $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
+            $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
+            $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
+            $('#VehicleType').val(vehicleType);
+            $('#VehicleGroup').val(vehicleGroup);
+            $('#frmBooking').submit();
+            </text>
                 }
             }
         }
@@ -369,8 +419,8 @@
                 if (isTripEstimate != null && (bool)isTripEstimate && fareChartList != null)
                 {
                     <text>
-                        $('#prices-list').modal('show');
-                    </text>
+            $('#prices-list').modal('show');
+            </text>
                 }
             }
             @if(bookingStatus != null)
@@ -378,8 +428,26 @@
 
                 <text>
             $('#myModal').modal('show');
-                </text>
+            </text>
             }
+              @if(queryStatus != null)
+              {
+
+                  <text>
+            $('#queryModal').modal('show');
+                  </text>
+              }
+        
+            @*@{
+    var queryStatus = TempData["TD:BookingInfo"];
+    if (queryStatus != null)
+    {
+    <text>
+            alert(queryStatus);
+            </text>
+        }
+    }*@
+
 
             @*$('.cls').on('click', function () {
                 debugger;
@@ -444,7 +512,7 @@
             });*@
             debugger;
             function ClearTrpEstimate() {
-                
+
             }
             //$('#get-trip-estimate').on('hidden', function () {
             //    $.clear(this);
@@ -529,7 +597,7 @@
             }
             else {
                 alert("Please enter from and to locations");
-}
+            }
         }
         //$('.booknow-btn-red').click(function () {
         //    alert(" Booking Confirmed.Your CRN number is:BK171100049")
