@@ -293,6 +293,7 @@
     <Compile Include="Contracts\Booking.cs" />
     <Compile Include="Contracts\CustomerInquiry.cs" />
     <Compile Include="Contracts\Driver.cs" />
+    <Compile Include="Contracts\EmailGenerator.cs" />
     <Compile Include="Contracts\FareChart.cs" />
     <Compile Include="Contracts\IContract.cs" />
     <Compile Include="Contracts\LookUp.cs" />

@@ -61,6 +61,7 @@ namespace PickC.External.Controllers
             //customersupport:our customer support team will revert  shortly;
             //contactus:your request is submitted succesfully;
             //feedback:Thanks for your feedback;
+            var emailResult = SendMessageToPickC(customer);
             return RedirectToAction("HelpDesk", "Dashboard");
         }
         public ActionResult Faqs()
@@ -210,5 +211,56 @@ namespace PickC.External.Controllers
                 string str = ex.Message;
             }
         }
+        public bool SendMessageToPickC(CustomerInquiry contactUs)
+        {
+            bool result = true;
+            try
+            {
+                //contactUs.CreatedBy = UTILITY.DEFAULTUSER;
+               // result = new CustomerBO().SaveCustomer(contactUs);
+                string fromMail = string.Empty;
+                if (result == true)
+                {
+                    if (contactUs.InquiryType == 1505)
+                        fromMail = "info@pickcargo.in";
+                    else if (contactUs.InquiryType == 1503)
+                        fromMail = "contact@pickcargo.in";
+                    else
+                        fromMail = "support@pickcargo.in";
+
+
+                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail, true, contactUs.Subject, contactUs.Description);
+
+                    if (contactUs.EmailID.Length>0)
+                    {
+                        var strBody = string.Empty;
+
+                        strBody = "Dear " + contactUs.CustomerName + ", <BR>" +
+                                  "Thank you for your valuable request. Our Customer support team will revert soon. <BR> <BR>" +
+                                  "Regards, <BR>" +
+                                  "Pick-C Support team."; 
+
+
+
+                        bool sendMailCustomer = new EmailGenerator().ConfigMail(contactUs.EmailID, true, contactUs.Subject, strBody);
+                    }
+
+
+
+                    if (sendMailPickC)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+      
     }
 }
