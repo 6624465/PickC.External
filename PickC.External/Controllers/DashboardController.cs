@@ -61,7 +61,7 @@ namespace PickC.External.Controllers
             //customersupport:our customer support team will revert  shortly;
             //contactus:your request is submitted succesfully;
             //feedback:Thanks for your feedback;
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("HelpDesk", "Dashboard");
         }
         public ActionResult Faqs()
         {

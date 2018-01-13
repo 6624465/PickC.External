@@ -86,7 +86,7 @@
         </div>
         <div class="col-md-12">
             <div class="form-group select contact-input">
-                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing", @id = "CustomerSelect", onchange = "changesupport(this)" })
+                @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing", @id = "CustomerSelect"})
             </div>
         </div>
         <div class="col-md-12">
@@ -119,6 +119,32 @@
             </div>
         </div>
     </div>
+@{
+    var queryStatus = TempData["DisplayMessage"];
+}
+@if (queryStatus != null)
+{
+
+    <div class="modal fade" id="queryModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span><b>@queryStatus</b></span>
+                    </div>
+                    @*<div>
+                            <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                        </div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
 
     <div class="clear-fix"></div>
 
@@ -128,7 +154,7 @@
         
 <script type="text/javascript">
             $(function () {
-                debugger;
+                
                // OnChange();
                 //$('#Type').on('change', function () {
 
@@ -136,7 +162,15 @@
             });
             //function OnChange() {
             //    $('#CustomerSelect').val("1505");
-            //}
+    //}
+            $(function () {
+                @if (queryStatus != null)
+                {
+                    <text>
+                $('#queryModal').modal('show');
+                </text>
+                }
+            });
             function changesupport(i) {
                 debugger;
                 //var i = $('#CustomerSelect').text();
@@ -180,28 +214,10 @@
 
                     if ($('#frmContactSave').valid()) {
                         $('#frmContactSave').submit();
-                        @*debugger
-                    @if (TempData["DisplayMessage"] != null)
-                    {<text>
-                        alert("@TempData["DisplayMessage"]");
-                   </text>
-                    }*@
+                    
                     }
                 }
-                @*setTimeout(function () {
-                    alert("Your request has been submitted successfully");
-                    window.location.href = "@Url.Content("~/Dashboard/Index")";
-                }, 5000);*@
-            
-                //debugger
-                //          var queryStatus = TempData["DisplayMessage"];
-                //          if (queryStatus != null)
-                //           {
-
-                //              alert(queryStatus);
-
-                //           }
-
+              
 </script>
         }
 

@@ -247,7 +247,7 @@ if (queryStatus != null)
         </div>
     </div>*@
 }
-@{
+@*@{
     var queryStatus = TempData["DisplayMessage"];
 }
 @if (queryStatus != null)
@@ -266,13 +266,13 @@ if (queryStatus != null)
                     </div>
                     @*<div>
                             <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
-                        </div>*@
+                        </div>
                 </div>
 
             </div>
         </div>
     </div>
-}
+}*@
 <div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog scroll center-modal">
         <div class="modal-content">
@@ -430,13 +430,13 @@ if (queryStatus != null)
             $('#myModal').modal('show');
             </text>
             }
-              @if(queryStatus != null)
+              @*@if(queryStatus != null)
               {
 
                   <text>
             $('#queryModal').modal('show');
                   </text>
-              }
+              }*@
         
             @*@{
     var queryStatus = TempData["TD:BookingInfo"];
