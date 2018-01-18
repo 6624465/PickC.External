@@ -166,9 +166,10 @@ z-index:10000;
     .get-pick-c-btn:active{
         color:#000;
     }
-    .get-pick-c-btn:focus{
-        color:#fff200;
-    }
+.get-pick-c-btn:focus {
+    color: #080808;
+    background: #fff200;
+}
 	.get-pick-c-btn{
 	margin:26px 5px;
 	border:2px solid #fff200;
@@ -278,10 +279,7 @@ color: #fff200 !important;
 .estimate-form>input::-moz-placeholder{
 color: #fff200 !important;
 }
-.form-control{
-margin-top:20px;
 
-}
 
 .form-control:focus{
 
@@ -300,9 +298,9 @@ margin-top:20px;
         margin-bottom:0px !important;
         
     }
-.form-group>textarea{
+/*.form-group>textarea{
            margin-top: 15px !important;
-    }
+    }*/
 .buttons{
 text-align:center;
 
@@ -426,9 +424,7 @@ display:inline;
 .contact-input > .form-control{
     width:60%;
 }
-.form-group{
-    margin-bottom:0px;
-}
+
 .get-link-btn{
 
 background:#eadf1d;
@@ -824,10 +820,11 @@ background-color:green;
     color: #000;
     border: 1px solid #000;
   }
-  .btn-primary:focus{
-      background:#000 !important;
-      border:1px solid #fff200 !important;
-  }
+.btn-primary:focus {
+    background: #fff200 !important;
+    border: 1px solid #333 !important;
+    color: #000;
+}
   .note-text{
   float:left;
   line-height:3;

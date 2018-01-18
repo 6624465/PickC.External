@@ -16,11 +16,19 @@
             bottom: 8px;
         }
 
-            .booknow-btn-red:hover {
+        .form-group {
+            margin-bottom: 0px;
+        }
+
+        .form-control {
+            margin-top: 20px;
+        }
+
+        /*.booknow-btn-red:hover {
                 background: red;
                 color: #000;
                 border: 1px solid #000;
-            }
+            }*/
     </style>
 }
 <!--main content-->
@@ -167,7 +175,7 @@
                 </div>
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn" >
+                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn">
                         Get Estimate Now
                     </button>
                     <!--data-toggle="modal" data-target="#prices-list" data-dismiss="modal"-->
@@ -176,30 +184,30 @@
         </div>
     </div>
 }
-@*@{ 
-    var queryStatus=(string)TempData["DisplayMessage"];
-}
-if (queryStatus != null)
-{
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <b>Booking Status: </b><span>@queryStatus</span>
+@*@{
+        var queryStatus=(string)TempData["DisplayMessage"];
+    }
+    if (queryStatus != null)
+    {
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
                 </div>
-                @*<div>
-                    <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
-                </div>*@
-            @*</div>
+                <div class="modal-body">
+                    <div>
+                        <b>Booking Status: </b><span>@queryStatus</span>
+                    </div>
+                    @*<div>
+                        <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                    </div>*@
+@*</div>
 
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 @{
     var bookingStatus = (PickC.External.ViewModels.BookingStatusVm)TempData["TD:BookingInfo"];
@@ -216,10 +224,10 @@ if (queryStatus != null)
                 </div>
                 <div class="modal-body">
                     <div>
-                        <b>Booking Status: </b><span>@bookingStatus.Status</span>
+                        <span>@bookingStatus.Status</span>
                     </div>
                     <div>
-                        <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                        <span>Your CRN is : @bookingStatus.BookingNo</span>
                     </div>
                 </div>
 
@@ -227,140 +235,140 @@ if (queryStatus != null)
         </div>
     </div>
     @*<div class="modal fade" role="dialog" id="modalBookingStatus">
+            <div class="modal-dialog scroll center-modal">
+                <div class="modal-content">
+                    <div class="modal-header custom-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">Booking Status</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Booking Stauts</h4>:@bookingStatus.Status
+                            </div>
+                            <div class="col-md-12">
+                                <h4>BookingNo</h4>:
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+}
+    @*@{
+            var queryStatus = TempData["DisplayMessage"];
+        }
+        @if (queryStatus != null)
+        {
+
+            <div class="modal fade" id="queryModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <span><b>@queryStatus</b></span>
+                            </div>
+                            @*<div>
+                                    <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }*@
+    <div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog scroll center-modal">
             <div class="modal-content">
                 <div class="modal-header custom-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Booking Status</h4>
+                    <h4 class="modal-title">Approx. Estimate Fare</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Booking Stauts</h4>:@bookingStatus.Status
-                        </div>
-                        <div class="col-md-12">
-                            <h4>BookingNo</h4>:
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
-}
-@*@{
-    var queryStatus = TempData["DisplayMessage"];
-}
-@if (queryStatus != null)
-{
-
-    <div class="modal fade" id="queryModal" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <span><b>@queryStatus</b></span>
-                    </div>
-                    @*<div>
-                            <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
-                        </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-}*@
-<div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog scroll center-modal">
-        <div class="modal-content">
-            <div class="modal-header custom-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Approx. Estimate Fare</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row space-top prices-list-bg">
-                    <div class="col-md-4 col-xs-4 custom-height">
-                        <div class="pricelist-logo">
-                            <img src="@Url.Content("~/images/logo.png")" class="img-responsive" alt="pickcargo logo" />
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4 custom-height">
-                        <div class="open-close-img">
-                            <img src="@Url.Content("~/images/open.png")" class="img-responsive" alt="" />
-                        </div>
-                        <h5 class="inline">Open Truck</h5>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <div class="open-close-img">
-                            <img src="@Url.Content("~/images/closed.png")" class="img-responsive" alt="" />
-                        </div>
-                        <h5 class="inline">Close Truck</h5>
-                    </div>
-                </div>
-                @if (fareChartList != null)
-                {
-                    for (var i = 0; i < fareChartList.Count; i++)
-                    {
-                        <div class="row space-top">
-                            <div class="col-md-4 col-xs-4 custom-height custom-truck-div">
-                                <div class="vehicle-types">
-                                    <div class="icon">
-                                        <img src="@Url.Content("~/images/" + fareChartList[i].vehicleGroupDesc + ".png")" class="img-responsive" alt="Mini-Truck" />
-                                    </div>
-                                    <h3>@fareChartList[i].vehicleGroupDesc</h3>
-                                </div>
+                    <div class="row space-top prices-list-bg">
+                        <div class="col-md-4 col-xs-4 custom-height">
+                            <div class="pricelist-logo">
+                                <img src="@Url.Content("~/images/logo.png")" class="img-responsive" alt="pickcargo logo" />
                             </div>
-                            <div class="color-bg">
+                        </div>
+                        <div class="col-md-4 col-xs-4 custom-height">
+                            <div class="open-close-img">
+                                <img src="@Url.Content("~/images/open.png")" class="img-responsive" alt="" />
+                            </div>
+                            <h5 class="inline">Open Truck</h5>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="open-close-img">
+                                <img src="@Url.Content("~/images/closed.png")" class="img-responsive" alt="" />
+                            </div>
+                            <h5 class="inline">Close Truck</h5>
+                        </div>
+                    </div>
+                    @if (fareChartList != null)
+                    {
+                        for (var i = 0; i < fareChartList.Count; i++)
+                        {
+                            <div class="row space-top">
+                                <div class="col-md-4 col-xs-4 custom-height custom-truck-div">
+                                    <div class="vehicle-types">
+                                        <div class="icon">
+                                            <img src="@Url.Content("~/images/" + fareChartList[i].vehicleGroupDesc + ".png")" class="img-responsive" alt="Mini-Truck" />
+                                        </div>
+                                        <h3>@fareChartList[i].vehicleGroupDesc</h3>
+                                    </div>
+                                </div>
+                                <div class="color-bg">
+                                    <div class="col-md-4 col-xs-4 custom-height">
+                                        <div class="Prices-list">
+                                            <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
+                                            <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>  } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>   } else { <text> class="booknow-btn-red context" </text>  }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
-                                        <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if(fareChartList[i].IsOpenOnline) { <text>onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text> } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
+                                        <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
+                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text> } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn" </text>   } else { <text> class="booknow-btn-red context" </text>  }>Book Now</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xs-4 custom-height">
-                                <div class="Prices-list">
-                                    <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text>onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')"</text>} data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn"</text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     }
-                }
-            </div>
-            <div class="modal-footer custom-footer">
-                <h4 class="note-text"><strong>Note:&nbsp;</strong>This is an approximate estimate.Actual fare and travel time may differ.</h4>
+                </div>
+                <div class="modal-footer custom-footer">
+                    <h4 class="note-text"><strong>Note:&nbsp;</strong>This is an approximate estimate.Actual fare and travel time may differ.</h4>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-@using (Html.BeginForm("SaveBooking", "Dashboard", FormMethod.Post, new { id = "frmBooking", name = "frmBooking" }))
-{
-    @Html.Hidden("CustomerId")
-    @Html.Hidden("CustomerName")
-    @Html.Hidden("LocationFrom")
-    @Html.Hidden("LocationTo")
-    @Html.Hidden("Latitude")
-    @Html.Hidden("Longitude")
-    @Html.Hidden("ToLatitude")
-    @Html.Hidden("ToLongitude")
-    @Html.Hidden("VehicleType")
-    @Html.Hidden("VehicleGroup")
+    @using (Html.BeginForm("SaveBooking", "Dashboard", FormMethod.Post, new { id = "frmBooking", name = "frmBooking" }))
+    {
+        @Html.Hidden("CustomerId")
+        @Html.Hidden("CustomerName")
+        @Html.Hidden("LocationFrom")
+        @Html.Hidden("LocationTo")
+        @Html.Hidden("Latitude")
+        @Html.Hidden("Longitude")
+        @Html.Hidden("ToLatitude")
+        @Html.Hidden("ToLongitude")
+        @Html.Hidden("VehicleType")
+        @Html.Hidden("VehicleGroup")
 
-}
+    }
 
-<!-- modals content-->
-@section Scripts{
-    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7WVBL9AmhKs1QAr4x7mArA2mKZY-9nUo&v=3.exp&libraries=places&sensor=true"></script>
+    <!-- modals content-->
+    @section Scripts{
+        <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7WVBL9AmhKs1QAr4x7mArA2mKZY-9nUo&v=3.exp&libraries=places&sensor=true"></script>
 
 
-    <script type="text/javascript">
+        <script type="text/javascript">
         $(document).on('keypress', '.numCss', function (evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode;
             if ((charCode >= 48 && charCode <= 57) || charCode == 8)
@@ -437,7 +445,7 @@ if (queryStatus != null)
             $('#queryModal').modal('show');
                   </text>
               }*@
-        
+
             @*@{
     var queryStatus = TempData["TD:BookingInfo"];
     if (queryStatus != null)
@@ -715,6 +723,11 @@ if (queryStatus != null)
         function Clear() {
             $('#fromLocation, #toLocation').val('');
         }
-    </script>
-   
-}
+        </script>
+
+    }
+    <style>
+        .context {
+            cursor: not-allowed;
+        }
+    </style>
