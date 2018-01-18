@@ -85,30 +85,38 @@
             <h3><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
         </div>
         <div class="col-md-12">
-            <div class="form-group select contact-input">
+            <div class="form-group select contact-input input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing", @id = "CustomerSelect"})
             </div>
         </div>
         <div class="col-md-12">
-            <div class="form-group contact-input">
+            <div class="form-group contact-input input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control spacing alphaonly", placeholder = "Enter Name", id = "nme" })
+               
             </div>
-            <div class="form-group contact-input">
-                @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control spacing", id = "eml", placeholder = "Enter Email ID" })
+            <div class="form-group contact-input input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control", id = "eml", placeholder = "Enter Email ID" })
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <div class="form-group contact-input input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control numCss MobileNoCss", id = "mbl", maxlength = "10", placeholder = "Enter Mobile Number" })
+            </div>
+        </div>
+        <div class="col-md-12 contact">
+            <div class="form-group contact-input input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", id = "sbj", placeholder = "Enter Subject" })
             </div>
         </div>
         <div class="col-md-12">
-            <div class="form-group contact-input">
-                @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control spacing numCss MobileNoCss", id = "mbl", maxlength = "10", placeholder = "Enter Mobile Number" })
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group contact-input">
-                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control spacing ", id = "sbj", placeholder = "Enter Subject" })
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
+            <div class="form-group input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-align", id = "msg", @rows = "3", @cols = "30", placeholder = "Message" })
             </div>
             <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary">Submit</button>
@@ -220,6 +228,7 @@
               
 </script>
         }
+
 
     <!--contact section End-->
     <!--Services section Start-->

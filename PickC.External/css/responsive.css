@@ -7,11 +7,17 @@
     position: relative;
     top: 11%;
 }
-	
+	 
 }
 @media only screen and (max-width: 720px){
     .get-pick-c-btn {
         display:none;
+    }
+    .booknow-btn-red {
+        padding: 5px 2px !important;
+    }
+    .booknowactive-btn {
+         padding: 5px 2px !important;
     }
     .custom-height{
     

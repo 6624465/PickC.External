@@ -20,6 +20,9 @@ a:focus, button:focus{
   outline: none;
  color:#fff;
 }
+.Prices-list>a:hover{
+    color:#fff200;
+}
 
 
 hr{

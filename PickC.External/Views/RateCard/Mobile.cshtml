@@ -14,36 +14,38 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <link href="@Url.Content("~/Content/css/font-awesome-4.6.2/css/font-awesome.css")" rel="stylesheet" />
-    <link rel="stylesheet" href="@Url.Content("~/css/bootstrap.min.css")">
-     @*<link href="@Url.Content("~/css/AdminLTE.min.css")" rel="stylesheet" />*@
-    @*<link href="@Url.Content("~/css/bootstrap-datetimepicker.css")" rel="stylesheet" />*@
-    <!-- Template styles-->
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")">
-    <!-- Responsive styles-->
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/responsive.css")">
-    <!-- FontAwesome -->
     
-    @*<link rel="stylesheet" href="@Url.Content("~/css/font-awesome.min.css")">*@
-    <link href="@Url.Content("~/css/fontawesome.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/font-awesome-4.6.2/css/font-awesome.css")" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("~/css/bootstrap.min.css")">
+
+    
+    <!-- Template styles-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/style.css")">
+    <!-- Responsive styles-->
+    
+    <link rel="stylesheet" href="@Url.Content("~/Content/help/css/responsive.css")">
+    <!-- FontAwesome -->
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css">
     
     <!-- Animation -->
     
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
+    
+    
+    <link rel="stylesheet" href="@Url.Content("~/Content/animate.css")">
+    
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/owl.carousel.css")">
-    
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/owl.theme.css")">
-    <!-- Colorbox -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/colorbox.css")">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/ripple.css")">
-    
+    <link rel="stylesheet" href="@Url.Content("~/Content/owl.carousel.css")">
     
 
     
+    <link rel="stylesheet" href="@Url.Content("~/Content/owl.theme.css")">
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/colorbox.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/ripple.css")">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-select.min.css")">
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/extra.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap-select.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/extra.css")">
+    
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style type="text/css">
         .firstrow li {
@@ -233,8 +235,9 @@
     </style>
 
     
+    
     <link href="@Url.Content("~/Content/css/font-awesome-4.6.2/css/font-awesome.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/help/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/AdminLTE.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/ratecard.css")" rel="stylesheet" />
 </head>
@@ -310,7 +313,7 @@
                                 <th>
                                     <img src="../images/logo.png" />
                                 </th>
-                                <th style="vertical-align:middle;"><b>Base Fare <br /> (for first 3 Km)<div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> </div> <div class="col-xs-6"> Closed </div></div> </b></th>
+                                <th style="vertical-align:middle;"><b>Base Fare <br /> (for first 3 Km)<div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;">Open </div> <div class="col-xs-6"> Closed </div></div> </b></th>
                                 <th><b>Distance Fare <br /> (per Km) <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> Open </div> <div class="col-xs-6"> Closed </div></div> </b></th>
                                 <th><b>Trip Time Charges <br />(per min.)</b></th>
 
@@ -417,7 +420,7 @@
                                 <td>
                                     Mini
                                     <img src="../images/0_75.png" /> @*<b> ≤ 0.75 Ton</b>*@
-                                    > 700 Kgs
+                                    ≤ 700 Kgs
                                 </td>
                                 <td>
                                     <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 2300/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 2600/- </div></div>
@@ -515,7 +518,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Mini<img src="../images/0_75.png" /> @* <b> ≤ 0.75 Ton</b>*@  > 700 Kgs</td>
+                                <td>Mini<img src="../images/0_75.png" /> @* <b> ≤ 0.75 Ton</b>*@  ≤ 700 Kgs</td>
                                 <td>
                                     <div class="row">
                                         <div class="col-xs-12">
@@ -620,7 +623,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Mini<img src="../images/0_75.png" />  @*<b> ≤ 0.75 Ton</b>*@  > 700 Kgs</td>
+                                <td>Mini<img src="../images/0_75.png" />  @*<b> ≤ 0.75 Ton</b>*@ ≤ 700 Kgs</td>
 
                                 <td>
                                     <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 500/-  </div></div>
