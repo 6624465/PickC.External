@@ -10,6 +10,7 @@ font-family:'Roboto', sans-serif !important;
 label.error{
     font-weight:100 !important;
     position: absolute;
+    margin-left:3px;
 }
 
 section{
@@ -341,7 +342,21 @@ text-align:center;
     margin-top: 15px;
     border: 1px solid #fff200;
 }
+.btn-primary2{
+       background-color: #171819;
+    color: #fff200;
+    font-size: 16px;
+    width: 121px;
+    border-radius: 20px;
+    
+    border: 1px solid #fff200;
+}
 .btn-primary:active:hover{
+    background-color: #fff200 !important;
+    color: #121314 !important;
+    border: 1px solid #121314 !important;
+    }
+.btn-primary2:active:hover{
     background-color: #fff200 !important;
     color: #121314 !important;
     border: 1px solid #121314 !important;
@@ -428,6 +443,14 @@ display:inline;
 }
 .contact-input > .form-control{
     width:60%;
+}
+.write-to-us{
+    display:inline !important;
+    position:relative;
+    bottom:5px;
+}
+.fields{
+    margin-top:5px;
 }
 
 .get-link-btn{
@@ -826,6 +849,11 @@ background-color:green;
     border: 1px solid #000;
   }
 .btn-primary:focus {
+    background: #fff200 !important;
+    border: 1px solid #333 !important;
+    color: #000;
+}
+.btn-primary2:focus {
     background: #fff200 !important;
     border: 1px solid #333 !important;
     color: #000;

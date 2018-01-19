@@ -49,7 +49,7 @@
             <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 ">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
-                            <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px; padding-top: 10px;">
+                            <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 18px; padding-top: 10px;">
                                 <div class="col-md-12">
                                     <div class="">
                                         <div class="col-md-12">
@@ -82,8 +82,9 @@
 {
     <div class="">
         <div class="col-md-12">
-            <h3><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
+            <h3 class="write-to-us"><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
         </div>
+        
         <div class="col-md-12">
                         <div class="form-group select contact-input input-group">
                             <span class="input-group-addon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
@@ -93,19 +94,19 @@
         <div class="col-md-12">
                         <div class="form-group contact-input input-group">
                             <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
-                @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control spacing alphaonly", placeholder = "Enter Name", id = "nme" })
+                @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control spacing alphaonly label.error", placeholder = "Enter Name", id = "nme" })
 
             </div>
                         <div class="form-group contact-input input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                            @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control", id = "eml", placeholder = "Enter Email ID" })
+                            @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control label.error", id = "eml", placeholder = "Enter Email ID" })
             </div>
         </div>
                            
         <div class="col-md-12">
                         <div class="form-group contact-input input-group">
                             <span class="input-group-addon"><i class="fa fa-mobile" style="padding-right:2px; font-size:20px; margin-left:2px;" aria-hidden="true"></i></span>
-                            @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control numCss MobileNoCss", id = "mbl", maxlength = "10", placeholder = "Enter Mobile Number" })
+                            @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control numCss MobileNoCss label.error", id = "mbl", maxlength = "10", placeholder = "Enter Mobile Number" })
             </div>
         </div>
                     <div class="col-md-12">
@@ -114,12 +115,13 @@
                             @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", id = "sbj", placeholder = "Enter Subject" })
             </div>
         </div>
-        <div class="col-md-12">
-                        <div class="form-group contact-input input-group">
-                            <span class="input-group-addon"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
-                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", id = "msg", @rows = "3", @cols = "30", placeholder = "Message" })
-            </div>
-            <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary">Submit</button>
+            <div class="col-md-12">
+                <div class="form-group contact-input input-group">
+                    <span class="input-group-addon"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", id = "msg", @rows = "3", @cols = "30", placeholder = "Message" })
+                </div>
+            
+            <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary2">Submit</button>
         </div>
     </div>
 }

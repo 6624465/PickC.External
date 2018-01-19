@@ -176,7 +176,7 @@
                             <p>Once you lock the drop location you can’t move the flag to other location. To change the drop location you must tap on the lock location <img src="~/images/helpImages/lock-location-btn.png" alt="location lock button" style="width:75px; vertical-align: middle;"> icon to unlock the drop location, which is available above the flag, and move the flag to your desired location.</p>
                         </ul>
 
-                        <h3><b><li class="book-now-section">After the Truck booked successfully.</li></b></h3>
+                        <h3><b><li class="book-now-section">Book a Truck using the Pick-C.</li></b></h3>
                         <b></li>3.1	Book Now <br /></li></b>
                         <p>
                             You can book a truck using the book now option from the Pick-C mobile app. Prior to login you must register with Pick-C, refer Signing up with Pick-C to create a user account for Pick-C. <br />
@@ -278,7 +278,7 @@
                             <ul>
                                 <ol>
                                     <li>Login to the app with user account.</li>
-                                    <li>On the<img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;"> menu, tap on Rate card. <br /><br /><img src="~/images/rate.png " alt="Rate card"></li>
+                                    <li>On the<img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;"> menu, tap on Rate card. <br /><br /><img src="~/images/helpImages/rate.png " alt="Rate card"></li>
                                     <p>Rate card screen appears as shown below:</p>
                                     <b><img src="~/images/helpImages/rate-list.png " alt="Rate List"></b>
                                     <br />
@@ -344,7 +344,7 @@
                                     </li>
                                     <br />
                                     <li>
-                                        Tap on <b>Rate Card.</b><br /><br />
+                                        Tap on <b>Rate Card.</b><br /><br />                                    
                                         <img src="~/images/helpImages/ratecard-list.jpg" alt="Rate card List"><br />
                                         <p>
                                             Rate card is displayed as shown above.<br />
@@ -575,7 +575,7 @@
                         Cancelling the booking is done by following these steps:
                     </p>
                     <ol>
-                        <li><a href="#">Book a Truck using the Pick-C </a> app.  <br /> A screen appears as shown below:</li>
+                        <li>After the Truck booked successfully,  <br /> A screen appears as shown below:</li>
                         <br />
                         <b><img src="~/images/helpImages/cancel.png " alt="Booking Cancel"><br /></b>
                         <br />
@@ -600,7 +600,7 @@
                             Booking is cancelled.
                         </li>
                     </ol>
-                    <h3><li class="payment_trip_now">Payment Options</li></h3>
+                    <h3><li class="payment_trip_now2">Payment Options</li></h3>
                     <b></li>5.1	Cash Payment<br /></li></b>
                     <p>
                         By choosing cash payment option, you can pay the total bill of your trip by cash directly to the truck driver after completion of the trip. You are advised to pay the money, only after you receive the total bill invoice on your app screen. You are also advised to check the approximate rate before taping  confirm booking, to check the approximate rate of your trip, tap on <a href="#" id="trip_estimate">Trip Estimate.</a><br />
@@ -735,14 +735,14 @@
         scrollTop: $(".book-now-section").offset().top},
         'slow');
     });
-    $("#payment_trip").click(function() {
-        $('html,body').animate({
-            scrollTop: $(".payment_trip_now").offset().top},
-            'slow');
-    });
         $("#trip_estimate").click(function() {
             $('html,body').animate({
                 scrollTop: $(".trip_estimate_section").offset().top},
+                'slow');
+        });
+        $("#payment_trip").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".payment_trip_now2").offset().top},
                 'slow');
         });
     
