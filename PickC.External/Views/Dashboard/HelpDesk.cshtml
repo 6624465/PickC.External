@@ -101,7 +101,7 @@
                             @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control", id = "eml", placeholder = "Enter Email ID" })
             </div>
         </div>
-                    <br />
+                           
         <div class="col-md-12">
                         <div class="form-group contact-input input-group">
                             <span class="input-group-addon"><i class="fa fa-mobile" style="padding-right:2px; font-size:20px; margin-left:2px;" aria-hidden="true"></i></span>
@@ -212,6 +212,18 @@
                         },
                         'MobileNo': {
                             required: true
+                        }
+                    },
+                    
+                    messages: {
+                        'CustomerName': {
+                            required: 'Name is required.'
+                        },
+                        'EmailID': {
+                            required: 'Email ID is required.'                           
+                        },
+                        'MobileNo': {
+                            required: 'Mobile Number is required.'
                         }
                     }
                 });
