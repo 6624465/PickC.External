@@ -311,9 +311,10 @@ text-align:center;
 .btn:focus{
     
 }
-.btn:active:focus, .btn:focus{
-    outline:none;
-    
+.btn:active:focus, .btn:focus {
+    outline: none;
+    background: #fff200;
+    border: 1px solid #000;
 }
 
 .btn-default{
