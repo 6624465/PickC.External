@@ -356,6 +356,10 @@ text-align:center;
     color: #121314 !important;
     border: 1px solid #121314 !important;
     }
+.btn-primary2:hover{
+    color:#000;
+    background-color:#fff200;
+}
 .btn-primary2:active:hover{
     background-color: #fff200 !important;
     color: #121314 !important;
