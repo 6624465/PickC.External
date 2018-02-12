@@ -37,7 +37,7 @@ namespace PickC.External.Controllers
             return View();
         }
 
-        public ActionResult Backbutton()
+        public ActionResult HelpMobile()
         {
             return View();
         }
