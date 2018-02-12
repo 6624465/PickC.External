@@ -433,6 +433,7 @@
     <Content Include="Views\Dashboard\GetHelp.cshtml" />
     <Content Include="Views\RateCard\Index.cshtml" />
     <Content Include="Views\RateCard\Mobile.cshtml" />
+    <Content Include="Views\RateCard\pickCMobile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

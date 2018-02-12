@@ -23,6 +23,11 @@ namespace PickC.External.Controllers
             var result = new RateCardBO().getRateCardList();
             return View(result);
         }
+        public ActionResult pickCMobile()
+        {
+            var result = new RateCardBO().getRateCardList();
+            return View(result);
+        }
         public ActionResult Ratecard()
         {
             var result = new RateCardBO().getRateCardList();
