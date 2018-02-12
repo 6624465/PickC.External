@@ -37,7 +37,10 @@ namespace PickC.External.Controllers
             return View();
         }
 
-
+        public ActionResult Backbutton()
+        {
+            return View();
+        }
         //public ActionResult ContactUs()
         //{
         //    ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList()
