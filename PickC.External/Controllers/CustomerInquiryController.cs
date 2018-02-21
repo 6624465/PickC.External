@@ -24,6 +24,7 @@ namespace PickC.External.Controllers
                 EmailID = null,
                 CustomerName = null
             });
+            TempData["MessageAppLink"] = "Your Pick-C App Link is sent to :  " + mobileNumber;
             return RedirectToAction("Index", "Dashboard");
         }
 
