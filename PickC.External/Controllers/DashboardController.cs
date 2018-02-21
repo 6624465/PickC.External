@@ -80,6 +80,10 @@ namespace PickC.External.Controllers
         {
             return View();
         }
+        public ActionResult MobileTermsAndConditions()
+        {
+            return View();
+        }
         public ActionResult Careers()
         {
             return View();
