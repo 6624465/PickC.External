@@ -242,10 +242,14 @@ namespace PickC.External.Controllers
                     {
                         var strBody = string.Empty;
 
-                        strBody = "Dear " + contactUs.CustomerName + ", <BR>" +
+                        strBody = "Namaskar  " + contactUs.CustomerName + ", <BR>" +
                                   "Thank you for your valuable request. Our Customer support team will revert soon. <BR> <BR>" +
                                   "Regards, <BR>" +
-                                  "Pick-C Support team."; 
+                                  "Thank You,"+
+                                  "Pick-C, Support team.<BR><BR>" +
+                                  "<BR>This is a system generated e - mail please do not reply to this e - mail," +
+                                  "replies to this e - mail are routed to an unmonitored mailbox."+
+                                  "If any queries or clarifications about this invoice, write to us at support@pickcargo.in";
 
 
 
