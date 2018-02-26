@@ -8,6 +8,7 @@ using PickC.External.DataFactory;
 
 namespace PickC.External.BusinessFactory
 {
+
     public class CustomerInquiryBO
     {
         CustomerInquiryDAL customerInquiryDAL;
