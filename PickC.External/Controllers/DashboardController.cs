@@ -232,14 +232,14 @@ namespace PickC.External.Controllers
                     if (contactUs.InquiryType == 1505)
                     {
                         fromMail = "support@pickcargo.in";
-                        strBody = "Namaskar       " + contactUs.CustomerName + ",<BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                        strBody = "Namaskar       " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
                             "Regards,<BR>" +
                             "Pick - C Support Team.";
                     }
                     else if (contactUs.InquiryType == 1503)
                     {
                         fromMail = "contact@pickcargo.in";
-                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
                             "Regards,<BR>" +
                             "Pick - C Support Team.";
                     }
@@ -247,7 +247,7 @@ namespace PickC.External.Controllers
                     {
 
                         fromMail = "feedback@pickcargo.in";
-                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR>We appreciate your valuable  feedback.<BR><BR>" +
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>We appreciate your valuable  feedback.<BR><BR>" +
                                 "Regards,<BR>" +
                                 "Pick - C Support Team.";
                     }
