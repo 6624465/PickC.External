@@ -109,7 +109,7 @@ namespace PickC.External.EmailSMSGenerators
 
         }
 
-        public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
+        public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body)
         {
             MailMessage msg = new MailMessage();
             msg.To.Add(new MailAddress(to));

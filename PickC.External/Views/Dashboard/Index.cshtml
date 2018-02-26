@@ -324,15 +324,17 @@ if (queryStatus != null)
                             <div class="color-bg">
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
-                                        <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                            <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>  } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>   } else { <text> class="booknow-btn-red context" </text>  }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
+                                        <h3 style="margin-top:29px;">&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
+                                            <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>  } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" ></a><!--<div class="avail-unavail-btn"></div>-->
+                                        @*<a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>   } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>    } else { <text> class="booknow-btn-red context" </text>   }>Book Now</a>*@<!--<div class="avail-unavail-btn"></div>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4 custom-height">
                                 <div class="Prices-list">
-                                    <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text> } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn" </text>   } else { <text> class="booknow-btn-red context" </text>  }>Book Now</a>
+                                    <h3 style="margin-top:29px;">&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
+                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text> } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" ></a>
+                                    @*<a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text>  } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn" </text>    } else { <text> class="booknow-btn-red context" </text>   }>Book Now</a>*@
                                 </div>
                             </div>
                         </div>

@@ -229,14 +229,16 @@ namespace PickC.External.Controllers
                 if (result == true)
                 {
                     if (contactUs.InquiryType == 1505)
-                        fromMail = "info@pickcargo.in";
+                        fromMail = "support@pickcargo.in";
                     else if (contactUs.InquiryType == 1503)
                         fromMail = "contact@pickcargo.in";
                     else
-                        fromMail = "support@pickcargo.in";
-
-
-                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail, true, contactUs.Subject, contactUs.Description);
+                        fromMail = "feedback@pickcargo.in";
+                    //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
+                    //public bool ConfigMail(string to, bool isHtml, string subject, string body)
+                    //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
+                    
+                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail,true,fromMail, contactUs.Subject, contactUs.Description);
 
                     if (contactUs.EmailID.Length>0)
                     {
