@@ -226,33 +226,49 @@ namespace PickC.External.Controllers
                 //contactUs.CreatedBy = UTILITY.DEFAULTUSER;
                // result = new CustomerBO().SaveCustomer(contactUs);
                 string fromMail = string.Empty;
+                var strBody = string.Empty;
                 if (result == true)
                 {
                     if (contactUs.InquiryType == 1505)
+                    {
                         fromMail = "support@pickcargo.in";
+                        strBody = "Namaskar       " + contactUs.CustomerName + ",<BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                            "Regards,<BR>" +
+                            "Pick - C Support Team.";
+                    }
                     else if (contactUs.InquiryType == 1503)
+                    {
                         fromMail = "contact@pickcargo.in";
-                    else
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                            "Regards,<BR>" +
+                            "Pick - C Support Team.";
+                    }
+                    else if (contactUs.InquiryType == 1504)
+                    {
 
                         fromMail = "feedback@pickcargo.in";
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR>We appreciate your valuable  feedback.<BR><BR>" +
+                                "Regards,<BR>" +
+                                "Pick - C Support Team.";
+                    }
                     //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
                     //public bool ConfigMail(string to, bool isHtml, string subject, string body)
                     //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
-                    
+
                     bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail,true,fromMail, contactUs.Subject, contactUs.Description);
 
                     if (contactUs.EmailID.Length>0)
                     {
-                        var strBody = string.Empty;
+                       
 
-                        strBody = "Namaskar  " + contactUs.CustomerName + ", <BR>" +
-                                  "Thank you for your valuable request. Our Customer support team will revert soon. <BR> <BR>" +
-                                  "Regards, <BR>" +
-                                  "Thank You,"+
-                                  "Pick-C, Support team.<BR><BR>" +
-                                  "<BR>This is a system generated e - mail please do not reply to this e - mail," +
-                                  "replies to this e - mail are routed to an unmonitored mailbox."+
-                                  "If any queries or clarifications about this invoice, write to us at support@pickcargo.in";
+                        //strBody = "Namaskar  " + contactUs.CustomerName + ", <BR>" +
+                        //          "Thank you for your valuable request. Our Customer support team will revert soon. <BR> <BR>" +
+                        //          "Regards, <BR>" +
+                        //          "Thank You,"+
+                        //          "Pick-C, Support team.<BR><BR>" +
+                        //          "<BR>This is a system generated e - mail please do not reply to this e - mail," +
+                        //          "replies to this e - mail are routed to an unmonitored mailbox."+
+                        //          "If any queries or clarifications about this invoice, write to us at support@pickcargo.in";
 
 
 
