@@ -41,6 +41,7 @@ namespace PickC.External.Controllers
             return RedirectToAction("Index", "Dashboard");
         }
 
+
         [HttpPost]
         public ActionResult TripEstimate(CustomerInquiryVm customerInquiryVm)
         {
