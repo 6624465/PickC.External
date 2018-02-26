@@ -233,6 +233,7 @@ namespace PickC.External.Controllers
                     else if (contactUs.InquiryType == 1503)
                         fromMail = "contact@pickcargo.in";
                     else
+
                         fromMail = "feedback@pickcargo.in";
                     //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
                     //public bool ConfigMail(string to, bool isHtml, string subject, string body)
