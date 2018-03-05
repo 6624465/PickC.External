@@ -10,6 +10,7 @@ font-family:'Roboto', sans-serif !important;
 label.error{
     font-weight:100 !important;
     position: absolute;
+    margin-left:3px;
 }
 
 section{
@@ -20,6 +21,11 @@ a:focus, button:focus{
   outline: none;
  color:#fff;
 }
+.Prices-list>a:hover{
+    color:#fff200;
+    border:1px solid #000;
+}
+
 
 hr{
 	margin-top: 26px;
@@ -161,6 +167,14 @@ z-index:10000;
 	color:#000;
 
 	}
+    
+    .get-pick-c-btn:active{
+        color:#000;
+    }
+.get-pick-c-btn:focus {
+    color: #080808;
+    background: #fff200;
+}
 	.get-pick-c-btn{
 	margin:26px 5px;
 	border:2px solid #fff200;
@@ -270,10 +284,7 @@ color: #fff200 !important;
 .estimate-form>input::-moz-placeholder{
 color: #fff200 !important;
 }
-.form-control{
-margin-top:20px;
 
-}
 
 .form-control:focus{
 
@@ -292,9 +303,9 @@ margin-top:20px;
         margin-bottom:0px !important;
         
     }
-.form-group>textarea{
+/*.form-group>textarea{
            margin-top: 15px !important;
-    }
+    }*/
 .buttons{
 text-align:center;
 
@@ -302,9 +313,10 @@ text-align:center;
 .btn:focus{
     
 }
-.btn:active:focus, .btn:focus{
-    outline:none;
-    
+.btn:active:focus, .btn:focus {
+    outline: none;
+    background: #fff200;
+    border: 1px solid #000;
 }
 
 .btn-default{
@@ -330,7 +342,25 @@ text-align:center;
     margin-top: 15px;
     border: 1px solid #fff200;
 }
+.btn-primary2{
+       background-color: #171819;
+    color: #fff200;
+    font-size: 16px;
+    width: 121px;
+    border-radius: 20px;
+    
+    border: 1px solid #fff200;
+}
 .btn-primary:active:hover{
+    background-color: #fff200 !important;
+    color: #121314 !important;
+    border: 1px solid #121314 !important;
+    }
+.btn-primary2:hover{
+    color:#000;
+    background-color:#fff200;
+}
+.btn-primary2:active:hover{
     background-color: #fff200 !important;
     color: #121314 !important;
     border: 1px solid #121314 !important;
@@ -353,9 +383,7 @@ text-align:center;
 .color-bg{
 background:#ccc;
 }
-body.modal-open {
-    overflow: auto !important;
-    }
+
  .modal-open .modal{
  padding:10px 10px 10px 10px !important;
  }
@@ -365,7 +393,6 @@ body.modal-open {
 
 
 .modal{
-position:relatve;
 z-index:100000000;
 padding:5px;
 
@@ -421,9 +448,15 @@ display:inline;
 .contact-input > .form-control{
     width:60%;
 }
-.form-group{
-    margin-bottom:0px;
+.write-to-us{
+    display:inline !important;
+    position:relative;
+    bottom:5px;
 }
+.fields{
+    margin-top:5px;
+}
+
 .get-link-btn{
 
 background:#eadf1d;
@@ -819,6 +852,16 @@ background-color:green;
     color: #000;
     border: 1px solid #000;
   }
+.btn-primary:focus {
+    background: #fff200 !important;
+    border: 1px solid #333 !important;
+    color: #000;
+}
+.btn-primary2:focus {
+    background: #fff200 !important;
+    border: 1px solid #333 !important;
+    color: #000;
+}
   .note-text{
   float:left;
   line-height:3;

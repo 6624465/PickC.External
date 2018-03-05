@@ -6,16 +6,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Generator" content="EditPlus®">
     <meta name="Author" content="">
     <meta name="Keywords" content="">
     <meta name="Description" content="">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <title>Document</title>
+    <link rel="icon" href="@Url.Content("~/images/favicon.png")" type="image/png">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Help Document</title>
 
     <style>
         body {
-            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            font-family:'Roboto', sans-serif !important;
+            /*font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;*/
+            
         }
 
         .content {
@@ -30,7 +35,7 @@
         }
 
         img {
-            width: 50%;
+            width: 25%;
             height: auto;
         }
 
@@ -51,13 +56,24 @@
             text-align: left;
             padding: 25px;
         }
+        .fixed{
+            position:fixed;
+            top:5px;
+            left:3px;
+        }
+        .content>.help-text{
+            text-align:center;
+            padding:5px 5px;
+        }
     </style>
 </head>
 <body>
+    <button type="button" class="btn btn-primary fixed hidden-xs" onclick="location.href='@Url.Action("Index", "Dashboard")'"><i class="fa fa-backward"></i>Back</button>
     <div class="container">
         <div class="content">
+            <h1 style="text-align:center;" class="help-text">Help</h1>
             <div class="content-div">
-                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Dashboard")'">Back</button>
+                
                 
                     <ol>
                         <h3><li>Using Pick-C app</li></h3>
@@ -74,7 +90,7 @@
                         <br />
                         If you are unable to download the app, write to us at:
                         <br />
-                        <a href="#">Email ID: support@pickcargo.in </a>
+                        Email ID: <a href="mailto:support@pickcargo.in">support@pickcargo.in</a>
                         <br />
                         <br />
 
@@ -161,7 +177,7 @@
                             <p>Once you lock the drop location you can’t move the flag to other location. To change the drop location you must tap on the lock location <img src="~/images/helpImages/lock-location-btn.png" alt="location lock button" style="width:75px; vertical-align: middle;"> icon to unlock the drop location, which is available above the flag, and move the flag to your desired location.</p>
                         </ul>
 
-                        <h3><b><li class="book-now-section">Book a Truck Using the Pick-C</li></b></h3>
+                        <h3><b><li class="book-now-section">Book a Truck using the Pick-C.</li></b></h3>
                         <b></li>3.1	Book Now <br /></li></b>
                         <p>
                             You can book a truck using the book now option from the Pick-C mobile app. Prior to login you must register with Pick-C, refer Signing up with Pick-C to create a user account for Pick-C. <br />
@@ -263,7 +279,7 @@
                             <ul>
                                 <ol>
                                     <li>Login to the app with user account.</li>
-                                    <li>On the<img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;"> menu, tap on Rate card. <br /><br /><img src="~/images/rate.png " alt="Rate card"></li>
+                                    <li>On the<img src="~/images/helpImages/hans-menu.png" alt="menu icon image" style=" display:initial; width:30px; vertical-align middle;"> menu, tap on Rate card. <br /><br /><img src="~/images/helpImages/rate.png " alt="Rate card"></li>
                                     <p>Rate card screen appears as shown below:</p>
                                     <b><img src="~/images/helpImages/rate-list.png " alt="Rate List"></b>
                                     <br />
@@ -329,8 +345,8 @@
                                     </li>
                                     <br />
                                     <li>
-                                        Tap on <b>Rate Card.</b><br /><br />
-                                        <img src="~/images/helpImages/ratecard-list.jpg " alt="Rate card List"><br />
+                                        Tap on <b>Rate Card.</b><br /><br />                                    
+                                        <img src="~/images/helpImages/ratecard-list.jpg" alt="Rate card List"><br />
                                         <p>
                                             Rate card is displayed as shown above.<br />
                                             To enlarge the truck image, tap on the zoom icon in above image.
@@ -355,7 +371,7 @@
                             </ul>
                         </p>
 
-                        <b></li>3.1.3	Trip Estimate<br /></li></b>
+                        <b class="trip_estimate_section"></li>3.1.3	Trip Estimate<br /></li></b>
                         <p>
                             Trip Estimate will calculate the trip time, trip fares, trip distance, and lets you check the price of your trip, based on the weight of the cargo and the type of truck you have selected for the trip.
                             Follow below steps:
@@ -438,16 +454,12 @@
                             <b><img src="~/images/helpImages/trip-completed.jpg " alt="Trip Completed"><br /></b>
                             <br />
                             <span>Tap on <b>OK</b> button.</span>
-                            <li>Once the Trip is completed.</li>
+                            <li class="payment_trip_now">Once the Trip is completed.</li>
                             <br />
                             <b><img src="~/images/helpImages/cash-payment.jpg " alt="Cash Payment"><br /></b>
                             <br />
                             <p>Following Payment option will appear:</p>
-                            <ul>
-                                <a href="#" id="cash"><li>Cash Payment</li></a>
-                                <a href="#"><li>Online Payment</li></a>
-
-                            </ul>
+                           
                             <br />
                             <li>Upon completion of payment, an invoice screen appears </li>
                             <br />
@@ -540,7 +552,7 @@
                         <li><b>Debit Card:</b> Select payment through debit card, if you want to pay for your trip by debit card.</li>
 
                     </ul>
-                    <p>To know more about the payment option, tap on <a href="#">Payment Options.</a></p>
+                    <p>To know more about the payment option, tap on <a href="#" id="payment_trip" >Payment Options.</a></p>
                     <b></li>3.5	Rating a Trip<br /></li></b>
                     <p>
                         Rating a trip is to ensure you that all the Pick-C truck drivers are convenient, safe, comfortable, and also takes good care of your cargo and deliver’s in time. Once the trip is completed, you can rate a driver, the rating is visible on the Pick-C app screen in your mobile along with the driver’s details. Pick-C provides ratings from 1 to 5 stars, in order of least to highly satisfied trip. You can also give the feedback by writing to us:</br>
@@ -564,7 +576,7 @@
                         Cancelling the booking is done by following these steps:
                     </p>
                     <ol>
-                        <li><a href="#">Book a Truck using the Pick-C </a> app.  <br /> A screen appears as shown below:</li>
+                        <li>After the Truck booked successfully,  <br /> A screen appears as shown below:</li>
                         <br />
                         <b><img src="~/images/helpImages/cancel.png " alt="Booking Cancel"><br /></b>
                         <br />
@@ -589,10 +601,10 @@
                             Booking is cancelled.
                         </li>
                     </ol>
-                    <h3><li>Payment Options</li></h3>
+                    <h3><li class="payment_trip_now2">Payment Options</li></h3>
                     <b></li>5.1	Cash Payment<br /></li></b>
                     <p>
-                        By choosing cash payment option, you can pay the total bill of your trip by cash directly to the truck driver after completion of the trip. You are advised to pay the money, only after you receive the total bill invoice on your app screen. You are also advised to check the approximate rate before taping  confirm booking, to check the approximate rate of your trip, tap on <a href="#">Trip Estimate.</a><br />
+                        By choosing cash payment option, you can pay the total bill of your trip by cash directly to the truck driver after completion of the trip. You are advised to pay the money, only after you receive the total bill invoice on your app screen. You are also advised to check the approximate rate before taping  confirm booking, to check the approximate rate of your trip, tap on <a href="#" id="trip_estimate">Trip Estimate.</a><br />
                         Follow these steps:
                     </p>
                     <ol>
@@ -680,8 +692,8 @@
                     <p>We make sure that the Pick-C app is updated from time to time, so that you receive the best experiences from new and updated features that have been implemented in the upgraded versions. Whenever the updates are available for Pick-C, you will receive a notification when you open the Pick-C app on your mobile phone.</p>
                     <p>
                         You can also update Pick-C app using the below links:<br />
-                        <a href="#">Tap on here for android.</a><br />
-                        <a href="#">Tap on here for apple IOS.</a><br />
+                        <a href="#">Update Pick-C Android app</a><br />
+                        <a href="#">Update Pick-C IOS app</a><br />
                         Prior to updating the Pick-C app, make sure that you are connected to internet with strong Wi-Fi connection, and also make sure that you have enough storage space in your mobile phone.
                     </p>
                     <h3><li>Safety </li></h3>
@@ -705,25 +717,36 @@
                     </ul><br />
 
                     <b></li>7.3	Help<br /></li></b><br />
-                    <a href="#">Need Help?</a><br />
-                    WRITE TO US: <a href="#">support@pickcargo.in</a>
+                    Need Help?<br />
+                    WRITE TO US: <a href="mailto:support@pickcargo.in">support@pickcargo.in</a>
 
 
                     </ol>
-                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Dashboard")'">Back</button>
+                
 </div>
         </div>
     </div>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    
     <script>
     $("#book").click(function() {
     $('html,body').animate({
         scrollTop: $(".book-now-section").offset().top},
         'slow');
-});
-
+    });
+        $("#trip_estimate").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".trip_estimate_section").offset().top},
+                'slow');
+        });
+        $("#payment_trip").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".payment_trip_now2").offset().top},
+                'slow');
+        });
+    
     </script>
 
 </body>

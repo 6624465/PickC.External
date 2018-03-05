@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PickC.External.Contracts;
 using PickC.External.BusinessFactory;
 using PickC.External.ViewModels;
+using PickC.External.EmailSMSGenerators;
 
 namespace PickC.External.Controllers
 {
@@ -23,6 +24,7 @@ namespace PickC.External.Controllers
                 EmailID = null,
                 CustomerName = null
             });
+            TempData["MessageAppLink"] = "Your Pick-C App Link is sent to :  " + mobileNumber;
             return RedirectToAction("Index", "Dashboard");
         }
 
@@ -38,6 +40,9 @@ namespace PickC.External.Controllers
                 EmailID = null,
                 CustomerName = null
             });
+            string messageContent = "Your Pick-C App - is one stop solution for all goods transportation services in your city limits ,"+
+            "click below link to download your app now."+" < LINK > ";
+            bool sendMessageToMobile = new smsGenerator().ConfigSms(appmobileNumber, messageContent);
             return RedirectToAction("Index", "Dashboard");
         }
 

@@ -15,6 +15,8 @@ namespace PickC.External
         public static string BOOKINGSUCCESS = "Booked Successfully";
         public static string NotifyCustomer = "Booking Cancelled by System";
         public static string FAILURESTATUS = "False";
+        public static string SUCCESS = "true";
+        public static string FAIL = "false";
     }
 
 }

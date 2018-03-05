@@ -37,6 +37,9 @@ namespace PickC.External.DataFactory
         public const string SELECTBOOKING = "[Operation].[usp_BookingSelect]";
         public const string NEARTRUCKSDEVICELIST = "[Operation].[usp_NearTrucksDeviceList]";
         public const string DELETEBOOKING = "[Operation].[usp_BookingDelete]";
+        public const string LISTRATECARD = "[Master].[usp_RateCardList]";
+
+
 
 
 

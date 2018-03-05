@@ -1,0 +1,248 @@
+﻿@model PickC.External.Contracts.CustomerInquiry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="clear-fix"></div>
+    <div class="container">
+        <div class="row">
+            <div class="heading-title">
+            </div>
+            <div class="services-main">
+                @*<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cn ">
+                    <div id="imageHolder" class="sidebar sidebar-right">
+                        <h3 class="widget-title">Contact Us</h3>
+                        <div class="support">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2230611056398!2d78.38301667706737!3d17.449034627920007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91617997918b%3A0xda6e2f6d0255a051!2sPick-C!5e0!3m2!1sen!2sin!4v1513771950190" width="550" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            @*<img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />*@
+                            @*<a href="tel:+914065454222" class="btn-feedback center-block solid blank">
+                                <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
+                            </a>*@
+                            @*<p>
+                            </p>
+                        </div>
+                    </div>
+                </div>*@
+                @*<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 cs" style="display:none">
+                    <div class="sidebar sidebar-right">
+                        <div class="widget">
+                           <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 30px;padding-top: 10px;">
+                                <div class="col-md-12">
+                                    <div>
+                                        <div class="col-md-8 col-md-offset-2">
+                                            <div class="support"> 
+                                                <img src="@Url.Content("~/images/feedback.png")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
+                                                @*<a href="tel:+914065454222" class="btn-feedback center-block solid blank">
+                                                    <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
+                                                </a>
+                                                @*<p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                  
+                </div>*@
+            <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 ">
+                    <div class="sidebar sidebar-right">
+                        <div class="widget">
+                            <div class="row" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding-bottom: 18px; padding-top: 10px;">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="col-md-12">
+                                            <div class="support">
+                                                <img src="@Url.Content("~/images/support.jpg")" class="image-responsive center-block" style="width:310px; margin-bottom:10px;" />
+                                            </div>
+                                            <div class="support">
+                                                <a href="tel:+914065454222" class="btn-feedback center-block solid blank">
+                                          <i class="fa fa-phone"></i>&nbsp; +91. 40. 6 5454 222
+                                                </a>
+                                                @*<a class="btn-feedback center-block solid blank" style="text-transform:lowercase;" type="submit">
+                                                    <i class="fa fa-envelope-o"></i>&nbsp;
+                                                    info@pickcargo.in
+                                                </a>*@
+                                                <p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Widget end -->
+                    </div>
+                    <!-- Sidebar end -->
+                </div>
+            </div>
+            <div class="col-md-6">
+@using (Html.BeginForm("HelpDeskSave", "Dashboard", FormMethod.Post, new { id = "frmContactSave", name = "frmContactSave" }))
+{
+    <div class="">
+        <div class="col-md-12">
+            <h3 class="write-to-us"><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Write To Us</h3>
+        </div>
+        
+        <div class="col-md-12">
+                        <div class="form-group select contact-input input-group">
+                            <span class="input-group-addon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
+                            @Html.DropDownListFor(x => x.InquiryType, new SelectList(ViewBag.Customer, "Value", "Text"), new { @class = "form-control spacing", @id = "CustomerSelect" })
+            </div>
+        </div>
+        <div class="col-md-12">
+                        <div class="form-group contact-input input-group">
+                            <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control spacing alphaonly label.error", placeholder = "Enter Name", id = "nme" })
+
+            </div>
+                        <div class="form-group contact-input input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                            @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control label.error", id = "eml", placeholder = "Enter Email ID" })
+            </div>
+        </div>
+                           
+        <div class="col-md-12">
+                        <div class="form-group contact-input input-group">
+                            <span class="input-group-addon"><i class="fa fa-mobile" style="padding-right:2px; font-size:20px; margin-left:2px;" aria-hidden="true"></i></span>
+                            @Html.TextBoxFor(x => x.MobileNo, new { @class = "form-control numCss MobileNoCss label.error", id = "mbl", maxlength = "10", placeholder = "Enter Mobile Number" })
+            </div>
+        </div>
+                    <div class="col-md-12">
+                        <div class="form-group contact-input input-group">
+                            <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                            @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", id = "sbj", placeholder = "Enter Subject" })
+            </div>
+        </div>
+            <div class="col-md-12">
+                <div class="form-group contact-input input-group">
+                    <span class="input-group-addon"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", id = "msg", @rows = "3", @cols = "30", placeholder = "Message" })
+                </div>
+            
+            <button type="button" onclick="OnSubmit()" id="btnsubmit" class="btn btn-primary2">Submit</button>
+        </div>
+    </div>
+}
+
+            </div>
+        </div>
+    </div>
+@{
+    var queryStatus = TempData["DisplayMessage"];
+}
+@if (queryStatus != null)
+{
+
+    <div class="modal fade" id="queryModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span><b>@queryStatus</b></span>
+                    </div>
+                    @*<div>
+                            <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                        </div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+    <div class="clear-fix"></div>
+
+
+    @section Scripts{
+<script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+        
+<script type="text/javascript">
+            $(function () {
+                
+               // OnChange();
+                //$('#Type').on('change', function () {
+
+                //});
+            });
+            //function OnChange() {
+            //    $('#CustomerSelect').val("1505");
+    //}
+            $(function () {
+                @if (queryStatus != null)
+                {
+                    <text>
+                $('#queryModal').modal('show');
+                </text>
+                }
+            });
+            function changesupport(i) {
+                debugger;
+                //var i = $('#CustomerSelect').text();
+                var val = $('#CustomerSelect :selected').text();
+
+                //if (val == "ContactUs") {
+                //    $('.cn').show();
+                //    $('.cs').hide();
+                //    $('.fd').hide();
+                //}
+                //if (val == "FeedBack") {
+                //    $('.cs').show();
+                //    $('.cn').hide();
+                //    $('.fd').hide();
+                //}
+                //if (val == "CustomerSupport") {
+                //    $('.fd').show();
+                //    $('.cn').hide();
+                //    $('.cs').hide();
+                //}
+            }
+            $(function () {
+                $('#frmContactSave').validate({
+                    rules: {
+                        'CustomerName': {
+                            required: true
+                        },
+                        'EmailID': {
+                            required: true,
+                            email: true
+                        },
+                        'MobileNo': {
+                            required: true
+                        }
+                    },
+                    
+                    messages: {
+                        'CustomerName': {
+                            required: 'Name is required.'
+                        },
+                        'EmailID': {
+                            required: 'Email ID is required.'                           
+                        },
+                        'MobileNo': {
+                            required: 'Mobile Number is required.'
+                        }
+                    }
+                });
+            });
+        
+          
+                function OnSubmit() {
+
+                    if ($('#frmContactSave').valid()) {
+                        $('#frmContactSave').submit();
+                    
+                    }
+                }
+              
+</script>
+        }
+
+
+    <!--contact section End-->
+    <!--Services section Start-->

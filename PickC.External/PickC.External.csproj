@@ -128,9 +128,61 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\AdminLTE.min.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\assets\large_left.png" />
+    <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\colorbox.css" />
+    <Content Include="Content\extra.css" />
+    <Content Include="Content\font-awesome-4.6.2\css\font-awesome.css" />
+    <Content Include="Content\font-awesome-4.6.2\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome-4.6.2\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome-4.6.2\HELP-US-OUT.txt" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\help\css\AjaxLoader.html" />
+    <Content Include="Content\help\css\animate.css" />
+    <Content Include="Content\help\css\bootstrap-select.min.css" />
+    <Content Include="Content\help\css\bootstrap.min.css" />
+    <Content Include="Content\help\css\colorbox.css" />
+    <Content Include="Content\help\css\extra.css" />
+    <Content Include="Content\help\css\font-awesome.min.css" />
+    <Content Include="Content\help\css\grabbing.html" />
+    <Content Include="Content\help\css\owl.carousel.css" />
+    <Content Include="Content\help\css\owl.theme.css" />
+    <Content Include="Content\help\css\responsive.css" />
+    <Content Include="Content\help\css\ripple.css" />
+    <Content Include="Content\help\css\style.css" />
+    <Content Include="Content\help\fonts\fontawesome-webfont93e3.html" />
+    <Content Include="Content\help\fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="Content\help\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="Content\help\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="Content\help\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="Content\help\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="Content\help\fonts\glyphicons-halflings-regulard41dd41d.html" />
+    <Content Include="Content\help\js\bootstrap-select.min.js" />
+    <Content Include="Content\help\js\bootstrap.min.js" />
+    <Content Include="Content\help\js\custom.js" />
+    <Content Include="Content\help\js\gmap3.min.js" />
+    <Content Include="Content\help\js\ini.isotope.js" />
+    <Content Include="Content\help\js\isotope.js" />
+    <Content Include="Content\help\js\jquery-2.1.3.min.js" />
+    <Content Include="Content\help\js\jquery-ui.js" />
+    <Content Include="Content\help\js\jquery.colorbox.js" />
+    <Content Include="Content\help\js\jquery.counterup.min.js" />
+    <Content Include="Content\help\js\jquery.js" />
+    <Content Include="Content\help\js\owl.carousel.js" />
+    <Content Include="Content\help\js\owl.carousel.min.js" />
+    <Content Include="Content\help\js\ripple.js" />
+    <Content Include="Content\help\js\sticky.js" />
+    <Content Include="Content\help\js\waypoints.min.js" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\owl.css" />
+    <Content Include="Content\owl.theme.css" />
+    <Content Include="Content\ratecard.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\ripple.css" />
+    <Content Include="Content\style.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-reboot.css" />
@@ -149,6 +201,10 @@
     <Content Include="fonts\fa-solid-900.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\0_75.png" />
+    <Content Include="images\1_5_ton.png" />
+    <Content Include="images\1_ton.png" />
+    <Content Include="images\2_ton.png" />
     <Content Include="images\amount.png" />
     <Content Include="images\app.png" />
     <Content Include="images\cc-logo.png" />
@@ -267,6 +323,45 @@
     <Content Include="fonts\fa-solid-900.woff" />
     <Content Include="fonts\fa-solid-900.woff2" />
     <Content Include="fonts\limelight.woff2" />
+    <Content Include="Content\font-awesome-4.6.2\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome-4.6.2\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome-4.6.2\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome-4.6.2\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome-4.6.2\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome-4.6.2\less\animated.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\core.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\fixed-width.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\font-awesome.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\icons.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\larger.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\list.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\mixins.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\path.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\screen-reader.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\stacked.less" />
+    <Content Include="Content\font-awesome-4.6.2\less\variables.less" />
+    <Content Include="Content\font-awesome-4.6.2\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_animated.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_core.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_icons.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_larger.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_list.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_path.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_screen-reader.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome-4.6.2\scss\_variables.scss" />
+    <Content Include="Content\help\css\extra.css.map" />
+    <Content Include="Content\help\css\extra.scss" />
+    <Content Include="Content\help\fonts\fontawesome-webfont93e3.eot" />
+    <Content Include="Content\help\fonts\fontawesome-webfont93e3.ttf" />
+    <Content Include="Content\help\fonts\fontawesome-webfont93e3.woff" />
+    <Content Include="Content\help\fonts\fontawesome-webfontd41d.eot" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -290,17 +385,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessFactory\CustomerInquiryBO.cs" />
     <Compile Include="BusinessFactory\LookUpBO.cs" />
+    <Compile Include="BusinessFactory\RateCardBO.cs" />
     <Compile Include="Contracts\Booking.cs" />
     <Compile Include="Contracts\CustomerInquiry.cs" />
     <Compile Include="Contracts\Driver.cs" />
     <Compile Include="Contracts\FareChart.cs" />
     <Compile Include="Contracts\IContract.cs" />
     <Compile Include="Contracts\LookUp.cs" />
+    <Compile Include="Contracts\RateCard.cs" />
     <Compile Include="Controllers\CustomerInquiryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\RateCardController.cs" />
     <Compile Include="DataFactory\CustomerInquiryDAL.cs" />
     <Compile Include="DataFactory\DBRoutine.cs" />
     <Compile Include="DataFactory\LookUpDAL.cs" />
+    <Compile Include="DataFactory\RateCardDAL.cs" />
+    <Compile Include="EmailSMSGenerators\EmailGenerator.cs" />
+    <Compile Include="EmailSMSGenerators\smsGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -323,7 +424,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Dashboard\AboutUs.cshtml" />
-    <Content Include="Views\Dashboard\CustomerSupport.cshtml" />
+    <Content Include="Views\Dashboard\HelpDesk.cshtml" />
     <Content Include="Views\Dashboard\ContactUs.cshtml" />
     <Content Include="Views\Dashboard\Faqs.cshtml" />
     <Content Include="Views\Dashboard\Feedback.cshtml" />
@@ -331,6 +432,11 @@
     <Content Include="Views\Dashboard\Careers.cshtml" />
     <Content Include="Views\Dashboard\PrivacyPolicy.cshtml" />
     <Content Include="Views\Dashboard\GetHelp.cshtml" />
+    <Content Include="Views\RateCard\Index.cshtml" />
+    <Content Include="Views\RateCard\Mobile.cshtml" />
+    <Content Include="Views\RateCard\pickCMobile.cshtml" />
+    <Content Include="Views\Dashboard\HelpMobile.cshtml" />
+    <Content Include="Views\Dashboard\MobileTermsAndConditions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -340,6 +446,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\help\images\" />
     <Folder Include="Models\" />
     <Folder Include="Views\CustomerInquiry\" />
   </ItemGroup>

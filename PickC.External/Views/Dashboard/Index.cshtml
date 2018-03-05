@@ -16,11 +16,19 @@
             bottom: 8px;
         }
 
-            .booknow-btn-red:hover {
+        .form-group {
+            margin-bottom: 0px;
+        }
+
+        .form-control {
+            margin-top: 20px;
+        }
+
+        /*.booknow-btn-red:hover {
                 background: red;
                 color: #000;
                 border: 1px solid #000;
-            }
+            }*/
     </style>
 }
 <!--main content-->
@@ -132,7 +140,7 @@
 @using (Html.BeginForm("TripEstimate", "CustomerInquiry", FormMethod.Post, new { id = "frmTripEstimate", name = "frmTripEstimate" }))
 {
     <div class="modal fade" id="get-trip-estimate" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
+         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -167,7 +175,7 @@
                 </div>
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn" data-backdrop="static" data-keyboard="false">
+                    <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn">
                         Get Estimate Now
                     </button>
                     <!--data-toggle="modal" data-target="#prices-list" data-dismiss="modal"-->
@@ -176,6 +184,30 @@
         </div>
     </div>
 }
+@*@{ 
+    var queryStatus=(string)TempData["DisplayMessage"];
+}
+if (queryStatus != null)
+{
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <b>Booking Status: </b><span>@queryStatus</span>
+                </div>
+                @*<div>
+                    <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                </div>*@
+            @*</div>
+
+        </div>
+    </div>
+</div>*@
 
 @{
     var bookingStatus = (PickC.External.ViewModels.BookingStatusVm)TempData["TD:BookingInfo"];
@@ -192,10 +224,10 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <b>Booking Status: </b><span>@bookingStatus.Status</span>
+                        <span>@bookingStatus.Status</span>
                     </div>
                     <div>
-                        <b>Booking ID: </b><span>@bookingStatus.BookingNo</span>
+                        <span>Your CRN is : @bookingStatus.BookingNo</span>
                     </div>
                 </div>
 
@@ -223,12 +255,38 @@
         </div>
     </div>*@
 }
-<div class="modal fade" id="prices-list" role="dialog">
+@*@{
+    var queryStatus = TempData["DisplayMessage"];
+}
+@if (queryStatus != null)
+{
+
+    <div class="modal fade" id="queryModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span><b>@queryStatus</b></span>
+                    </div>
+                    @*<div>
+                            <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}*@
+<div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog scroll center-modal">
         <div class="modal-content">
             <div class="modal-header custom-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Approx. Estimate Prices</h4>
+                    <h4 class="modal-title">Approx. Estimate Fare</h4>
             </div>
             <div class="modal-body">
                 <div class="row space-top prices-list-bg">
@@ -266,15 +324,17 @@
                             <div class="color-bg">
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
-                                        <h3>&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if(fareChartList[i].IsOpenOnline) { <text>onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text> } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a><!--<div class="avail-unavail-btn"></div>-->
+                                        <h3 style="margin-top:29px;">&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
+                                            <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>  } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" ></a><!--<div class="avail-unavail-btn"></div>-->
+                                        @*<a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>   } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>    } else { <text> class="booknow-btn-red context" </text>   }>Book Now</a>*@<!--<div class="avail-unavail-btn"></div>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4 custom-height">
                                 <div class="Prices-list">
-                                    <h3>&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text>onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')"</text>} data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn"</text>  } else { <text> class="booknow-btn-red" </text> }>Book Now</a>
+                                    <h3 style="margin-top:29px;">&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
+                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text> } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" ></a>
+                                    @*<a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text>  } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn" </text>    } else { <text> class="booknow-btn-red context" </text>   }>Book Now</a>*@
                                 </div>
                             </div>
                         </div>
@@ -282,7 +342,7 @@
                 }
             </div>
             <div class="modal-footer custom-footer">
-                <h4 class="note-text"><strong>Note:&nbsp;</strong>This is an approximate estimate actual cost travel time may differ.</h4>
+                    <h4 class="note-text"><strong>Note:&nbsp;</strong>This is an approximate estimate.Actual fare and travel time may differ.</h4>
             </div>
         </div>
     </div>
@@ -336,29 +396,30 @@
             new google.maps.places.Autocomplete(document.getElementById('toLocation'), options);
             directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
         });
+        //$('#prices-list').modal({
+        //    backdrop: 'static',
+        //    keyboard: false
+        //});
 
         function bookingSave(vehicleGroup, vehicleType) {
-            debugger
-          
-                @{
+            @{
                     var customerInquiryVm = (PickC.External.ViewModels.CustomerInquiryVm)TempData["TD:CustomerInquiry"];
-                  
+
                     if (customerInquiryVm != null)
                     {
                 <text>
-                $('#CustomerId').val('@customerInquiryVm.MobileNo');
-                $('#CustomerName').val('@customerInquiryVm.CustomerName');
-                $('#LocationFrom').val('@customerInquiryVm.fLoc');
-                $('#LocationTo').val('@customerInquiryVm.tLoc');
-                $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
-                $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
-                $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
-                $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
-                $('#VehicleType').val(vehicleType);
-                $('#VehicleGroup').val(vehicleGroup);
-                $('#frmBooking').submit();
-              
-                </text>
+            $('#CustomerId').val('@customerInquiryVm.MobileNo');
+            $('#CustomerName').val('@customerInquiryVm.CustomerName');
+            $('#LocationFrom').val('@customerInquiryVm.fLoc');
+            $('#LocationTo').val('@customerInquiryVm.tLoc');
+            $('#Latitude').val('@customerInquiryVm.frmLatLog.Split(' ')[0]');
+            $('#Longitude').val('@customerInquiryVm.frmLatLog.Split(' ')[1]');
+            $('#ToLatitude').val('@customerInquiryVm.toLatLog.Split(' ')[0]');
+            $('#ToLongitude').val('@customerInquiryVm.toLatLog.Split(' ')[1]');
+            $('#VehicleType').val(vehicleType);
+            $('#VehicleGroup').val(vehicleGroup);
+            $('#frmBooking').submit();
+            </text>
                 }
             }
         }
@@ -368,18 +429,36 @@
                 if (isTripEstimate != null && (bool)isTripEstimate && fareChartList != null)
                 {
                     <text>
-                        $('#prices-list').modal('show');
-                    </text>
+            $('#prices-list').modal('show');
+            </text>
                 }
             }
             @if(bookingStatus != null)
             {
-               
+
                 <text>
             $('#myModal').modal('show');
-                </text>
+            </text>
             }
-           
+              @*@if(queryStatus != null)
+              {
+
+                  <text>
+            $('#queryModal').modal('show');
+                  </text>
+              }*@
+        
+            @*@{
+    var queryStatus = TempData["TD:BookingInfo"];
+    if (queryStatus != null)
+    {
+    <text>
+            alert(queryStatus);
+            </text>
+        }
+    }*@
+
+
             @*$('.cls').on('click', function () {
                 debugger;
                 var vanGroup = $(this).attr('data-vgroup');
@@ -441,6 +520,17 @@
                 })
                 debugger;
             });*@
+            debugger;
+            function ClearTrpEstimate() {
+
+            }
+            //$('#get-trip-estimate').on('hidden', function () {
+            //    $.clear(this);
+            //});
+            $('#get-trip-estimate').on('hidden.bs.modal', function () {
+                $('#frmTripEstimate')[0].reset();
+                $(this).find('form').trigger('reset');
+            });
 
             $('#frmTripEstimate').validate({
                 rules: {
@@ -462,7 +552,7 @@
                 },
                 messages: {
                     CustomerName: {
-                        required: 'Please enter Name'
+                        required: 'Please Enter Name'
                     },
                     MobileNo: {
                         required: 'Please enter valid Mobile Number'
@@ -482,9 +572,14 @@
         });
         function FromToLocations() {
             debugger
+
             if ($('#frmFromToLocation').valid()) {
                 //var fromLatlong = {};
                 //var toLatLong = {};
+                $('#frmTripEstimate input[type="text"]').removeClass('error');
+                $('#frmTripEstimate label').removeClass('error');
+                $('#frmTripEstimate label').empty();
+
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'address': $("#fromLocation").val() }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
@@ -511,7 +606,7 @@
                 $('#get-trip-estimate').modal('show');
             }
             else {
-                alert("Please enter From and To Locations");
+                alert("Please enter From and To locations");
             }
         }
         //$('.booknow-btn-red').click(function () {
@@ -633,3 +728,8 @@
     </script>
    
 }
+    <style>
+        .context {
+            cursor: not-allowed;
+        }
+    </style>

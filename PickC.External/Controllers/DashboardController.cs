@@ -12,7 +12,7 @@ using System.Net;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
-
+using PickC.External.EmailSMSGenerators;
 namespace PickC.External.Controllers
 {
     public class DashboardController : Controller
@@ -22,7 +22,8 @@ namespace PickC.External.Controllers
         {
             if(IsTripEstimate)
                 ViewData["vdIsTripEstimate"] = true;
-            
+
+            //CustomerInquiry data = TempData["DisplayMessage"] as CustomerInquiry;
             return View();
         }
         public ActionResult AboutUs()
@@ -30,37 +31,56 @@ namespace PickC.External.Controllers
             return View();
         }
       
-        public ActionResult CustomerSupport()
+        public ActionResult HelpDesk()
         {
             ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
             return View();
         }
 
-
-        public ActionResult ContactUs()
+        public ActionResult HelpMobile()
         {
-            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList()
-                .Select(x => new { Value = x.LookupID, Text = x.LookupCode}).ToList();
             return View();
         }
+        //public ActionResult ContactUs()
+        //{
+        //    ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList()
+        //        .Select(x => new { Value = x.LookupID, Text = x.LookupCode}).ToList();
+        //    return View();
+        //}
         [HttpPost]
-        public ActionResult ContactUsSave(CustomerInquiry customer)
+        public ActionResult HelpDeskSave(CustomerInquiry customer)
         {
             customer.InquiryDate = DateTime.Now;
 
             var result = new CustomerInquiryBO().SaveContactUs(customer);
-            return View("Index");
+            if (result) {
+                if(customer.InquiryType== 1503)
+                TempData["DisplayMessage"] = "Your request is submitted successfully";
+                else if (customer.InquiryType == 1504)
+                    TempData["DisplayMessage"] = "Thanks for your feedback";
+                else
+                    TempData["DisplayMessage"] = "Our customer support team will revert  shortly";
+            }
+            //customersupport:our customer support team will revert  shortly;
+            //contactus:your request is submitted succesfully;
+            //feedback:Thanks for your feedback;
+            var emailResult = SendMessageToPickC(customer);
+            return RedirectToAction("HelpDesk", "Dashboard");
         }
         public ActionResult Faqs()
         {
             return View();
         }
-        public ActionResult Feedback()
+        //public ActionResult Feedback()
+        //{
+        //    ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
+        //    return View();
+        //}
+        public ActionResult TermsAndConditions()
         {
-            ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
             return View();
         }
-        public ActionResult TermsAndConditions()
+        public ActionResult MobileTermsAndConditions()
         {
             return View();
         }
@@ -198,5 +218,79 @@ namespace PickC.External.Controllers
                 string str = ex.Message;
             }
         }
+        public bool SendMessageToPickC(CustomerInquiry contactUs)
+        {
+            bool result = true;
+            try
+            {
+                //contactUs.CreatedBy = UTILITY.DEFAULTUSER;
+               // result = new CustomerBO().SaveCustomer(contactUs);
+                string fromMail = string.Empty;
+                var strBody = string.Empty;
+                if (result == true)
+                {
+                    if (contactUs.InquiryType == 1505)
+                    {
+                        fromMail = "support@pickcargo.in";
+                        strBody = "Namaskar       " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                            "Regards,<BR>" +
+                            "Pick - C Support Team.";
+                    }
+                    else if (contactUs.InquiryType == 1503)
+                    {
+                        fromMail = "contact@pickcargo.in";
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                            "Regards,<BR>" +
+                            "Pick - C Support Team.";
+                    }
+                    else if (contactUs.InquiryType == 1504)
+                    {
+
+                        fromMail = "feedback@pickcargo.in";
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>We appreciate your valuable  feedback.<BR><BR>" +
+                                "Regards,<BR>" +
+                                "Pick - C Support Team.";
+                    }
+                    //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
+                    //public bool ConfigMail(string to, bool isHtml, string subject, string body)
+                    //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
+
+                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail,true,fromMail, contactUs.Subject, contactUs.Description);
+
+                    if (contactUs.EmailID.Length>0)
+                    {
+                       
+
+                        //strBody = "Namaskar  " + contactUs.CustomerName + ", <BR>" +
+                        //          "Thank you for your valuable request. Our Customer support team will revert soon. <BR> <BR>" +
+                        //          "Regards, <BR>" +
+                        //          "Thank You,"+
+                        //          "Pick-C, Support team.<BR><BR>" +
+                        //          "<BR>This is a system generated e - mail please do not reply to this e - mail," +
+                        //          "replies to this e - mail are routed to an unmonitored mailbox."+
+                        //          "If any queries or clarifications about this invoice, write to us at support@pickcargo.in";
+
+
+
+                        bool sendMailCustomer = new EmailGenerator().ConfigMail(contactUs.EmailID, true, contactUs.Subject, strBody);
+                    }
+
+
+
+                    if (sendMailPickC)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+      
     }
 }
