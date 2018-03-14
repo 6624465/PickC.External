@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="top-header-links">
-                            <a href="#help" onclick="takeHelp()" ><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
+                            <a href="#help" onclick="takeHelp()"><i class="fa fa-info" aria-hidden="true"></i>&nbsp;&nbsp;Help</a>
                         </div>
                     </div>
                 </div>
@@ -106,13 +106,13 @@
                     <a class="navbar-brand" href="@Url.Content("~/Dashboard/Index")"><img src="@Url.Content("~/images/logo.png")" class="img-responsive" alt="pickcargo logo"><span>pick-C</span></a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right"> 
-                        <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>                       
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>
                         @*<button class="get-pick-c-btn" onclick="helpChange()">@*<a href="@Url.Content("~/Dashboard/CustomerSupport")">Help Desk</a>*@
                         @*Help Desk</button>*@
                         @*<li><a href="@Url.Content("~/Dashboard/HelpDesk")">Customer Support</a></li>*@
                         <li><a href="@Url.Content("~/Dashboard/HelpDesk")">Help Desk</a></li>
-                        <button class="get-pick-c-btn"  onclick="GetApplink()" id="mobileNumber" data-target="#get-pick-c">Get Pick-C App Link</button>
+                        <button class="get-pick-c-btn" onclick="GetApplink()" id="mobileNumber" data-target="#get-pick-c">Get Pick-C App Link</button>
                     </ul>
                 </div>
             </div>
@@ -121,7 +121,6 @@
         <div class="clear-fix"></div>
         <!--main content-->
         <!--app icons section-->
-        
         <!--app icons section-->
         <!--Services section Start-->
 
@@ -193,10 +192,10 @@
                             </div>
                             <div class="footer-social">
                                 <ul>
-                                    <li><a href="https://www.facebook.com/pick.cargo"  target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://twitter.com/PickCargo"  target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://plus.google.com/102110542589146295297"  target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/in/pickcargo"  target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://www.facebook.com/pick.cargo" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/PickCargo" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://plus.google.com/102110542589146295297" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/pickcargo" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                                     <!-- <li><a href="#"><i class="fa fa-youtube"></i></a></li> -->
                                 </ul>
                             </div>
@@ -260,19 +259,19 @@
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close"  data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">                    
+                <div class="modal-body">
                     <div class="form-group get-link">
                         @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
                         {
 
                             <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
-                            <button type="button" onclick="help()" class="btn get-link-btn" >Get Help</button>
+                            <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
                         }
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -283,15 +282,15 @@
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="Clear()" data-dismiss="modal" >&times;</button>
+                    <button type="button" class="close" onclick="Clear()" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">                    
+                <div class="modal-body">
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
                             <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
-                            
-                            <button type="button" onclick="getApphelp()"  class="btn get-link-btn" >Get Pick-C App link</button>
+
+                            <button type="button" onclick="getApphelp()" class="btn get-link-btn">Get Pick-C App link</button>
                         }
                     </div>
                 </div>
@@ -300,34 +299,45 @@
         </div>
     </div>
     @*@{
-        var appLinkStatus = TempData["MessageAppLink"];
-    }
-    @if (appLinkStatus != null)
-    {
+            var appLinkStatus = TempData["MessageAppLink"];
+        }
+        @if (appLinkStatus != null)
+        {
 
-        <div class="modal fade" id="queryModal" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <span><b>@appLinkStatus</b></span>
+            <div class="modal fade" id="queryModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
                         </div>
-                    </div>
+                        <div class="modal-body">
+                            <div>
+                                <span><b>@appLinkStatus</b></span>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    }*@
+        }*@
     <!--applink modal end-->
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="@Url.Content("~/Scripts/js/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/Scripts/js/jquery.frame-carousel.js")"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function add_chatinline() {
+            var hccid = 73605092;
+            var nt = document.createElement("script");
+            nt.async = true;
+            nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid;
+            var ct = document.getElementsByTagName("script")[0];
+            ct.parentNode.insertBefore(nt, ct);
+        }
+        add_chatinline();
+    </script>
     <script type="text/javascript">
         $(document).on('keypress', '.numCss', function (evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -353,7 +363,7 @@
         function helpChange() {
             window.location.href = "@Url.Content("~/Dashboard/CustomerSupport")";
         }
-       
+
         $('#help').on('hidden.bs.modal', function () {
             $(this).find('form').trigger('reset');
         });
@@ -362,7 +372,7 @@
             $(this).find('form').trigger('reset');
         });
 
-        
+
         $(function () {
             $('#frmHelp').validate({
                 rules: {
@@ -439,7 +449,7 @@
 
         function getApphelp() {
             debugger
-        
+
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
                 //$('#queryModal').modal('show');
@@ -447,7 +457,7 @@
                 alert("Your Pick-C App Link is sent to :  " + $('#appmobileNumber').val());
             }
             }
-      
+
         //function Clear() {
         //    debugger
         //    $('#frmAppLink input[type="text"]').empty();
@@ -465,7 +475,7 @@
         //    LoadingAnimation();
         //});
     </script>
-    
+
     @RenderSection("Scripts", false)
 
 </body>
