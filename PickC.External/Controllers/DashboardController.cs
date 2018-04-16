@@ -247,7 +247,7 @@ namespace PickC.External.Controllers
                     {
 
                         fromMail = "feedback@pickcargo.in";
-                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>We appreciate your valuable  feedback.<BR><BR>" +
+                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>We appreciate your valuable  Feedback.<BR><BR>" +
                                 "Regards,<BR>" +
                                 "Pick - C Support Team.";
                     }
