@@ -266,8 +266,8 @@
                         @using (Html.BeginForm("Help", "CustomerInquiry", FormMethod.Post, new { id = "frmHelp", name = "frmHelp" }))
                         {
 
-                            <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber">
-                            <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
+                            <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber" maxlength="10">
+                            <button type="button" onclick="help()" class="btn get-link-btn" >Get Help</button>
                         }
                     </div>
 
@@ -288,9 +288,9 @@
                     <div class="form-group get-link">
                         @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
                         {
-                            <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber">
+                            <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber" maxlength="10">
 
-                            <button type="button" onclick="getApphelp()" class="btn get-link-btn">Get Pick-C App link</button>
+                            <button type="button" onclick="getApphelp()" class="btn get-link-btn" >Get Pick-C App link</button>
                         }
                     </div>
                 </div>
@@ -443,6 +443,7 @@
 
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
+               
                 window.location.href = "@Url.Content("~/Dashboard/GetHelp")";
             }
         }
@@ -453,8 +454,8 @@
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
                 //$('#queryModal').modal('show');
-
-                alert("Your Pick-C App Link is sent to :  " + $('#appmobileNumber').val());
+                $('#get-pick-c').modal('hide');
+                alert("Your Pick-C App Link will be sent to :  " + $('#appmobileNumber').val());
             }
             }
 
