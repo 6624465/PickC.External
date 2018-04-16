@@ -2,6 +2,24 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .pdng{
+        padding-bottom:35px;
+    }
+
+    .btn-ok{
+     background: #5dc58b !important;
+    color: #fbfbfb;
+    padding: 6px 15px !important;
+    font-size: 12px;
+    font-weight: normal;
+}
+    .btn-ok:hover{
+        background: #5dc58b !important;
+    color: #fbfbfb;
+    
+    }
+</style>
     <div class="clear-fix"></div>
     <div class="container">
         <div class="row">
@@ -142,11 +160,11 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"></h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body pdng">
                     <div>
                         <span><b>@queryStatus</b></span>
                     </div>
-                    <button type="button" class="close" data-dismiss="modal">Ok</button>
+                    <button type="button" class="close btn-ok" data-dismiss="modal">Ok</button>
                     @*<div>
                             <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
                         </div>*@

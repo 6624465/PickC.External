@@ -227,35 +227,70 @@ namespace PickC.External.Controllers
                // result = new CustomerBO().SaveCustomer(contactUs);
                 string fromMail = string.Empty;
                 var strBody = string.Empty;
+                var strBody1 = string.Empty;
                 if (result == true)
                 {
                     if (contactUs.InquiryType == 1505)
                     {
                         fromMail = "support@pickcargo.in";
-                        strBody = "Namaskar       " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                        strBody = "Dear  " + contactUs.CustomerName + ",<BR><BR>Thanks For Your Valuable Request, our support team will be revert soon.<BR><BR>" +
                             "Regards,<BR>" +
                             "Pick - C Support Team.";
+                        strBody1 = "Dear CustomerSupport,<BR><BR>You have received a new request <BR><BR>" +
+                            "Customer Name  : "+ contactUs.CustomerName + "<BR>"+
+                            "Contact Number  : "+ contactUs.MobileNo + "<BR>" +
+                            "Email ID   :" + contactUs.EmailID + "<BR>" +
+                            "Subject   : " + contactUs.Subject + "<BR>" +
+                            "Message  : "+ contactUs.Description + "<BR>" +
+
+                            "Please respond to the email soonest.";
                     }
                     else if (contactUs.InquiryType == 1503)
                     {
                         fromMail = "contact@pickcargo.in";
-                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                        //strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully, our support team shall contact you at the earliest.<BR><BR>" +
+                        //    "Regards,<BR>" +
+                        //    "Pick - C Support Team.";
+
+                        strBody = "Dear " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully.<BR><BR>" +
                             "Regards,<BR>" +
-                            "Pick - C Support Team.";
+                           "Pick - C Support Team.";
+
+                        strBody1 = "Dear Contact,<BR><BR>You have received a new request <BR><BR>" +
+                            "Customer Name  : " + contactUs.CustomerName + "<BR>" +
+                            "Contact Number  : " + contactUs.MobileNo + "<BR>" +
+                            "Email ID   :" + contactUs.EmailID + "<BR>" +
+                            "Subject   : " + contactUs.Subject + "<BR>" +
+                            "Message  : " + contactUs.Description + "<BR>" +
+
+                            "Please respond to the email soonest.";
                     }
                     else if (contactUs.InquiryType == 1504)
                     {
 
                         fromMail = "feedback@pickcargo.in";
-                        strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>We appreciate your valuable  Feedback.<BR><BR>" +
-                                "Regards,<BR>" +
-                                "Pick - C Support Team.";
+                        //strBody = "Namaskar     " + contactUs.CustomerName + ",<BR><BR>We appreciate your valuable  Feedback.<BR><BR>" +
+                        //        "Regards,<BR>" +
+                        //        "Pick - C Support Team.";
+
+                        strBody = "Dear " + contactUs.CustomerName + ",<BR><BR>Thanks for Your Feedback<BR><BR>" +
+                           "Regards,<BR>" +
+                          "Pick - C Support Team.";
+
+                        strBody1 = "Dear Feedback,<BR><BR>You have received a new request <BR><BR>" +
+                            "Customer Name  : " + contactUs.CustomerName + "<BR>" +
+                            "Contact Number  : " + contactUs.MobileNo + "<BR>" +
+                            "Email ID   :" + contactUs.EmailID + "<BR>" +
+                            "Subject   : " + contactUs.Subject + "<BR>" +
+                            "Message  : " + contactUs.Description + "<BR>" +
+
+                            "Please respond to the email soonest.";
                     }
                     //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
                     //public bool ConfigMail(string to, bool isHtml, string subject, string body)
                     //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
 
-                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail,true,fromMail, contactUs.Subject, contactUs.Description);
+                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail,true,fromMail, contactUs.Subject, strBody1);
 
                     if (contactUs.EmailID.Length>0)
                     {
@@ -272,7 +307,7 @@ namespace PickC.External.Controllers
 
 
 
-                        bool sendMailCustomer = new EmailGenerator().ConfigMail(contactUs.EmailID, true, contactUs.Subject, strBody);
+                        bool sendMailCustomer = new EmailGenerator().ConfigMail(contactUs.EmailID, true, fromMail, contactUs.Subject, strBody);
                     }
 
 

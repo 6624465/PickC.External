@@ -22,19 +22,40 @@ namespace PickC.External.EmailSMSGenerators
 
         public bool SendMail(MailMessage msg)
         {
+            SmtpSection settings = (SmtpSection)ConfigurationManager.GetSection("mailSettings/smtp_1");
+            if (msg.CC[0].ToString().ToLower() == "contact@pickcargo.in")
+            {
+                settings = (SmtpSection)ConfigurationManager.GetSection("mailSettings/smtp_2");
+            }
+            else if (msg.CC[0].ToString().ToLower() == "feedback@pickcargo.in")
+            {
+                settings = (SmtpSection)ConfigurationManager.GetSection("mailSettings/smtp_3");
+            }
 
-            MailSettingsSectionGroup settings = (MailSettingsSectionGroup)config.GetSectionGroup("system.net/mailSettings");
-
-            msg.From = new MailAddress(settings.Smtp.From, "PickC");
-            SmtpClient client = new SmtpClient(settings.Smtp.Network.Host);
-            client.Port = settings.Smtp.Network.Port;
-            client.EnableSsl = settings.Smtp.Network.EnableSsl;
+            msg.From = new MailAddress(settings.From, "PickC");
+            SmtpClient client = new SmtpClient(settings.Network.Host);
+            client.Port = settings.Network.Port;
+            client.EnableSsl = settings.Network.EnableSsl;
             client.Timeout = 900000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = settings.Smtp.Network.DefaultCredentials;
-            client.Credentials = new NetworkCredential(settings.Smtp.Network.UserName, settings.Smtp.Network.Password);
+            client.UseDefaultCredentials = settings.Network.DefaultCredentials;
+            client.Credentials = new NetworkCredential(settings.Network.UserName, settings.Network.Password);
             client.Send(msg);
             return true;
+
+
+            //MailSettingsSectionGroup settings = (MailSettingsSectionGroup)config.GetSectionGroup("system.net/mailSettings");
+
+            //msg.From = new MailAddress(settings.Smtp.From, "PickC");
+            //SmtpClient client = new SmtpClient(settings.Smtp.Network.Host);
+            //client.Port = settings.Smtp.Network.Port;
+            //client.EnableSsl = settings.Smtp.Network.EnableSsl;
+            //client.Timeout = 900000;
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.UseDefaultCredentials = settings.Smtp.Network.DefaultCredentials;
+            //client.Credentials = new NetworkCredential(settings.Smtp.Network.UserName, settings.Smtp.Network.Password);
+            //client.Send(msg);
+            //return true;
         }
 
         public bool ConfigMail(string to, string cc, string bcc, bool isHtml, string subject, string body, string[] attachments)
