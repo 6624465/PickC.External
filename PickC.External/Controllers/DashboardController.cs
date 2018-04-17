@@ -252,8 +252,11 @@ namespace PickC.External.Controllers
                         //    "Regards,<BR>" +
                         //    "Pick - C Support Team.";
 
-                        strBody = "Dear " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully.<BR><BR>" +
-                            "Regards,<BR>" +
+                        //strBody = "Dear " + contactUs.CustomerName + ",<BR><BR>Your request has been submitted succesfully.<BR><BR>" +
+                        //    "Regards,<BR>" +
+                        //   "Pick - C Support Team.";
+                        strBody = "Dear  " + contactUs.CustomerName + ",<BR><BR>Thanks For Your Valuable Request, our support team will be revert soon.<BR><BR>" +
+                           "Regards,<BR>" +
                            "Pick - C Support Team.";
 
                         strBody1 = "Dear Contact,<BR><BR>You have received a new request <BR><BR>" +
@@ -273,9 +276,12 @@ namespace PickC.External.Controllers
                         //        "Regards,<BR>" +
                         //        "Pick - C Support Team.";
 
-                        strBody = "Dear " + contactUs.CustomerName + ",<BR><BR>Thanks for Your Feedback<BR><BR>" +
+                        //strBody = "Dear " + contactUs.CustomerName + ",<BR><BR>Thanks for Your Feedback<BR><BR>" +
+                        //   "Regards,<BR>" +
+                        //  "Pick - C Support Team.";
+                        strBody = "Dear  " + contactUs.CustomerName + ",<BR><BR>Thanks For Your Valuable Request, our support team will be revert soon.<BR><BR>" +
                            "Regards,<BR>" +
-                          "Pick - C Support Team.";
+                           "Pick - C Support Team.";
 
                         strBody1 = "Dear Feedback,<BR><BR>You have received a new request <BR><BR>" +
                             "Customer Name  : " + contactUs.CustomerName + "<BR>" +
