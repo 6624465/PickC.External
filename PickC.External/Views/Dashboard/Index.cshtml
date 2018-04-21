@@ -29,6 +29,22 @@
                 color: #000;
                 border: 1px solid #000;
             }*/
+
+    </style>
+    <style type="text/css">
+        #map-wrapper {
+            width: 40.07%;
+            min-height: 200px;
+            display: inline-block;
+            border: 1px solid lightgray;
+            height: 55vh;
+        }
+
+        #dvMap {
+            width: 100%;
+            min-height: 45.2vh !important;
+            height: 55vh;
+        }
     </style>
 }
 <!--main content-->
@@ -131,23 +147,81 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button class="track-crn-btn">Track Cargo with CRN</button>
+                    <button type="button" onclick="trackcrn()" class="track-crn-btn">Track Cargo with CRN</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Track CRN Start -->
+@{
+    var TrackCRNVmObj = (PickC.External.Contracts.TrackCRNVm)TempData["TD:TrackCRNVm"];
+    PickC.External.Contracts.TrackCRNVm TrackCRNVm = null;
+    PickC.External.Contracts.Booking bkgTrackCrn = null;
+    if(TrackCRNVmObj != null)
+    {
+        TrackCRNVm = (PickC.External.Contracts.TrackCRNVm)TrackCRNVmObj;
+        if (TrackCRNVm != null)
+        {
+            bkgTrackCrn = TrackCRNVm.booking;
+        }
+    }
+
+    var isTrackCRN = TempData["TD:IsTrackCRN"];
+}
+@using (Html.BeginForm("TrackCrn", "Dashboard", FormMethod.Post, new { id = "frmTrackCrn", name = "frmTrackCrn" }))
+{
+    <div class="modal fade" id="track-crn-modal" role="dialog" aria-labelledby="track-crn-label" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Track CRN</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" id="trackCrnNo" name="trackCrnNo" class="form-control input-sm" placeholder="Track CRN" />
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" onclick="trackCrnClick();" class="btn btn-default input-sm">Submit</button>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-default input-sm" data-dismiss="modal">Refresh</button>
+                        </div>
+                        <div class="col-md-6">
+                            @if (TrackCRNVm != null && TrackCRNVm.booking == null)
+                            {
+                            <label>Invalid Booking No</label>
+                            }
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px">
+                        <div class="col-md-12">
+                            <div id="dvMap" style="height:425px;position: relative; overflow: hidden; background-color: rgb(229, 227, 223);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<!-- Track CRN End -->
 @using (Html.BeginForm("TripEstimate", "CustomerInquiry", FormMethod.Post, new { id = "frmTripEstimate", name = "frmTripEstimate" }))
 {
     <div class="modal fade" id="get-trip-estimate" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog center-modal modal-sm">
             <div class="modal-content">
-                <!-- Modal Header -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <!-- Modal Body -->
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
@@ -173,41 +247,15 @@
                         </div>
                     </div>
                 </div>
-                <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" onclick="TripEstimate()" class="btn get-estimate-btn">
                         Get Estimate Now
                     </button>
-                    <!--data-toggle="modal" data-target="#prices-list" data-dismiss="modal"-->
                 </div>
             </div>
         </div>
     </div>
 }
-@*@{ 
-    var queryStatus=(string)TempData["DisplayMessage"];
-}
-if (queryStatus != null)
-{
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <b>Booking Status: </b><span>@queryStatus</span>
-                </div>
-                @*<div>
-                    <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
-                </div>*@
-            @*</div>
-
-        </div>
-    </div>
-</div>*@
 
 @{
     var bookingStatus = (PickC.External.ViewModels.BookingStatusVm)TempData["TD:BookingInfo"];
@@ -234,59 +282,14 @@ if (queryStatus != null)
             </div>
         </div>
     </div>
-    @*<div class="modal fade" role="dialog" id="modalBookingStatus">
-        <div class="modal-dialog scroll center-modal">
-            <div class="modal-content">
-                <div class="modal-header custom-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Booking Status</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Booking Stauts</h4>:@bookingStatus.Status
-                        </div>
-                        <div class="col-md-12">
-                            <h4>BookingNo</h4>:
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
 }
-@*@{
-    var queryStatus = TempData["DisplayMessage"];
-}
-@if (queryStatus != null)
-{
 
-    <div class="modal fade" id="queryModal" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <span><b>@queryStatus</b></span>
-                    </div>
-                    @*<div>
-                            <b>Booking ID: </b><span>Your CRN is : @bookingStatus.BookingNo</span>
-                        </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-}*@
 <div class="modal fade" id="prices-list" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog scroll center-modal">
         <div class="modal-content">
             <div class="modal-header custom-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Approx. Estimate Fare</h4>
+                <h4 class="modal-title">Approx. Estimate Fare</h4>
             </div>
             <div class="modal-body">
                 <div class="row space-top prices-list-bg">
@@ -325,7 +328,7 @@ if (queryStatus != null)
                                 <div class="col-md-4 col-xs-4 custom-height">
                                     <div class="Prices-list">
                                         <h3 style="margin-top:29px;">&#x20B9;@fareChartList[i].OpenCharge.ToString("0.##")</h3>
-                                            <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>  } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" ></a><!--<div class="avail-unavail-btn"></div>-->
+                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text> } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i"></a><!--<div class="avail-unavail-btn"></div>-->
                                         @*<a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsOpenOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1300')" </text>   } data-open="@fareChartList[i].OpenCharge.ToString("0.##")" data-close="0" id="OpenCharge_@i" @if (fareChartList[i].IsOpenOnline) { <text> class="booknowactive-btn" </text>    } else { <text> class="booknow-btn-red context" </text>   }>Book Now</a>*@<!--<div class="avail-unavail-btn"></div>-->
                                     </div>
                                 </div>
@@ -333,7 +336,7 @@ if (queryStatus != null)
                             <div class="col-md-4 col-xs-4 custom-height">
                                 <div class="Prices-list">
                                     <h3 style="margin-top:29px;">&#x20B9;@fareChartList[i].CloseCharge.ToString("0.##")</h3>
-                                        <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text> } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" ></a>
+                                    <a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text> } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i"></a>
                                     @*<a href="#" data-vgroup="@fareChartList[i].vehicleGroupDesc" @if (fareChartList[i].IsCloseOnline) { <text> onclick="bookingSave('@fareChartList[i].vehicleGroup', '1301')" </text>  } data-close="@fareChartList[i].CloseCharge.ToString("0.##")" data-open="0" id="CloseCharge_@i" @if (fareChartList[i].IsCloseOnline) { <text> class="booknowactive-btn" </text>    } else { <text> class="booknow-btn-red context" </text>   }>Book Now</a>*@
                                 </div>
                             </div>
@@ -342,7 +345,7 @@ if (queryStatus != null)
                 }
             </div>
             <div class="modal-footer custom-footer">
-                    <h4 class="note-text"><strong>Note:&nbsp;</strong>This is an approximate estimate.Actual fare and travel time may differ.</h4>
+                <h4 class="note-text"><strong>Note:&nbsp;</strong>This is an approximate estimate.Actual fare and travel time may differ.</h4>
             </div>
         </div>
     </div>
@@ -369,7 +372,165 @@ if (queryStatus != null)
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7WVBL9AmhKs1QAr4x7mArA2mKZY-9nUo&v=3.exp&libraries=places&sensor=true"></script>
 
+    <script type="text/javascript">
+        @if(TrackCRNVm != null && TrackCRNVm.driverMonitorInCustomer != null && TrackCRNVm.booking != null)
+        {
+            <text>
+            var MapPoints = '[{"address":{"address":"","lat":"@TrackCRNVm.driverMonitorInCustomer.CurrentLat","lng":"@TrackCRNVm.driverMonitorInCustomer.CurrentLong"},"title":"@TrackCRNVm.booking.BookingNo","VehicleNo":null,"VehicleType":"@TrackCRNVm.booking.VehicleType","VehicleCategory":"@TrackCRNVm.booking.VehicleGroup","ETA":null,"TripStartTime":null,"ArrivalTime":null,"WaitingTime":null,"Status":0}]';
+            </text>
+        }
+        else {
+            <text>var MapPoints = '[]';</text>
+        }
+        @if(bkgTrackCrn != null)
+        {
 
+            <text>
+
+            $(function () {
+                    $('#track-crn-modal').modal('show');
+                    $('#trackCrnNo').val('@bkgTrackCrn.BookingNo');
+                    setTimeout(function () {
+                        TrackCRNMap('@bkgTrackCrn.Latitude', '@bkgTrackCrn.Longitude', '@bkgTrackCrn.ToLatitude', '@bkgTrackCrn.ToLongitude');
+                    }, 500);
+            });
+            </text>
+        }
+        else {
+            if (isTrackCRN != null)
+            {
+                <text>
+        $('#track-crn-modal').modal('show');
+    </text>
+            }
+        }
+
+
+
+        var directionDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        var map;
+        function TrackCRNMap(frmLat, frmLog, toLat, toLog) {
+
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            var myOptions = {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            }
+            map = new google.maps.Map(document.getElementById('dvMap'), myOptions);
+            directionsDisplay.setMap(map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var flightPlanCoordinates = [];
+            var bounds = new google.maps.LatLngBounds();
+            var locations = jQuery.parseJSON(MapPoints);
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i].address.lat, locations[i].address.lng),
+                    map: map,
+                    icon: getVehicleImage(locations[i].VehicleType, locations[i].VehicleCategory)
+                });
+                flightPlanCoordinates.push(marker.getPosition());
+                bounds.extend(marker.position);
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i]['title']);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+
+            map.fitBounds(bounds);
+
+
+            var start = new google.maps.LatLng(frmLat, frmLog);
+            var end = new google.maps.LatLng(toLat, toLog);
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    var myRoute = response.routes[0];
+                    var txtDir = '';
+                    for (var i = 0; i < myRoute.legs[0].steps.length; i++) {
+                        txtDir += myRoute.legs[0].steps[i].instructions + "<br />";
+                    }
+                    console.log(txtDir);
+                    //document.getElementById('directions').innerHTML = txtDir;
+                }
+            });
+
+            /*
+            document.getElementById('dvMap').style.height = '470px';
+            var mapDiv = document.getElementById('dvMap');
+            var latlng = new google.maps.LatLng(26.90, 76.35);
+            var options = {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                navigationControl: true,
+                scaleControl: true,
+                disableDoubleClickZoom: true,
+                scrollwheel: false,
+                streetViewControl: true
+            };
+            var waypts = [];
+            var request = {
+                origin: start,
+                destination: end,
+                waypoints: waypts,
+                optimizeWaypoints: false,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING,
+                unitSystem: google.maps.DirectionsUnitSystem.METRIC
+            };
+            debugger;
+            directionsService = new google.maps.DirectionsService();
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+
+                }
+
+                map = new google.maps.Map(mapDiv, options);
+                directionsDisplay = new google.maps.DirectionsRenderer({
+
+                });
+                directionsDisplay.setMap(map);
+                directionsDisplay.setPanel(document.getElementById('panel'));
+                directionsDisplay.setDirections(response);
+            });
+            */
+        }
+
+        function getVehicleImage(type, group) {
+            var imgBaseUrl = '/images/web/';
+            if (type == '1300')//Open
+            {
+                return imgBaseUrl + 'open.png';
+                //if (group == '1000')//Mini
+                //    return imgBaseUrl + 'open_0_75_ton_selected.png';
+                //else if (group == '1001')//Small
+                //    return imgBaseUrl + 'open_selected_1_ton.png';
+                //else if (group == '1002')//Medium
+                //    return imgBaseUrl + 'open_selected_1_5_ton.png';
+                //else if (group == '1003')//Large
+                //    return imgBaseUrl + 'open_2_ton_selected.png';
+            }
+            else if (type == '1301')//Closed
+            {
+                return imgBaseUrl + 'close.png';
+                //if (group == '1000')//Mini
+                //    return imgBaseUrl + 'closed_0_75_ton_selected.png';
+                //else if (group == '1001')//Small
+                //    return imgBaseUrl + 'closed_selected_1_ton.png';
+                //else if (group == '1002')//Medium
+                //    return imgBaseUrl + 'closed_selected_1_5_ton.png';
+                //else if (group == '1003')//Large
+                //    return imgBaseUrl + 'closed_2_ton_selected.png';
+            }
+        }
+
+    </script>
     <script type="text/javascript">
         $(document).on('keypress', '.numCss', function (evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -396,10 +557,6 @@ if (queryStatus != null)
             new google.maps.places.Autocomplete(document.getElementById('toLocation'), options);
             directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
         });
-        //$('#prices-list').modal({
-        //    backdrop: 'static',
-        //    keyboard: false
-        //});
 
         function bookingSave(vehicleGroup, vehicleType) {
             @{
@@ -440,93 +597,11 @@ if (queryStatus != null)
             $('#myModal').modal('show');
             </text>
             }
-              @*@if(queryStatus != null)
-              {
 
-                  <text>
-            $('#queryModal').modal('show');
-                  </text>
-              }*@
-        
-            @*@{
-    var queryStatus = TempData["TD:BookingInfo"];
-    if (queryStatus != null)
-    {
-    <text>
-            alert(queryStatus);
-            </text>
-        }
-    }*@
-
-
-            @*$('.cls').on('click', function () {
-                debugger;
-                var vanGroup = $(this).attr('data-vgroup');
-                var openPrice = $(this).attr('data-open');
-                var closePrice = $(this).attr('data-close');
-                var vehicletypeLookupId;
-                var vehicleGrouplookupId;
-
-
-                if (closePrice > 0)
-                    vehicletypeLookupId = 1301;
-
-                if (openPrice > 0)
-                    vehicletypeLookupId = 1300;
-
-                if (vanGroup == "mini")
-                    vehicleGrouplookupId = 1000;
-                else if (vanGroup == "small")
-                    vehicleGrouplookupId = 1001;
-                else if (vanGroup == "Medium")
-                    vehicleGrouplookupId = 1002;
-                else
-                    vehicleGrouplookupId = 1003;
-
-
-                var obj = {}
-                var CustomerObj = JSON.parse(localStorage.getItem('CustomerObj'));
-                var frmlatlong = JSON.parse(localStorage.getItem('latlong'));
-                var tolatlong = JSON.parse(localStorage.getItem('tolatlong'));
-
-                obj.CustomerId = CustomerObj.CustomerId;
-                obj.CustomerName = CustomerObj.CustomerName;
-                obj.LocationFrom = frmlatlong.LocationFrom;
-                obj.LocationTo = tolatlong.LocationTo;
-                obj.Latitude = frmlatlong.lat;
-                obj.Longitude = frmlatlong.long;
-                obj.ToLatitude = tolatlong.lat;
-                obj.ToLongitude = tolatlong.long;
-                obj.VehicleType = vehicletypeLookupId;
-                obj.VehicleGroup = vehicleGrouplookupId;
-
-                $.ajax({
-                    url: '@Url.Content("~/Dashboard/SaveBooking")',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify(obj),
-                    success: function (data) {
-                        debugger
-                        if (data.Status != "")
-                            alert(" Booking Confirmed.Your CRN number is:" + data.BookingNo);
-                            @*$("#OpenCharge_@i").*@
-                        @*else {
-                            alert("Booking Failed");
-                        }
-                    },
-                    error: function (err) {
-                    }
-                })
-                debugger;
-            });*@
-            debugger;
             function ClearTrpEstimate() {
 
             }
-            //$('#get-trip-estimate').on('hidden', function () {
-            //    $.clear(this);
-            //});
+
             $('#get-trip-estimate').on('hidden.bs.modal', function () {
                 $('#frmTripEstimate')[0].reset();
                 $(this).find('form').trigger('reset');
@@ -571,11 +646,7 @@ if (queryStatus != null)
             });
         });
         function FromToLocations() {
-            debugger
-
             if ($('#frmFromToLocation').valid()) {
-                //var fromLatlong = {};
-                //var toLatLong = {};
                 $('#frmTripEstimate input[type="text"]').removeClass('error');
                 $('#frmTripEstimate label').removeClass('error');
                 $('#frmTripEstimate label').empty();
@@ -583,23 +654,11 @@ if (queryStatus != null)
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'address': $("#fromLocation").val() }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                        debugger
-                        //fromLatlong.lat = results[0].geometry.location.lat();
-                        //fromLatlong.long = results[0].geometry.location.lng();
-                        //fromLatlong.LocationFrom = $("#fromLocation").val();
-                        //localStorage.setItem("latlong", JSON.stringify(fromLatlong));
-
                         $('#frmLatLog').val(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
                     }
                 });
                 geocoder.geocode({ 'address': $("#toLocation").val() }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                        debugger
-                        //toLatLong.lat = results[0].geometry.location.lat();
-                        //toLatLong.long = results[0].geometry.location.lng();
-                        //toLatLong.LocationTo = $("#toLocation").val();
-                        //localStorage.setItem("tolatlong", JSON.stringify(toLatLong));
-
                         $('#toLatLog').val(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
                     }
                 });
@@ -609,10 +668,6 @@ if (queryStatus != null)
                 alert("Please enter From and To locations");
             }
         }
-        //$('.booknow-btn-red').click(function () {
-        //    alert(" Booking Confirmed.Your CRN number is:BK171100049")
-        //})
-
         var fLoc = '';
         var tLoc = '';
         function TripEstimate() {
@@ -624,23 +679,15 @@ if (queryStatus != null)
                 localStorage.setItem("CustomerObj", JSON.stringify(Obj));
                 fLoc = $('#fromLocation').val();
                 tLoc = $('#toLocation').val();
-
-
                 DrawMapNew($('#fromLocation').val(), $('#toLocation').val());
-
-
-
             }
         }
 
         function DrawMapNew(start, end) {
             fLoc = start;
             tLoc = end;
-            debugger;
             $('#pickuparea').html(start);
             $('#dropoffarea').html(end);
-            //document.getElementById('dvMap').style.height = '470px';
-            //var mapDiv = document.getElementById('dvMap');
             var latlng = new google.maps.LatLng(26.90, 76.35);
             var options = {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -662,55 +709,14 @@ if (queryStatus != null)
 
             directionsService = new google.maps.DirectionsService();
             directionsService.route(request, function (response, status) {
-                debugger;
                 if (status == google.maps.DirectionsStatus.OK) {
-
                     var frmLoc = $('#fromLocation').val();
-                    debugger;
                     $('#fLoc').val(fLoc);
                     $('#tLoc').val(tLoc);
-                    debugger;
                     $('#Distance').val(response.routes[0].legs[0].distance.value / 1000);
                     $('#Duration').val(response.routes[0].legs[0].duration.value / 60);
-
-
-
-
                     $('#frmTripEstimate').submit();
-                    //$('#booking_Latitude').val(response.routes[0].legs[0].start_location.lat());
-                    //$('#booking_Longitude').val(response.routes[0].legs[0].start_location.lng());
-                    //$('#estdistance').html(response.routes[0].legs[0].distance.text);
-                    //$('#esttime').html(response.routes[0].legs[0].duration.text);
-                    //var Dist = response.routes[0].legs[0].distance.text;
-                    //var Time = response.routes[0].legs[0].duration.text;
-                    //document.getElementById("duration1").innerHTML = Time;
-                    //document.getElementById("duration2").innerHTML = Time;
-                    //document.getElementById("distancesone").innerHTML = Dist;
-                    //document.getElementById("distancestwo").innerHTML = Dist;
                 }
-
-                //map = new google.maps.Map(mapDiv, options);
-                /*  var adUnitDiv = document.createElement('div');
-
-
-
-                  var adUnitOptions = {
-
-                      format: google.maps.adsense.AdFormat.BUTTON,
-
-                      position: google.maps.ControlPosition.RIGHT_BOTTOM,
-
-                      publisherId: 'ca-pub-5545853276936929',
-
-                      map: map,
-
-                      visible: true
-
-                  };
-
-                  var adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);*/
-
-
 
                 directionsDisplay = new google.maps.DirectionsRenderer({
 
@@ -725,11 +731,21 @@ if (queryStatus != null)
         function Clear() {
             $('#fromLocation, #toLocation').val('');
         }
-    </script>
-   
-}
-    <style>
-        .context {
-            cursor: not-allowed;
+
+        function trackcrn() {
+            $('#track-crn-modal').modal('show');
         }
-    </style>
+
+        function trackCrnClick() {
+            $('#frmTrackCrn').submit();
+        }
+
+        
+    </script>
+
+}
+<style>
+    .context {
+        cursor: not-allowed;
+    }
+</style>

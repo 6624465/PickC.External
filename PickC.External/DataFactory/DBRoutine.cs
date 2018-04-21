@@ -40,8 +40,10 @@ namespace PickC.External.DataFactory
         public const string LISTRATECARD = "[Master].[usp_RateCardList]";
 
 
+        public const string BOOKINGBYBOOKINGNO = "[Operation].[usp_BookingListByBookingNo]";
 
-
-
+        public const string SELECTDRIVERMONITORINCUSTOMER = "[Operation].[usp_DriverMonitorInCustomer]";
+        public const string DRIVERLATESTFIVELATLONGS = "[Operation].[usp_GetDriverFiveLatLong]";
+        public const string SELECTDRIVERACTIVITYBYDRIVERID = "[Operation].[usp_DriverActivitySelectByDriverID]";
     }
 }

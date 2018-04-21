@@ -365,6 +365,16 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\New.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\web\close.png" />
+    <Content Include="images\web\closed_0_75_ton_selected.png" />
+    <Content Include="images\web\closed_2_ton_selected.png" />
+    <Content Include="images\web\closed_selected_1_5_ton.png" />
+    <Content Include="images\web\closed_selected_1_ton.png" />
+    <Content Include="images\web\open.png" />
+    <Content Include="images\web\open_0_75_ton_selected.png" />
+    <Content Include="images\web\open_2_ton_selected.png" />
+    <Content Include="images\web\open_selected_1_5_ton.png" />
+    <Content Include="images\web\open_selected_1_ton.png" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js\bootstrap.bundle.min.js" />
@@ -386,21 +396,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessFactory\BookingBO.cs" />
     <Compile Include="BusinessFactory\CustomerInquiryBO.cs" />
+    <Compile Include="BusinessFactory\DriverActivityBO.cs" />
     <Compile Include="BusinessFactory\LookUpBO.cs" />
     <Compile Include="BusinessFactory\RateCardBO.cs" />
     <Compile Include="Contracts\Booking.cs" />
     <Compile Include="Contracts\CustomerInquiry.cs" />
     <Compile Include="Contracts\Driver.cs" />
+    <Compile Include="Contracts\DriverActivity.cs" />
+    <Compile Include="Contracts\DriverMonitorInCustomer.cs" />
     <Compile Include="Contracts\FareChart.cs" />
     <Compile Include="Contracts\IContract.cs" />
     <Compile Include="Contracts\LookUp.cs" />
     <Compile Include="Contracts\RateCard.cs" />
+    <Compile Include="Contracts\TrackCRNVm.cs" />
     <Compile Include="Controllers\CustomerInquiryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\RateCardController.cs" />
+    <Compile Include="DataFactory\BookingDAL.cs" />
     <Compile Include="DataFactory\CustomerInquiryDAL.cs" />
     <Compile Include="DataFactory\DBRoutine.cs" />
+    <Compile Include="DataFactory\DriverActivityDAL.cs" />
     <Compile Include="DataFactory\LookUpDAL.cs" />
     <Compile Include="DataFactory\RateCardDAL.cs" />
     <Compile Include="EmailSMSGenerators\EmailGenerator.cs" />
@@ -464,7 +481,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1797</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

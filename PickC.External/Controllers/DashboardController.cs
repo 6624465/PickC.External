@@ -20,7 +20,7 @@ namespace PickC.External.Controllers
         // GET: Dashboard
         public ActionResult Index(bool IsTripEstimate = false)
         {
-            if(IsTripEstimate)
+            if (IsTripEstimate)
                 ViewData["vdIsTripEstimate"] = true;
 
             //CustomerInquiry data = TempData["DisplayMessage"] as CustomerInquiry;
@@ -30,7 +30,7 @@ namespace PickC.External.Controllers
         {
             return View();
         }
-      
+
         public ActionResult HelpDesk()
         {
             ViewBag.Customer = new CustomerInquiryBO().GetCustomerSelectList().Select(x => new { Value = x.LookupID, Text = x.LookupCode }).ToList();
@@ -53,9 +53,10 @@ namespace PickC.External.Controllers
             customer.InquiryDate = DateTime.Now;
 
             var result = new CustomerInquiryBO().SaveContactUs(customer);
-            if (result) {
-                if(customer.InquiryType== 1503)
-                TempData["DisplayMessage"] = "Your request is submitted successfully";
+            if (result)
+            {
+                if (customer.InquiryType == 1503)
+                    TempData["DisplayMessage"] = "Your request is submitted successfully";
                 else if (customer.InquiryType == 1504)
                     TempData["DisplayMessage"] = "Thanks for your feedback";
                 else
@@ -100,7 +101,6 @@ namespace PickC.External.Controllers
         [ValidateInput(false)]
         public ActionResult SaveBooking(Booking booking)
         {
-            //JsonSerializerSettings serializerSettings = new JsonSerializerSettings { Formatting = Formatting.Indented };
             try
             {
                 booking.BookingDate = DateTime.Now;
@@ -109,25 +109,7 @@ namespace PickC.External.Controllers
                 var result = new CustomerInquiryBO().SaveBooking(booking);
                 if (result)
                 {
-                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking{BookingNo = booking.BookingNo});
-                    //var driverList = new CustomerInquiryBO().GetNearTrucksDeviceID(bookings.BookingNo,
-                    //    UTILITY.radius,
-                    //    bookings.VehicleType,
-                    //    bookings.VehicleGroup,
-                    //    bookings.Latitude,
-                    //    bookings.Longitude);//UTILITY.radius
-                    //if (driverList.Count > 0)
-                    //{
-                    //    PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
-                    //        booking.BookingNo, UTILITY.NotifyNewBooking);
-
-
-                    //return Json(new { BookingNo = booking.BookingNo, Status = UTILITY.BOOKINGSUCCESS }, JsonRequestBehavior.AllowGet);
-                    //return View(new
-                    //{
-                    //    BookingNo = booking.BookingNo,
-                    //    Status = UTILITY.BOOKINGSUCCESS
-                    //});
+                    Booking bookings = new CustomerInquiryBO().GetBooking(new Booking { BookingNo = booking.BookingNo });
 
                     TempData["TD:BookingInfo"] = new BookingStatusVm
                     {
@@ -135,10 +117,10 @@ namespace PickC.External.Controllers
                         Status = UTILITY.BOOKINGSUCCESS
                     };
                     return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
+                }
+                else
+                {
+                    var CancelBooking = new CustomerInquiryBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
 
                     TempData["TD:BookingInfo"] = new BookingStatusVm
                     {
@@ -146,20 +128,9 @@ namespace PickC.External.Controllers
                         Status = UTILITY.FAILURESTATUS
                     };
                     return RedirectToAction("Index");
-                        //if (CancelBooking)
-                        //    //TempData["TD:BookingInfo"] = new BookingStatusVm
-                        //    //{
-                        //    //    BookingNo = booking.BookingNo,
-                        //    //    Status = UTILITY.BOOKINGSUCCESS
-                        //    //};
-                        //return Json(new { BookingNo = "", Status = UTILITY.NotifyCustomer }, JsonRequestBehavior.AllowGet);
-                        ////return View(new { BookingNo = "", Status = UTILITY.NotifyCustomer });
-                        //else
-                        //    return Json(new { BookingNo = "", Status = UTILITY.FAILURESTATUS }, JsonRequestBehavior.AllowGet);
-                    }
-                
-                //else
-                //    return View(result);
+
+                }
+
             }
             catch (Exception ex)
             {
@@ -224,7 +195,7 @@ namespace PickC.External.Controllers
             try
             {
                 //contactUs.CreatedBy = UTILITY.DEFAULTUSER;
-               // result = new CustomerBO().SaveCustomer(contactUs);
+                // result = new CustomerBO().SaveCustomer(contactUs);
                 string fromMail = string.Empty;
                 var strBody = string.Empty;
                 var strBody1 = string.Empty;
@@ -237,11 +208,11 @@ namespace PickC.External.Controllers
                             "Regards,<BR>" +
                             "Pick - C Support Team.";
                         strBody1 = "Dear CustomerSupport,<BR><BR>You have received a new request <BR><BR>" +
-                            "Customer Name  : "+ contactUs.CustomerName + "<BR>"+
-                            "Contact Number  : "+ contactUs.MobileNo + "<BR>" +
+                            "Customer Name  : " + contactUs.CustomerName + "<BR>" +
+                            "Contact Number  : " + contactUs.MobileNo + "<BR>" +
                             "Email ID   :" + contactUs.EmailID + "<BR>" +
                             "Subject   : " + contactUs.Subject + "<BR>" +
-                            "Message  : "+ contactUs.Description + "<BR>" +
+                            "Message  : " + contactUs.Description + "<BR>" +
 
                             "Please respond to the email soonest.";
                     }
@@ -292,15 +263,12 @@ namespace PickC.External.Controllers
 
                             "Please respond to the email soonest.";
                     }
-                    //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
-                    //public bool ConfigMail(string to, bool isHtml, string subject, string body)
-                    //public bool ConfigMail(string to, bool isHtml, string cc, string subject, string body, string[] attachments)
 
-                    bool sendMailPickC =new  EmailGenerator().ConfigMail(fromMail,true,fromMail, contactUs.Subject, strBody1);
+                    bool sendMailPickC = new EmailGenerator().ConfigMail(fromMail, true, fromMail, contactUs.Subject, strBody1);
 
-                    if (contactUs.EmailID.Length>0)
+                    if (contactUs.EmailID.Length > 0)
                     {
-                       
+
 
                         //strBody = "Namaskar  " + contactUs.CustomerName + ", <BR>" +
                         //          "Thank you for your valuable request. Our Customer support team will revert soon. <BR> <BR>" +
@@ -332,6 +300,30 @@ namespace PickC.External.Controllers
                 return false;
             }
         }
-      
+
+        [HttpPost]
+        public ActionResult TrackCrn(string trackCrnNo)
+        {
+            var booking = new BookingBO().GetByBookingNo(trackCrnNo);
+            DriverMonitorInCustomer driverMonitorInCustomer = null;
+            if (booking != null && !booking.IsComplete && booking.IsConfirm && !booking.IsCancel)
+            {
+                driverMonitorInCustomer = new DriverActivityBO().GetDriverMonitorInCustomer(new DriverMonitorInCustomer { DriverId = booking.DriverId });
+            }
+
+            TrackCRNVm obj = new TrackCRNVm
+            {
+                booking = booking,
+                driverMonitorInCustomer = driverMonitorInCustomer
+            };
+            TempData["TD:TrackCRNVm"] = obj;
+            TempData["TD:IsTrackCRN"] = true;
+
+            return View("index", new Booking { });
+        }
+
     }
+
+    
 }
+
