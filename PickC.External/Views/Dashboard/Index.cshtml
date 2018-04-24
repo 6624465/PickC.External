@@ -420,13 +420,26 @@
                         }, timeOut);
                     }
                     function trackCrnRefresh() {
-                        TrackCRNMap(
-                            bkgTrackCrnLat,
-                            bkgTrackCrnLong,
-                            bkgTrackCrnToLat,
-                            bkgTrackCrnToLong);
+                        var trackCrnNo = $('#trackCrnNo').val();
+                        var isModalOpen = ($("#track-crn-modal").data('bs.modal') || {}).isShown
+                        if (isModalOpen) {
+                            $.ajax({
+                                method: 'GET',
+                                url: '@Url.Content("~/Dashboard/GetBookingData?trackCrnNo=")' + trackCrnNo,
+                                contentType: 'application/json',
+                                success: function (data) {
 
-                        GetBookingData(bkgTrackCrnBookingNo);
+                                    if (!data.booking.IsComplete && !data.booking.IsCancel) {
+                                        MapPoints = '[{"address":{"address":"","lat":"' + data.driverMonitorInCustomer.CurrentLat + '","lng":"' + data.driverMonitorInCustomer.CurrentLong + '"},"title":"' + data.driverMonitorInCustomer.CurrentLong + '","VehicleNo":null,"VehicleType":"' + data.booking.VehicleType + '","VehicleCategory":"' + data.booking.VehicleGroup + '","ETA":null,"TripStartTime":null,"ArrivalTime":null,"WaitingTime":null,"Status":0}]';
+                                        TrackCRNMap(
+                                            bkgTrackCrnLat,
+                                            bkgTrackCrnLong,
+                                            bkgTrackCrnToLat,
+                                            bkgTrackCrnToLong);
+                                    }
+                                }
+                            });
+                        }
                     }
                     function GetBookingData(trackCrnNo) {
                         var isModalOpen = ($("#track-crn-modal").data('bs.modal') || {}).isShown
@@ -436,7 +449,7 @@
                                 url: '@Url.Content("~/Dashboard/GetBookingData?trackCrnNo=")' + trackCrnNo,
                                 contentType: 'application/json',
                                 success: function (data) {
-
+                                    debugger;
                                     if (!data.booking.IsComplete && !data.booking.IsCancel) {
                                         MapPoints = '[{"address":{"address":"","lat":"' + data.driverMonitorInCustomer.CurrentLat + '","lng":"' + data.driverMonitorInCustomer.CurrentLong + '"},"title":"' + data.driverMonitorInCustomer.CurrentLong + '","VehicleNo":null,"VehicleType":"' + data.booking.VehicleType + '","VehicleCategory":"' + data.booking.VehicleGroup + '","ETA":null,"TripStartTime":null,"ArrivalTime":null,"WaitingTime":null,"Status":0}]';
                                         OnInit(10000);
