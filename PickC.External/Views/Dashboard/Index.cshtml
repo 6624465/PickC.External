@@ -187,7 +187,7 @@
                             <button type="button" onclick="trackCrnClick();" class="btn btn-default input-sm">Submit</button>
                         </div>
                         <div class="col-md-1">
-                            <button type="button" class="btn btn-default input-sm" data-dismiss="modal">Refresh</button>
+                            <button type="button" onclick="trackCrnRefresh();" class="btn btn-default input-sm">Refresh</button>
                         </div>
                         <div class="col-md-6">
                             @if (TrackCRNVm != null && TrackCRNVm.booking == null)
@@ -384,28 +384,67 @@
         }
         @if(bkgTrackCrn != null)
         {
-
             <text>
-
-            $(function () {
-                    $('#track-crn-modal').modal('show');
-                    $('#trackCrnNo').val('@bkgTrackCrn.BookingNo');
-                    setTimeout(function () {
-                        TrackCRNMap('@bkgTrackCrn.Latitude', '@bkgTrackCrn.Longitude', '@bkgTrackCrn.ToLatitude', '@bkgTrackCrn.ToLongitude');
-                    }, 500);
-            });
+                var bkgTrackCrnLat = '@bkgTrackCrn.Latitude';
+                var bkgTrackCrnLong = '@bkgTrackCrn.Longitude';
+                var bkgTrackCrnToLat = '@bkgTrackCrn.ToLatitude';
+                var bkgTrackCrnToLong = '@bkgTrackCrn.ToLongitude';
+                var bkgTrackCrnBookingNo = '@bkgTrackCrn.BookingNo';
+                $(function () {
+                        $('#track-crn-modal').modal('show');
+                        $('#trackCrnNo').val('@bkgTrackCrn.BookingNo');
+                        OnInit(500);
+                });
             </text>
         }
         else {
             if (isTrackCRN != null)
             {
                 <text>
-        $('#track-crn-modal').modal('show');
-    </text>
+                    $('#track-crn-modal').modal('show');
+                </text>
             }
         }
+                    $('#track-crn-modal').on('hidden.bs.modal', function () {
+                        location.href = '@Url.Content("~/Dashboard/Index")';
+                    })
+                    function OnInit(timeOut) {
+                        setTimeout(function () {
+                            TrackCRNMap(
+                                bkgTrackCrnLat,
+                                bkgTrackCrnLong,
+                                bkgTrackCrnToLat,
+                                bkgTrackCrnToLong);
 
+                            GetBookingData(bkgTrackCrnBookingNo);
+                        }, timeOut);
+                    }
+                    function trackCrnRefresh() {
+                        TrackCRNMap(
+                            bkgTrackCrnLat,
+                            bkgTrackCrnLong,
+                            bkgTrackCrnToLat,
+                            bkgTrackCrnToLong);
 
+                        GetBookingData(bkgTrackCrnBookingNo);
+                    }
+                    function GetBookingData(trackCrnNo) {
+                        var isModalOpen = ($("#track-crn-modal").data('bs.modal') || {}).isShown
+                        if (isModalOpen) {
+                            $.ajax({
+                                method: 'GET',
+                                url: '@Url.Content("~/Dashboard/GetBookingData?trackCrnNo=")' + trackCrnNo,
+                                contentType: 'application/json',
+                                success: function (data) {
+
+                                    if (!data.booking.IsComplete && !data.booking.IsCancel) {
+                                        MapPoints = '[{"address":{"address":"","lat":"' + data.driverMonitorInCustomer.CurrentLat + '","lng":"' + data.driverMonitorInCustomer.CurrentLong + '"},"title":"' + data.driverMonitorInCustomer.CurrentLong + '","VehicleNo":null,"VehicleType":"' + data.booking.VehicleType + '","VehicleCategory":"' + data.booking.VehicleGroup + '","ETA":null,"TripStartTime":null,"ArrivalTime":null,"WaitingTime":null,"Status":0}]';
+                                        OnInit(10000);
+                                    }
+                                }
+                            });
+                        }
+                    }
 
         var directionDisplay;
         var directionsService = new google.maps.DirectionsService();
@@ -733,10 +772,12 @@
         }
 
         function trackcrn() {
+            document.getElementById('trackCrnNo').value = '';
             $('#track-crn-modal').modal('show');
         }
 
         function trackCrnClick() {
+            
             $('#frmTrackCrn').submit();
         }
 

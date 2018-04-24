@@ -301,8 +301,7 @@ namespace PickC.External.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult TrackCrn(string trackCrnNo)
+        private TrackCRNVm GetData(string trackCrnNo)
         {
             var booking = new BookingBO().GetByBookingNo(trackCrnNo);
             DriverMonitorInCustomer driverMonitorInCustomer = null;
@@ -316,10 +315,23 @@ namespace PickC.External.Controllers
                 booking = booking,
                 driverMonitorInCustomer = driverMonitorInCustomer
             };
-            TempData["TD:TrackCRNVm"] = obj;
+
+            return obj;
+        }
+
+        [HttpPost]
+        public ActionResult TrackCrn(string trackCrnNo)
+        {            
+            TempData["TD:TrackCRNVm"] = GetData(trackCrnNo);
             TempData["TD:IsTrackCRN"] = true;
 
             return View("index", new Booking { });
+        }
+
+        [HttpGet]
+        public JsonResult GetBookingData(string trackCrnNo)
+        {
+            return Json(GetData(trackCrnNo), JsonRequestBehavior.AllowGet);
         }
 
     }
