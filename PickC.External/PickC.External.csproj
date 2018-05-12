@@ -385,6 +385,8 @@
     <Content Include="Scripts\js\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\stopExecutionOnTimeout.js" />
+    <Content Include="Scripts\trackcrn.js" />
     <Content Include="style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
