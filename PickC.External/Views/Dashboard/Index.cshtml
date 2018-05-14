@@ -45,6 +45,15 @@
             min-height: 45.2vh !important;
             height: 55vh;
         }
+        .crn-btn{
+            line-height:0;
+            margin-top: 18px;
+            border-radius:30px;
+            padding:16px 30px;
+        }
+        .divtrackcrn{
+            color:red;
+        }
     </style>
 }
 <!--main content-->
@@ -176,24 +185,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Track CRN</h4>
+                    <h4 class="modal-title">Track your booking</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-4">
                             <input type="text" id="trackCrnNo" name="trackCrnNo" class="form-control input-sm" placeholder="Track CRN" />
+                            <span><label id="divtrackcrn" class="divtrackcrn">Invalid Booking No</label>
+                            @*@if (TrackCRNVm != null && TrackCRNVm.booking == null)
+        {
+        <label>Invalid Booking No</label>
+        }*@</span>
                         </div>
-                        <div class="col-md-1">
-                            <button type="button" onclick="trackCrnClick();" class="btn btn-default input-sm">Submit</button>
-                        </div>
-                        <div class="col-md-1">
-                            <button type="button" onclick="trackCrnRefresh();" class="btn btn-default input-sm">Refresh</button>
-                        </div>
+                            <button type="button" onclick="trackCrnClick();" class="btn btn-default input-sm crn-btn">Submit</button>&nbsp;
+                            <button type="button" onclick="trackCrnRefresh();" class="btn btn-default input-sm crn-btn">Refresh</button>
                         <div class="col-md-6">
-                            @if (TrackCRNVm != null && TrackCRNVm.booking == null)
-                            {
-                                <label>Invalid Booking No</label>
-                            }
+                           
                         </div>
                     </div>
                     <div class="row" style="margin-top:10px">
@@ -203,7 +210,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn">Close</button>
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    @*<button type="button" class="btn">Close</button>*@
                 </div>
             </div>
         </div>
@@ -425,6 +433,7 @@
                         }, timeOut);
                     }
                     function trackCrnRefresh() {
+                        $('#divtrackcrn').hide();
                         var trackCrnNo = $('#trackCrnNo').val();
                         var isModalOpen = ($("#track-crn-modal").data('bs.modal') || {}).isShown
                         if (isModalOpen) {
@@ -768,10 +777,22 @@
             document.getElementById('trackCrnNo').value = '';
             $('#track-crn-modal').modal('show');
         }
-
+        $('#divtrackcrn').hide();
         function trackCrnClick() {
-
-            $('#frmTrackCrn').submit();
+            debugger;
+            var trackCrnNon = $('#trackCrnNo').val();
+            if (trackCrnNon!='')
+            {
+                $('#frmTrackCrn').submit();
+                $('#divtrackcrn').hide();
+            }
+            else
+            {
+                $('#divtrackcrn').show();
+                
+               
+            }
+                
         }
 
 
