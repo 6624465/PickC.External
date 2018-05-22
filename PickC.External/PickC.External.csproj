@@ -375,6 +375,7 @@
     <Content Include="images\web\open_2_ton_selected.png" />
     <Content Include="images\web\open_selected_1_5_ton.png" />
     <Content Include="images\web\open_selected_1_ton.png" />
+    <Content Include="images\payTM-logo.png" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js\bootstrap.bundle.min.js" />
