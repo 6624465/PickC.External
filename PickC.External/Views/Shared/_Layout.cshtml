@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -7,9 +7,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pick Cargo</title>
-    
+
     <link rel="icon" href="@Url.Content("~/images/favicon.png")" type="image/png">
-    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" /> 
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/style.css")" rel="stylesheet" />
     <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
     <link href="@Url.Content("~/css/fonts.min.css")" rel="stylesheet" type="text/css">
@@ -41,7 +41,7 @@
         label.error {
             //display: none !important;
             color:red;
-        }    
+        }
          .spacing{
         margin-bottom:20px;
     }
@@ -68,6 +68,9 @@
             width: 90%;
             max-width: 247px;
             z-index: 1;
+        }
+        .mrgn-top{
+            margin-top:20px;
         }
     </style>
     @RenderSection("Styles", false)
@@ -207,7 +210,9 @@
                             <div class="">
                                 <ul class="list-arrow">
                                     <li><a href="@Url.Content("~/Dashboard/AboutUs")">About Us</a></li>
-                                    @*<li><a href="@Url.Content("~/Dashboard/HelpDesk")">Feedback</a></li>*@
+                                    @*<li><a href="#get-pickC-rateCard" onclick="ShowRateCard()">Our Tariff</a></li>*@
+                                    <li><a href="@Url.Content("~/RateCard/Mobile")">Our Tariff</a></li>
+
                                     <li><a href="@Url.Content("~/Dashboard/Faqs")">FAQs</a></li>
                                     <li><a href="@Url.Content("~/Dashboard/TermsAndConditions")">Terms & Conditions</a></li>
                                     <li><a href="@Url.Content("~/Dashboard/Careers")">Careers</a></li>
@@ -223,9 +228,9 @@
                             <div class="">
                                 <h3 class="title font-bold"><strong>Payment Gateway</strong></h3>
                                 <ul class="list-arrow">
-                                    <img src="@Url.Content("~/images/cc-logo.png")" />
-                                    <img src="@Url.Content("~/images/payTM-logo.png")" />
-                                    
+                                    <img src="@Url.Content("~/images/cc-logo.png")" class="img-responsive" alt="CC Avenue Icon" />
+                                    <img src="@Url.Content("~/images/paytm_logo.jpg")" class="img-responsive mrgn-top" alt="Paytm Icon" />
+
                                 </ul>
                             </div>
                         </div>
@@ -268,7 +273,7 @@
                         {
 
                             <input type="text" class="form-control numCss MobileNoCss" id="mobileNumber" placeholder="Enter Mobile Number" name="mobileNumber" maxlength="10">
-                            <button type="button" onclick="help()" class="btn get-link-btn" >Get Help</button>
+                            <button type="button" onclick="help()" class="btn get-link-btn">Get Help</button>
                         }
                     </div>
 
@@ -279,28 +284,437 @@
     </div>
     <!--Help modal end-->
     <!--applink modal Start-->
-   
-        <div class="modal fade" id="get-pick-c" role="dialog" data-backdrop="static">
-            <div class="modal-dialog center-modal modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" onclick="Clear()" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group get-link">
-                            @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
-                            {
-                                <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber" maxlength="10">
 
-                                <button type="button" onclick="getApphelp()" class="btn get-link-btn">Get Pick-C App link</button>
-                            }
-                        </div>
-                    </div>
-
+    <div class="modal fade" id="get-pick-c" role="dialog" data-backdrop="static">
+        <div class="modal-dialog center-modal modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="Clear()" data-dismiss="modal">&times;</button>
                 </div>
+                <div class="modal-body">
+                    <div class="form-group get-link">
+                        @using (Html.BeginForm("AppLink", "CustomerInquiry", FormMethod.Post, new { id = "frmAppLink", name = "frmAppLink" }))
+                        {
+                            <input type="text" class="form-control numCss MobileNoCss" id="appmobileNumber" placeholder="Enter Mobile Number" name="appmobileNumber" maxlength="10">
+
+                            <button type="button" onclick="getApphelp()" class="btn get-link-btn">Get Pick-C App link</button>
+                        }
+                    </div>
+                </div>
+
             </div>
         </div>
-    
+    </div>
+
+
+    <!--RateCard modal Start-->
+    <div class="modal fade" id="get-pickC-rateCard" role="dialog" data-backdrop="static">
+        <div class="modal-dialog center-modal modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="hostingplans">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table-bordered  table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <img src="../images/logo.png" />
+                                                </th>
+                                                <th style="vertical-align:middle;"><b>Base Fare <br /> (for first 3 Km)<div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;">Open </div> <div class="col-xs-6"> Closed </div></div> </b></th>
+                                                <th><b>Distance Fare <br /> (per Km) <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> Open </div> <div class="col-xs-6"> Closed </div></div> </b></th>
+                                                <th><b>Trip Time Charges <br />(per min.)</b></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mini<img src="../images/0_75.png" />  @*<b> ≤ 0.75 Ton</b>*@  ≤ 700 Kgs</td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-2" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 250/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 300/- </div></div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-2" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 20/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 25/- </div></div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 1/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Small<img src="../images/1_ton.png" />@*<b> 1 Ton </b>*@  701-1030 Kgs</td>
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-2" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>300/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 350/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-2" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 20/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 25/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 1/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Medium<img src="../images/1_5_ton.png" />@*<b>  1.5 Ton  </b>*@1031-1250 Kgs</td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>350/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 400/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 23/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 28/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 1/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td> Large <img src="../images/2_ton.png" />@*<b> <br /> 2 Ton </b>*@ 1031-1250 Kgs</td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>400/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 450/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 25/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 30/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 2/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <b style="font-size:10px;"> * Night-time Cargo Bookings: 1.5X apply for trips between 10:00pm to 6:00am.</b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table-bordered  table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+
+                                                    <img src="../images/logo.png" />
+
+                                                </th>
+                                                <th style="vertical-align:middle;"><b>Outstation Base Fare <br /> (for first 150 Km)<div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> Open </div> <div class="col-xs-6"> Closed </div></div> </b></th>
+                                                <th><b>Outstation Fare <br /> (per Km) <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> Open </div> <div class="col-xs-6"> Closed </div></div> </b></th>
+                                                <th><b>Trip Time Charges <br />(per min.)</b></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Mini
+                                                    <img src="../images/0_75.png" /> @*<b> ≤ 0.75 Ton</b>*@
+                                                    ≤ 700 Kgs
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 2300/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 2600/- </div></div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>  18/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i>  20/- </div></div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 1/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Small
+                                                    <img src="../images/1_ton.png" /> @*<b> 1 Ton </b>*@
+                                                    701-1030 Kgs
+                                                </td>
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 2600/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i>  2900/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 20/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 22/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 1/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Medium
+                                                    <img src="../images/1_5_ton.png" /> @*<b>  1.5 Ton  </b>*@  1031-1250 Kgs
+                                                </td>
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>2900/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 3200/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>22/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 24/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 1/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Large<img src="../images/2_ton.png" />@*<b>  2 Ton </b>*@  1031-1250 Kgs</td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i>3200/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 3500/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 24/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 26/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 2/-  </div> </div>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table-bordered  table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <img src="../images/logo.png" />
+                                                </th>
+                                                <th><b>Waiting Charges (per hour)</b></th>
+                                                <th><b>Driver assistance <br />  <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> Loading </div> <div class="col-xs-6"> Unloading </div></div> </b></th>
+                                                <th><b> Overnight waiting charges (per hour) (10 PM to 6 AM)</b></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mini<img src="../images/0_75.png" /> @* <b> ≤ 0.75 Ton</b>*@  ≤ 700 Kgs</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <i class="fa fa-inr" aria-hidden="true"></i>  60
+                                                            /- <br /> <small>*free for first 15 mins</small>
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 100/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 100/- </div></div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 80/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Small<img src="../images/1_ton.png" /> @*<b> 1 Ton </b>*@  701-1030 Kgs</td>
+
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <i class="fa fa-inr" aria-hidden="true"></i>  60
+                                                            /- <br /> <small>*free for first 30 mins</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 100/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 100/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 80/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Medium<img src="../images/1_5_ton.png" /> @*<b>  1.5 Ton  </b>*@1031-1250 Kgs</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <i class="fa fa-inr" aria-hidden="true"></i>  80
+                                                            /- <br /> <small>*free for first 45 mins</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 200/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 200/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 80/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Large<img src="../images/2_ton.png" />@*<b> <br /> 2 Ton </b>*@ 1031-1250 Kgs</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <i class="fa fa-inr" aria-hidden="true"></i>  100
+                                                            /- <br /> <small>*free for first 45 mins</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-6" style="border-right: 1px solid #cdcdcd;"> <i class="fa fa-inr" aria-hidden="true"></i> 200/-  </div> <div class="col-xs-6"> <i class="fa fa-inr" aria-hidden="true"></i> 200/- </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 100/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table-bordered  table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <img src="../images/logo.png" />
+                                                </th>
+                                                <th><b>Overnight waiting Charge (out station) </b></th>
+                                                <th><b> Cancellation Charges </b></th>
+                                                <th><b>Toll/Parking/Other</b> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mini<img src="../images/0_75.png" />  @*<b> ≤ 0.75 Ton</b>*@ ≤ 700 Kgs</td>
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 500/-  </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 50/-  </div></div>
+
+                                                </td>
+                                                <td rowspan="4">Charges shall be paid by the customer wherever required. </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Small<img src="../images/1_ton.png" /> @*<b> 1 Ton </b>*@  701-1030 Kgs</td>
+
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 500/-  </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 50/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Medium<img src="../images/1_5_ton.png" /> @*<b>  1.5 Ton  </b>*@ 1031-1250 Kgs</td>
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 500/-  </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 50/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td> Large <img src="../images/2_ton.png" />@*<b> <br /> 2 Ton </b>*@ 1031-1250 Kgs</td>
+
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 600/-  </div></div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="row"><div class="col-xs-12"> <i class="fa fa-inr" aria-hidden="true"></i> 100/-  </div></div>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div style="font-size:10px;" class="notes">
+                                        <b>*Note:</b>
+                                        <ul>
+                                            <li>  Waiting charges will be applicable, once the truck reaches pick or drop location, which include loading and unloading time</li>
+                                            <li> Cancellation charges will be included in your next booking and will reflect the same in your invoice</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--RateCard modal End-->
     @*@{
             var appLinkStatus = TempData["MessageAppLink"];
         }
@@ -397,6 +811,25 @@
                 return /^[789]\d{9}$/.test(value);
             }, 'Please enter correct Mobile Number');
         });
+
+        
+        function ShowRateCard() {
+             $.ajax({
+                url: '@Url.Content("~/RateCard/Mobile")',
+                method: 'get',
+                contentType: 'text/html',
+                success: function (html) {
+                    $('#get-pickC-rateCard').html(html);
+                    $('#get-pickC-rateCard').modal('show');
+                    
+                    //$('#error').hide();
+                },
+                error: function (err) {
+
+                }
+            });
+        }
+
                 function takeHelp() {
             $('#frmHelp input[type="text"]').removeClass('error');
             $('#frmHelp label').removeClass('error');
@@ -446,7 +879,7 @@
 
             if ($('#frmHelp').valid()) {
                 $('#frmHelp').submit();
-               
+
                 window.location.href = "@Url.Content("~/Dashboard/GetHelp")";
             }
         }
@@ -454,21 +887,21 @@
         function getApphelp() {
             debugger
 
-         
+
 
             if ($('#frmAppLink').valid()) {
                 $('#frmAppLink').submit();
                 $('#mdhide').hide();
                 //$('#queryModal').modal('show');
-              
+
                  //$('#get-pick-c').hide();
                 //$('#get-pick-c').modal('hide');
-         
+
                 //$('#get-pick-c').addclass('data-dismiss="modal"');
                 alert("Your Pick-C App Link will be sent to :  " + $('#appmobileNumber').val());
-                
+
             }
-           
+
             }
 
         //function Clear() {
